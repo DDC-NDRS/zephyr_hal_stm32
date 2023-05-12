@@ -654,7 +654,7 @@ typedef struct
   __IO uint32_t PSMKR;       /*!< QUADSPI Polling Status Mask register,               Address offset: 0x24 */
   __IO uint32_t PSMAR;       /*!< QUADSPI Polling Status Match register,              Address offset: 0x28 */
   __IO uint32_t PIR;         /*!< QUADSPI Polling Interval register,                  Address offset: 0x2C */
-  __IO uint32_t LPTR;        /*!< QUADSPI Low Power Timeout register,                 Address offset: 0x30 */
+  __IO uint32_t LPTRx;       /*!< QUADSPI Low Power Timeout register,                 Address offset: 0x30 */
 } QUADSPI_TypeDef;
 
 /**

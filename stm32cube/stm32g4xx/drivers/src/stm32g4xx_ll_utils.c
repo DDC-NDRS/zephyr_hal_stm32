@@ -272,7 +272,7 @@ void LL_SetSystemCoreClock(uint32_t HCLKFrequency)
   * @param  HCLKFrequency  HCLK frequency
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: Latency has been modified
-  *          - ERROR: Latency cannot be modified
+  *          - ERRORx: Latency cannot be modified
   */
 ErrorStatus LL_SetFlashLatency(uint32_t HCLKFrequency)
 {
@@ -285,7 +285,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLKFrequency)
   /* Frequency cannot be equal to 0 or greater than max clock */
   if((HCLKFrequency == 0U) || (HCLKFrequency > UTILS_SCALE1_LATENCY9_FREQ))
   {
-    status = ERROR;
+    status = ERRORx;
   }
   else
   {
@@ -354,7 +354,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLKFrequency)
       }
     }
 
-    if (status != ERROR)
+    if (status != ERRORx)
     {
       LL_FLASH_SetLatency(latency);
 
@@ -370,7 +370,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLKFrequency)
 
       if(getlatency != latency)
       {
-        status = ERROR;
+        status = ERRORx;
       }
     }
   }
@@ -392,7 +392,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLKFrequency)
   *                             the configuration information for the BUS prescalers.
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: Max frequency configuration done
-  *          - ERROR: Max frequency configuration not done
+  *          - ERRORx: Max frequency configuration not done
   */
 ErrorStatus LL_PLL_ConfigSystemClock_HSI(LL_UTILS_PLLInitTypeDef *UTILS_PLLInitStruct,
                                          LL_UTILS_ClkInitTypeDef *UTILS_ClkInitStruct)
@@ -450,7 +450,7 @@ ErrorStatus LL_PLL_ConfigSystemClock_HSI(LL_UTILS_PLLInitTypeDef *UTILS_PLLInitS
   else
   {
     /* Current PLL configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -474,7 +474,7 @@ ErrorStatus LL_PLL_ConfigSystemClock_HSI(LL_UTILS_PLLInitTypeDef *UTILS_PLLInitS
   *                             the configuration information for the BUS prescalers.
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: Max frequency configuration done
-  *          - ERROR: Max frequency configuration not done
+  *          - ERRORx: Max frequency configuration not done
   */
 ErrorStatus LL_PLL_ConfigSystemClock_HSE(uint32_t HSEFrequency, uint32_t HSEBypass,
                                          LL_UTILS_PLLInitTypeDef *UTILS_PLLInitStruct, LL_UTILS_ClkInitTypeDef *UTILS_ClkInitStruct)
@@ -547,7 +547,7 @@ ErrorStatus LL_PLL_ConfigSystemClock_HSE(uint32_t HSEFrequency, uint32_t HSEBypa
   else
   {
     /* Current PLL configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -601,7 +601,7 @@ static uint32_t UTILS_GetPLLOutputFrequency(uint32_t PLL_InputFrequency, LL_UTIL
   * @brief  Function to check that PLL can be modified
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: PLL modification can be done
-  *          - ERROR: PLL is busy
+  *          - ERRORx: PLL is busy
   */
 static ErrorStatus UTILS_PLL_IsBusy(void)
 {
@@ -611,7 +611,7 @@ static ErrorStatus UTILS_PLL_IsBusy(void)
   if(LL_RCC_PLL_IsReady() != 0U)
   {
     /* PLL configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -624,7 +624,7 @@ static ErrorStatus UTILS_PLL_IsBusy(void)
   *                             the configuration information for the BUS prescalers.
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: No problem to switch system to PLL
-  *          - ERROR: Problem to switch system to PLL
+  *          - ERRORx: Problem to switch system to PLL
   */
 static ErrorStatus UTILS_EnablePLLAndSwitchSystem(uint32_t SYSCLK_Frequency, LL_UTILS_ClkInitTypeDef *UTILS_ClkInitStruct)
 {
