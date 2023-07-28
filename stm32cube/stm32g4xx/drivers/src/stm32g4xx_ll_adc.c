@@ -652,7 +652,7 @@
   *         (can be set directly from CMSIS definition or by using helper macro @ref __LL_ADC_COMMON_INSTANCE() )
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: ADC common registers are de-initialized
-  *          - ERROR: not applicable
+  *          - ERRORx: not applicable
   */
 ErrorStatus LL_ADC_CommonDeInit(ADC_Common_TypeDef *ADCxy_COMMON)
 {
@@ -694,7 +694,7 @@ ErrorStatus LL_ADC_CommonDeInit(ADC_Common_TypeDef *ADCxy_COMMON)
   * @param  ADC_CommonInitStruct Pointer to a @ref LL_ADC_CommonInitTypeDef structure
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: ADC common registers are initialized
-  *          - ERROR: ADC common registers are not initialized
+  *          - ERRORx: ADC common registers are not initialized
   */
 ErrorStatus LL_ADC_CommonInit(ADC_Common_TypeDef *ADCxy_COMMON, LL_ADC_CommonInitTypeDef *ADC_CommonInitStruct)
 {
@@ -766,7 +766,7 @@ ErrorStatus LL_ADC_CommonInit(ADC_Common_TypeDef *ADCxy_COMMON, LL_ADC_CommonIni
   {
     /* Initialization error: One or several ADC instances belonging to        */
     /* the same ADC common instance are not disabled.                         */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -860,7 +860,7 @@ ErrorStatus LL_ADC_DeInit(ADC_TypeDef *ADCx)
       if (timeout_cpu_cycles == 0UL)
       {
         /* Time-out error */
-        status = ERROR;
+        status = ERRORx;
         break;
       }
     }
@@ -881,7 +881,7 @@ ErrorStatus LL_ADC_DeInit(ADC_TypeDef *ADCx)
       if (timeout_cpu_cycles == 0UL)
       {
         /* Time-out error */
-        status = ERROR;
+        status = ERRORx;
         break;
       }
     }
@@ -1052,7 +1052,7 @@ ErrorStatus LL_ADC_DeInit(ADC_TypeDef *ADCx)
     /* Caution: On this STM32 series, if several ADC instances are available  */
     /*          on the selected device, RCC ADC reset will reset              */
     /*          all ADC instances belonging to the common ADC instance.       */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -1125,7 +1125,7 @@ ErrorStatus LL_ADC_Init(ADC_TypeDef *ADCx, LL_ADC_InitTypeDef *ADC_InitStruct)
   else
   {
     /* Initialization error: ADC instance is not disabled. */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -1260,7 +1260,7 @@ ErrorStatus LL_ADC_REG_Init(ADC_TypeDef *ADCx, LL_ADC_REG_InitTypeDef *ADC_REG_I
   else
   {
     /* Initialization error: ADC instance is not disabled. */
-    status = ERROR;
+    status = ERRORx;
   }
   return status;
 }
@@ -1383,7 +1383,7 @@ ErrorStatus LL_ADC_INJ_Init(ADC_TypeDef *ADCx, LL_ADC_INJ_InitTypeDef *ADC_INJ_I
   else
   {
     /* Initialization error: ADC instance is not disabled. */
-    status = ERROR;
+    status = ERRORx;
   }
   return status;
 }

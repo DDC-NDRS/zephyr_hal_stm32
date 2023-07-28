@@ -140,7 +140,7 @@
   *         (*) Not on all G4 devices
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: DMA registers are de-initialized
-  *          - ERROR: DMA registers are not de-initialized
+  *          - ERRORx: DMA registers are not de-initialized
   */
 uint32_t LL_DMA_DeInit(DMA_TypeDef *DMAx, uint32_t Channel)
 {
@@ -170,7 +170,7 @@ uint32_t LL_DMA_DeInit(DMA_TypeDef *DMAx, uint32_t Channel)
     }
     else
     {
-      status = ERROR;
+      status = ERRORx;
     }
   }
   else
@@ -242,7 +242,7 @@ uint32_t LL_DMA_DeInit(DMA_TypeDef *DMAx, uint32_t Channel)
 #endif /* DMA1_Channel8 */
     else
     {
-      status = ERROR;
+      status = ERRORx;
     }
   }
 
@@ -268,7 +268,7 @@ uint32_t LL_DMA_DeInit(DMA_TypeDef *DMAx, uint32_t Channel)
   * @param  DMA_InitStruct pointer to a @ref LL_DMA_InitTypeDef structure.
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: DMA registers are initialized
-  *          - ERROR: Not applicable
+  *          - ERRORx: Not applicable
   */
 uint32_t LL_DMA_Init(DMA_TypeDef *DMAx, uint32_t Channel, LL_DMA_InitTypeDef *DMA_InitStruct)
 {

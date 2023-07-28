@@ -654,7 +654,7 @@ typedef struct
   __IO uint32_t PSMKR;       /*!< QUADSPI Polling Status Mask register,               Address offset: 0x24 */
   __IO uint32_t PSMAR;       /*!< QUADSPI Polling Status Match register,              Address offset: 0x28 */
   __IO uint32_t PIR;         /*!< QUADSPI Polling Interval register,                  Address offset: 0x2C */
-  __IO uint32_t LPTR;        /*!< QUADSPI Low Power Timeout register,                 Address offset: 0x30 */
+  __IO uint32_t LPTRx;       /*!< QUADSPI Low Power Timeout register,                 Address offset: 0x30 */
 } QUADSPI_TypeDef;
 
 /**
@@ -1122,6 +1122,10 @@ typedef struct {
   HRTIM_Common_TypeDef sCommonRegs;
 }HRTIM_TypeDef;
 
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#include "stm32g4_reg_stub.h"
+#endif
+
 /**
   * @}
   */
@@ -1191,7 +1195,11 @@ typedef struct {
 #define FDCAN_CONFIG_BASE     (APB1PERIPH_BASE + 0x6500UL)  /*!< FDCAN configuration registers base address */
 #define FDCAN2_BASE           (APB1PERIPH_BASE + 0x6800UL)
 #define FDCAN3_BASE           (APB1PERIPH_BASE + 0x6C00UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define PWR_BASE              ((uintptr_t)ut_mcu_pwr_ptr)
+#else
 #define PWR_BASE              (APB1PERIPH_BASE + 0x7000UL)
+#endif
 #define I2C3_BASE             (APB1PERIPH_BASE + 0x7800UL)
 #define LPTIM1_BASE           (APB1PERIPH_BASE + 0x7C00UL)
 #define LPUART1_BASE          (APB1PERIPH_BASE + 0x8000UL)
@@ -1200,7 +1208,11 @@ typedef struct {
 #define SRAMCAN_BASE          (APB1PERIPH_BASE + 0xA400UL)
 
 /*!< APB2 peripherals */
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define SYSCFG_BASE           ((uintptr_t)ut_mcu_syscfg_ptr)
+#else
 #define SYSCFG_BASE           (APB2PERIPH_BASE + 0x0000UL)
+#endif
 #define VREFBUF_BASE          (APB2PERIPH_BASE + 0x0030UL)
 #define COMP1_BASE            (APB2PERIPH_BASE + 0x0200UL)
 #define COMP2_BASE            (APB2PERIPH_BASE + 0x0204UL)
@@ -1217,7 +1229,11 @@ typedef struct {
 #define OPAMP5_BASE           (APB2PERIPH_BASE + 0x0310UL)
 #define OPAMP6_BASE           (APB2PERIPH_BASE + 0x0314UL)
 
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define EXTI_BASE             ((uintptr_t)ut_mcu_exti_ptr)
+#else
 #define EXTI_BASE             (APB2PERIPH_BASE + 0x0400UL)
+#endif
 #define TIM1_BASE             (APB2PERIPH_BASE + 0x2C00UL)
 #define SPI1_BASE             (APB2PERIPH_BASE + 0x3000UL)
 #define TIM8_BASE             (APB2PERIPH_BASE + 0x3400UL)
@@ -1242,11 +1258,20 @@ typedef struct {
 /*!< AHB1 peripherals */
 #define DMA1_BASE             (AHB1PERIPH_BASE)
 #define DMA2_BASE             (AHB1PERIPH_BASE + 0x0400UL)
+
 #define DMAMUX1_BASE          (AHB1PERIPH_BASE + 0x0800UL)
 #define CORDIC_BASE           (AHB1PERIPH_BASE + 0x0C00UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define RCC_BASE              ((uintptr_t)ut_mcu_rcc_ptr)
+#else
 #define RCC_BASE              (AHB1PERIPH_BASE + 0x1000UL)
+#endif
 #define FMAC_BASE             (AHB1PERIPH_BASE + 0x1400UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define FLASH_R_BASE          ((uintptr_t)ut_mcu_flash_r_ptr)
+#else
 #define FLASH_R_BASE          (AHB1PERIPH_BASE + 0x2000UL)
+#endif
 #define CRC_BASE              (AHB1PERIPH_BASE + 0x3000UL)
 
 #define DMA1_Channel1_BASE    (DMA1_BASE + 0x0008UL)
@@ -1292,6 +1317,15 @@ typedef struct {
 #define DMAMUX1_RequestGenStatus_BASE   (DMAMUX1_BASE + 0x0140UL)
 
 /*!< AHB2 peripherals */
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define GPIOA_BASE            ((uintptr_t)ut_mcu_gpio_a_ptr)
+#define GPIOB_BASE            ((uintptr_t)ut_mcu_gpio_b_ptr)
+#define GPIOC_BASE            ((uintptr_t)ut_mcu_gpio_c_ptr)
+#define GPIOD_BASE            ((uintptr_t)ut_mcu_gpio_d_ptr)
+#define GPIOE_BASE            ((uintptr_t)ut_mcu_gpio_e_ptr)
+#define GPIOF_BASE            ((uintptr_t)ut_mcu_gpio_f_ptr)
+#define GPIOG_BASE            ((uintptr_t)ut_mcu_gpio_g_ptr)
+#else
 #define GPIOA_BASE            (AHB2PERIPH_BASE + 0x0000UL)
 #define GPIOB_BASE            (AHB2PERIPH_BASE + 0x0400UL)
 #define GPIOC_BASE            (AHB2PERIPH_BASE + 0x0800UL)
@@ -1299,6 +1333,7 @@ typedef struct {
 #define GPIOE_BASE            (AHB2PERIPH_BASE + 0x1000UL)
 #define GPIOF_BASE            (AHB2PERIPH_BASE + 0x1400UL)
 #define GPIOG_BASE            (AHB2PERIPH_BASE + 0x1800UL)
+#endif
 
 #define ADC1_BASE             (AHB2PERIPH_BASE + 0x08000000UL)
 #define ADC2_BASE             (AHB2PERIPH_BASE + 0x08000100UL)
@@ -1320,7 +1355,11 @@ typedef struct {
 #define FMC_Bank3_R_BASE      (FMC_R_BASE + 0x0080UL)
 #define RNG_BASE              (AHB2PERIPH_BASE + 0x08060800UL)
 /* Debug MCU registers base address */
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define DBGMCU_BASE           ((uintptr_t)ut_mcu_dbgmcu_ptr)
+#else
 #define DBGMCU_BASE           (0xE0042000UL)
+#endif
 
 #define PACKAGE_BASE          (0x1FFF7500UL)        /*!< Package data register base address     */
 #define UID_BASE              (0x1FFF7590UL)        /*!< Unique device ID register base address */
@@ -1409,7 +1448,7 @@ typedef struct {
 #define RCC                 ((RCC_TypeDef *) RCC_BASE)
 #define FMAC                ((FMAC_TypeDef *) FMAC_BASE)
 #define FLASH               ((FLASH_TypeDef *) FLASH_R_BASE)
-#define CRC                 ((CRC_TypeDef *) CRC_BASE)
+#define CRCx                ((CRC_TypeDef *) CRC_BASE) /* #CUSTOM@NDRS,  */
 
 #define GPIOA               ((GPIO_TypeDef *) GPIOA_BASE)
 #define GPIOB               ((GPIO_TypeDef *) GPIOB_BASE)

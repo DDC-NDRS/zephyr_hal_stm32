@@ -108,6 +108,10 @@ typedef enum
   }while (0U)
 #endif /* USE_RTOS */
 
+#if defined(_MSC_VER)
+#define __weak
+#endif
+
 #if defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050) /* ARM Compiler V6 */
 #ifndef __weak
 #define __weak  __attribute__((weak))
@@ -156,7 +160,7 @@ typedef enum
 /**
   * @brief  __RAM_FUNC definition
   */
-#if defined ( __CC_ARM   ) || (defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050))
+#if defined ( __CC_ARM   ) || (defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)) || defined(_MSC_VER)
 /* ARM Compiler V4/V5 and V6
    --------------------------
    RAM functions are defined using the toolchain options.
