@@ -197,7 +197,7 @@ static const LPGPIO_MapTypeDef LPGPIO_Map[GPIO_NUMBER] =
   *         the configuration information for the specified GPIO peripheral.
   * @retval None
   */
-void HAL_GPIO_Init(GPIO_TypeDef  *GPIOx, const GPIO_InitTypeDef *pGPIO_Init)
+void HAL_GPIO_Init(GPIO_TypeDef* GPIOx, const GPIO_InitTypeDef *pGPIO_Init)
 {
   uint32_t tmp;
   uint32_t iocurrent;
