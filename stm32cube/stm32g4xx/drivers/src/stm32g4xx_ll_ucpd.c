@@ -78,7 +78,7 @@
   */
 ErrorStatus LL_UCPD_DeInit(UCPD_TypeDef *UCPDx)
 {
-  ErrorStatus status = ERROR;
+  ErrorStatus status = ERRORx;
 
   /* Check the parameters */
   assert_param(IS_UCPD_ALL_INSTANCE(UCPDx));

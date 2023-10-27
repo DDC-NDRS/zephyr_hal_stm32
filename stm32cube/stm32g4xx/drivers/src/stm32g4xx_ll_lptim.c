@@ -106,7 +106,7 @@ ErrorStatus LL_LPTIM_DeInit(LPTIM_TypeDef *LPTIMx)
   }
   else
   {
-    result = ERROR;
+    result = ERRORx;
   }
 
   return result;
@@ -152,7 +152,7 @@ ErrorStatus LL_LPTIM_Init(LPTIM_TypeDef *LPTIMx, LL_LPTIM_InitTypeDef *LPTIM_Ini
   */
   if (LL_LPTIM_IsEnabled(LPTIMx) == 1UL)
   {
-    result = ERROR;
+    result = ERRORx;
   }
   else
   {

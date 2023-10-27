@@ -473,7 +473,7 @@ ErrorStatus LL_ADC_CommonInit(ADC_Common_TypeDef *pADCxy_COMMON, LL_ADC_CommonIn
   {
     /* Initialization error: One or several ADC instances belonging to        */
     /* the same ADC common instance are not disabled.                         */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -546,7 +546,7 @@ ErrorStatus LL_ADC_DeInit(ADC_TypeDef *pADCx)
         if (timeout_cpu_cycles == 0UL)
         {
           /* Time-out error */
-          status = ERROR;
+          status = ERRORx;
           break;
         }
       }
@@ -559,7 +559,7 @@ ErrorStatus LL_ADC_DeInit(ADC_TypeDef *pADCx)
         if (timeout_cpu_cycles == 0UL)
         {
           /* Time-out error */
-          status = ERROR;
+          status = ERRORx;
         }
       }
     }
@@ -574,7 +574,7 @@ ErrorStatus LL_ADC_DeInit(ADC_TypeDef *pADCx)
       if (timeout_cpu_cycles == 0UL)
       {
         /* Time-out error */
-        status = ERROR;
+        status = ERRORx;
       }
     }
   }
@@ -800,7 +800,7 @@ ErrorStatus LL_ADC_DeInit(ADC_TypeDef *pADCx)
       /* Caution: On this STM32 series, if several ADC instances are available   */
       /*          on the selected device, RCC ADC reset will reset              */
       /*          all ADC instances belonging to the common ADC instance.       */
-      status = ERROR;
+      status = ERRORx;
     }
   }
 
@@ -886,7 +886,7 @@ ErrorStatus LL_ADC_Init(ADC_TypeDef *pADCx, LL_ADC_InitTypeDef *pADC_InitStruct)
   else
   {
     /* Initialization error: ADC instance is not disabled. */
-    status = ERROR;
+    status = ERRORx;
   }
   return status;
 }
@@ -1097,7 +1097,7 @@ ErrorStatus LL_ADC_REG_Init(ADC_TypeDef *pADCx, LL_ADC_REG_InitTypeDef *pADC_Reg
   else
   {
     /* Initialization error: ADC instance is not disabled. */
-    status = ERROR;
+    status = ERRORx;
   }
   return status;
 }
@@ -1214,7 +1214,7 @@ ErrorStatus LL_ADC_INJ_Init(ADC_TypeDef *pADCx, LL_ADC_INJ_InitTypeDef *pADC_Inj
   else
   {
     /* Initialization error: ADC instance is not disabled. */
-    status = ERROR;
+    status = ERRORx;
   }
   return status;
 }

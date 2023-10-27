@@ -26,6 +26,7 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32u5xx.h"
+#include "stm32_wpan_common.h"
 
 /** @addtogroup STM32U5xx_LL_Driver
   * @{

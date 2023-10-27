@@ -280,7 +280,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
   /* Frequency cannot be equal to 0 */
   if (HCLK_Frequency == 0U)
   {
-    status = ERROR;
+    status = ERRORx;
   }
   else
   {
@@ -312,7 +312,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
       }
       else
       {
-        status = ERROR;
+        status = ERRORx;
       }
       /* else HCLK_Frequency <= 10MHz default LL_FLASH_LATENCY_0 0WS */
     }
@@ -339,7 +339,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
       }
       else
       {
-        status = ERROR;
+        status = ERRORx;
       }
       /* else HCLK_Frequency <= 10MHz default LL_FLASH_LATENCY_0 0WS */
     }
@@ -366,7 +366,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
       }
       else
       {
-        status = ERROR;
+        status = ERRORx;
       }
       /* else HCLK_Frequency <= 10MHz default LL_FLASH_LATENCY_0 0WS */
     }
@@ -388,7 +388,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
       }
       else
       {
-        status = ERROR;
+        status = ERRORx;
       }
       /* else HCLK_Frequency <= 10MHz default LL_FLASH_LATENCY_0 0WS */
     }
@@ -410,7 +410,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
 
     if (getlatency != latency)
     {
-      status = ERROR;
+      status = ERRORx;
     }
   }
 
@@ -463,7 +463,7 @@ ErrorStatus LL_PLL_ConfigSystemClock_MSI(LL_UTILS_PLLInitTypeDef *UTILS_PLLInitS
         case LL_RCC_MSISRANGE_6:     /* MSI = 1.5 MHz  */
         case LL_RCC_MSISRANGE_5:     /* MSI = 2 MHz    */
           /* PLLVCO input frequency is less then 4 MHz*/
-          status = ERROR;
+          status = ERRORx;
           break;
 
         case LL_RCC_MSISRANGE_0:     /* MSI = 48 MHz   */
@@ -485,7 +485,7 @@ ErrorStatus LL_PLL_ConfigSystemClock_MSI(LL_UTILS_PLLInitTypeDef *UTILS_PLLInitS
         case LL_RCC_MSISSRANGE_7:    /* MSI = 1 MHz    */
         case LL_RCC_MSISSRANGE_8:    /* MSI = 3.072 MHz*/
           /* PLLVCO input frequency is less then 4 MHz */
-          status = ERROR;
+          status = ERRORx;
           break;
 
         case LL_RCC_MSISSRANGE_4:    /* MSI = 4 MHz    */
@@ -495,7 +495,7 @@ ErrorStatus LL_PLL_ConfigSystemClock_MSI(LL_UTILS_PLLInitTypeDef *UTILS_PLLInitS
     }
 
     /* Main PLL configuration and activation */
-    if (status != ERROR)
+    if (status != ERRORx)
     {
       /* Calculate the new PLL output frequency */
       pllfreq = UTILS_GetPLLOutputFrequency(__LL_RCC_CALC_MSIS_FREQ(LL_RCC_MSI_IsEnabledRangeSelect(), msi_range),
@@ -544,7 +544,7 @@ ErrorStatus LL_PLL_ConfigSystemClock_MSI(LL_UTILS_PLLInitTypeDef *UTILS_PLLInitS
   else
   {
     /* Current PLL configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -599,7 +599,7 @@ ErrorStatus LL_PLL_ConfigSystemClock_HSI(LL_UTILS_PLLInitTypeDef *UTILS_PLLInitS
   else
   {
     /* Current PLL configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -674,7 +674,7 @@ ErrorStatus LL_PLL_ConfigSystemClock_HSE(uint32_t HSEFrequency, uint32_t HSEBypa
   else
   {
     /* Current PLL configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -738,21 +738,21 @@ static ErrorStatus UTILS_PLL_IsBusy(void)
   if (LL_RCC_PLL1_IsReady() != 0U)
   {
     /* PLL configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   /* Check if PLL2 is busy*/
   if (LL_RCC_PLL2_IsReady() != 0U)
   {
     /* PLL2 configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   /* Check if PLL3 is busy*/
   if (LL_RCC_PLL3_IsReady() != 0U)
   {
     /* PLL3 configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;

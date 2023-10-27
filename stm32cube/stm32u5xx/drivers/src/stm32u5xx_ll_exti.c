@@ -143,7 +143,7 @@ ErrorStatus LL_EXTI_Init(LL_EXTI_InitTypeDef *EXTI_InitStruct)
           LL_EXTI_EnableEvent_0_31(EXTI_InitStruct->Line_0_31);
           break;
         default:
-          status = ERROR;
+          status = ERRORx;
           break;
       }
       if (EXTI_InitStruct->Trigger != LL_EXTI_TRIGGER_NONE)
@@ -167,7 +167,7 @@ ErrorStatus LL_EXTI_Init(LL_EXTI_InitTypeDef *EXTI_InitStruct)
             LL_EXTI_EnableFallingTrig_0_31(EXTI_InitStruct->Line_0_31);
             break;
           default:
-            status = ERROR;
+            status = ERRORx;
             break;
         }
       }

@@ -302,7 +302,7 @@ ErrorStatus LL_TIM_DeInit(const TIM_TypeDef *TIMx)
   }
   else
   {
-    result = ERROR;
+    result = ERRORx;
   }
 
   return result;
@@ -416,7 +416,7 @@ void LL_TIM_OC_StructInit(LL_TIM_OC_InitTypeDef *TIM_OC_InitStruct)
   */
 ErrorStatus LL_TIM_OC_Init(TIM_TypeDef *TIMx, uint32_t Channel, const LL_TIM_OC_InitTypeDef *TIM_OC_InitStruct)
 {
-  ErrorStatus result = ERROR;
+  ErrorStatus result = ERRORx;
 
   switch (Channel)
   {
@@ -477,7 +477,7 @@ void LL_TIM_IC_StructInit(LL_TIM_IC_InitTypeDef *TIM_ICInitStruct)
   */
 ErrorStatus LL_TIM_IC_Init(TIM_TypeDef *TIMx, uint32_t Channel, const LL_TIM_IC_InitTypeDef *TIM_IC_InitStruct)
 {
-  ErrorStatus result = ERROR;
+  ErrorStatus result = ERRORx;
 
   switch (Channel)
   {

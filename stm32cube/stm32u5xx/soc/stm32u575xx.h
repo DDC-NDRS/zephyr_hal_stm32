@@ -203,7 +203,7 @@ typedef enum
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wc11-extensions"
   #pragma clang diagnostic ignored "-Wreserved-id-macro"
-#elif defined (__GNUC__)
+#elif (defined (__GNUC__) || defined(_MSC_VER)) /* #CUSTOM@NDRS */
   /* anonymous unions are enabled by default */
 #elif defined (__TMS470__)
   /* anonymous unions are enabled by default */
@@ -844,7 +844,7 @@ typedef struct
   uint32_t RESERVED11[3];    /*!< Reserved,                                         Address offset: 0x114-0x11C */
   __IO uint32_t ABR;         /*!< XSPI Alternate Bytes register,                    Address offset: 0x120 */
   uint32_t RESERVED12[3];    /*!< Reserved,                                         Address offset: 0x124-0x12C */
-  __IO uint32_t LPTR;        /*!< XSPI Low Power Timeout register,                  Address offset: 0x130 */
+  __IO uint32_t LPTRx;       /*!< XSPI Low Power Timeout register,                  Address offset: 0x130 */
   uint32_t RESERVED13[3];    /*!< Reserved,                                         Address offset: 0x134-0x13C */
   __IO uint32_t WPCCR;       /*!< XSPI Wrap Communication Configuration register,   Address offset: 0x140 */
   uint32_t RESERVED14;       /*!< Reserved,                                         Address offset: 0x144 */
@@ -1615,7 +1615,7 @@ typedef struct
   /* leave anonymous unions enabled */
 #elif defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
   #pragma clang diagnostic pop
-#elif defined (__GNUC__)
+#elif (defined (__GNUC__) || defined(_MSC_VER)) /* #CUSTOM@NDRS */
   /* anonymous unions are enabled by default */
 #elif defined (__TMS470__)
   /* anonymous unions are enabled by default */
@@ -1711,7 +1711,11 @@ typedef struct
 #define SAI2_Block_B_BASE_NS     (SAI2_BASE_NS + 0x024UL)
 
 /*!< APB3 Non secure peripherals */
-#define SYSCFG_BASE_NS           (APB3PERIPH_BASE_NS + 0x0400UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define SYSCFG_BASE_NS           ((uintptr_t)ut_mcu_syscfg_ptr)
+#else
+#define SYSCFG_BASE_NS           (APB3PERIPH_BASE_NS + 0x0400UL)    
+#endif
 #define SPI3_BASE_NS             (APB3PERIPH_BASE_NS + 0x2000UL)
 #define LPUART1_BASE_NS          (APB3PERIPH_BASE_NS + 0x2400UL)
 #define I2C3_BASE_NS             (APB3PERIPH_BASE_NS + 0x2800UL)
@@ -1748,7 +1752,11 @@ typedef struct
 #define GPDMA1_Channel15_BASE_NS (GPDMA1_BASE_NS + 0x07D0UL)
 #define CORDIC_BASE_NS           (AHB1PERIPH_BASE_NS + 0x01000UL)
 #define FMAC_BASE_NS             (AHB1PERIPH_BASE_NS + 0x01400UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define FLASH_R_BASE_NS          ((uintptr_t)ut_mcu_flash_r_ptr)
+#else
 #define FLASH_R_BASE_NS          (AHB1PERIPH_BASE_NS + 0x02000UL)
+#endif
 #define CRC_BASE_NS              (AHB1PERIPH_BASE_NS + 0x03000UL)
 #define TSC_BASE_NS              (AHB1PERIPH_BASE_NS + 0x04000UL)
 #define MDF1_BASE_NS             (AHB1PERIPH_BASE_NS + 0x05000UL)
@@ -1809,12 +1817,21 @@ typedef struct
 
 /*!< AHB3 Non secure peripherals */
 #define LPGPIO1_BASE_NS          (AHB3PERIPH_BASE_NS)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define PWR_BASE_NS              ((uintptr_t)ut_mcu_pwr_ptr)
+#define RCC_BASE_NS              ((uintptr_t)ut_mcu_rcc_ptr)
+#else
 #define PWR_BASE_NS              (AHB3PERIPH_BASE_NS + 0x0800UL)
 #define RCC_BASE_NS              (AHB3PERIPH_BASE_NS + 0x0C00UL)
+#endif
 #define ADC4_BASE_NS             (AHB3PERIPH_BASE_NS + 0x1000UL)
 #define ADC4_COMMON_BASE_NS      (AHB3PERIPH_BASE_NS + 0x1308UL)
 #define DAC1_BASE_NS             (AHB3PERIPH_BASE_NS + 0x1800UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define EXTI_BASE_NS             ((uintptr_t)ut_mcu_exti_ptr)
+#else
 #define EXTI_BASE_NS             (AHB3PERIPH_BASE_NS + 0x2000UL)
+#endif
 #define GTZC_TZSC2_BASE_NS       (AHB3PERIPH_BASE_NS + 0x3000UL)
 #define GTZC_TZIC2_BASE_NS       (AHB3PERIPH_BASE_NS + 0x3400UL)
 #define GTZC_MPCBB4_BASE_NS      (AHB3PERIPH_BASE_NS + 0x3800UL)
@@ -1882,7 +1899,11 @@ typedef struct
 #define SAI2_Block_B_BASE_S     (SAI2_BASE_S + 0x024UL)
 
 /*!< APB3 Secure peripherals */
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define SYSCFG_BASE_S           ((uintptr_t)ut_mcu_syscfg_ptr)
+#else
 #define SYSCFG_BASE_S           (APB3PERIPH_BASE_S + 0x0400UL)
+#endif
 #define SPI3_BASE_S             (APB3PERIPH_BASE_S + 0x2000UL)
 #define LPUART1_BASE_S          (APB3PERIPH_BASE_S + 0x2400UL)
 #define I2C3_BASE_S             (APB3PERIPH_BASE_S + 0x2800UL)
@@ -1919,7 +1940,11 @@ typedef struct
 #define GPDMA1_Channel15_BASE_S (GPDMA1_BASE_S + 0x07D0UL)
 #define CORDIC_BASE_S           (AHB1PERIPH_BASE_S + 0x01000UL)
 #define FMAC_BASE_S             (AHB1PERIPH_BASE_S + 0x01400UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define FLASH_R_BASE_S          ((uintptr_t)ut_mcu_flash_r_ptr)
+#else
 #define FLASH_R_BASE_S          (AHB1PERIPH_BASE_S + 0x02000UL)
+#endif
 #define CRC_BASE_S              (AHB1PERIPH_BASE_S + 0x03000UL)
 #define TSC_BASE_S              (AHB1PERIPH_BASE_S + 0x04000UL)
 #define MDF1_BASE_S             (AHB1PERIPH_BASE_S + 0x05000UL)
@@ -1946,6 +1971,17 @@ typedef struct
 #define BKPSRAM_BASE_S          (AHB1PERIPH_BASE_S + 0x16400UL)
 
 /*!< AHB2 Secure peripherals */
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define GPIOA_BASE_S            ((uintptr_t)ut_mcu_gpio_a_ptr)
+#define GPIOB_BASE_S            ((uintptr_t)ut_mcu_gpio_b_ptr)
+#define GPIOC_BASE_S            ((uintptr_t)ut_mcu_gpio_c_ptr)
+#define GPIOD_BASE_S            ((uintptr_t)ut_mcu_gpio_d_ptr)
+#define GPIOE_BASE_S            ((uintptr_t)ut_mcu_gpio_e_ptr)
+#define GPIOF_BASE_S            ((uintptr_t)ut_mcu_gpio_f_ptr)
+#define GPIOG_BASE_S            ((uintptr_t)ut_mcu_gpio_g_ptr)
+#define GPIOH_BASE_S            ((uintptr_t)ut_mcu_gpio_h_ptr)
+#define GPIOI_BASE_S            ((uintptr_t)ut_mcu_gpio_i_ptr)
+#else
 #define GPIOA_BASE_S            (AHB2PERIPH_BASE_S + 0x00000UL)
 #define GPIOB_BASE_S            (AHB2PERIPH_BASE_S + 0x00400UL)
 #define GPIOC_BASE_S            (AHB2PERIPH_BASE_S + 0x00800UL)
@@ -1955,6 +1991,8 @@ typedef struct
 #define GPIOG_BASE_S            (AHB2PERIPH_BASE_S + 0x01800UL)
 #define GPIOH_BASE_S            (AHB2PERIPH_BASE_S + 0x01C00UL)
 #define GPIOI_BASE_S            (AHB2PERIPH_BASE_S + 0x02000UL)
+#endif
+
 #define ADC1_BASE_S             (AHB2PERIPH_BASE_S + 0x08000UL)
 #define ADC12_COMMON_BASE_S     (AHB2PERIPH_BASE_S + 0x08308UL)
 #define DCMI_BASE_S             (AHB2PERIPH_BASE_S + 0x0C000UL)
@@ -1979,12 +2017,21 @@ typedef struct
 
 /*!< AHB3 Secure peripherals */
 #define LPGPIO1_BASE_S          (AHB3PERIPH_BASE_S)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define PWR_BASE_S              ((uintptr_t)ut_mcu_pwr_ptr)
+#define RCC_BASE_S              ((uintptr_t)ut_mcu_rcc_ptr)
+#else
 #define PWR_BASE_S              (AHB3PERIPH_BASE_S + 0x0800UL)
 #define RCC_BASE_S              (AHB3PERIPH_BASE_S + 0x0C00UL)
+#endif
 #define ADC4_BASE_S             (AHB3PERIPH_BASE_S + 0x1000UL)
 #define ADC4_COMMON_BASE_S      (AHB3PERIPH_BASE_S + 0x1308UL)
 #define DAC1_BASE_S             (AHB3PERIPH_BASE_S + 0x1800UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define EXTI_BASE_S             ((uintptr_t)ut_mcu_exti_ptr)
+#else
 #define EXTI_BASE_S             (AHB3PERIPH_BASE_S + 0x2000UL)
+#endif
 #define GTZC_TZSC2_BASE_S       (AHB3PERIPH_BASE_S + 0x3000UL)
 #define GTZC_TZIC2_BASE_S       (AHB3PERIPH_BASE_S + 0x3400UL)
 #define GTZC_MPCBB4_BASE_S      (AHB3PERIPH_BASE_S + 0x3800UL)
@@ -1998,7 +2045,12 @@ typedef struct
 
 
 /* Debug MCU registers base address */
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define DBGMCU_BASE             ((uintptr_t)ut_mcu_dbgmcu_ptr)
+#else
 #define DBGMCU_BASE             (0xE0044000UL)
+#endif
+
 #define PACKAGE_BASE            (0x0BFA0500UL) /*!< Package data register base address     */
 #define UID_BASE                (0x0BFA0700UL) /*!< Unique device ID register base address */
 #define FLASHSIZE_BASE          (0x0BFA07A0UL) /*!< Flash size data register base address  */
@@ -2084,6 +2136,9 @@ typedef struct
 
 /** @} */ /* End of group STM32U5xx_Peripheral_peripheralAddr */
 
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#include "stm32u5_reg_stub.h"
+#endif
 
 /* =========================================================================================================================== */
 /* ================                                  Peripheral declaration                                   ================ */
@@ -2747,7 +2802,7 @@ typedef struct
 #define SAI2_Block_B                   SAI2_Block_B_S
 #define SAI2_Block_B_BASE              SAI2_Block_B_BASE_S
 
-#define CRC                            CRC_S
+#define CRCx                           CRC_S                    /* #CUSTOM@NDRS */
 #define CRC_BASE                       CRC_BASE_S
 
 #define TSC                            TSC_S
@@ -3186,7 +3241,7 @@ typedef struct
 #define SAI2_Block_B                   SAI2_Block_B_NS
 #define SAI2_Block_B_BASE              SAI2_Block_B_BASE_NS
 
-#define CRC                            CRC_NS
+#define CRCx                           CRC_NS                   /* #CUSTOM@NDRS */
 #define CRC_BASE                       CRC_BASE_NS
 
 #define TSC                            TSC_NS

@@ -81,7 +81,7 @@
   * @param  I2Cx I2C Instance.
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: I2C registers are de-initialized
-  *          - ERRORx: I2C registers are not de-initialized
+  *          - ERROR: I2C registers are not de-initialized
   */
 ErrorStatus LL_I2C_DeInit(I2C_TypeDef *I2Cx)
 {
@@ -139,7 +139,7 @@ ErrorStatus LL_I2C_DeInit(I2C_TypeDef *I2Cx)
   * @param  I2C_InitStruct pointer to a @ref LL_I2C_InitTypeDef structure.
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: I2C registers are initialized
-  *          - ERRORx: Not applicable
+  *          - ERROR: Not applicable
   */
 ErrorStatus LL_I2C_Init(I2C_TypeDef *I2Cx, LL_I2C_InitTypeDef *I2C_InitStruct)
 {

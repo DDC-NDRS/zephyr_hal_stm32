@@ -6937,7 +6937,7 @@ __STATIC_INLINE uint32_t LL_ADC_GetAnalogWDMonitChannels(const ADC_TypeDef *ADCx
       else
       {
         /* AWD monitoring a single channel */
-        analog_wd_monit_channels = analog_wd_monit_channels;
+        (void) analog_wd_monit_channels;
       }
     }
     else

@@ -128,7 +128,7 @@
   * @param  SPIx SPI Instance
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: SPI registers are de-initialized
-  *          - ERRORx: SPI registers are not de-initialized
+  *          - ERROR: SPI registers are not de-initialized
   */
 ErrorStatus LL_SPI_DeInit(SPI_TypeDef *SPIx)
 {
@@ -377,7 +377,7 @@ void LL_SPI_StructInit(LL_SPI_InitTypeDef *SPI_InitStruct)
   * @param  SPIx SPI Instance
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: SPI registers are de-initialized
-  *          - ERRORx: SPI registers are not de-initialized
+  *          - ERROR: SPI registers are not de-initialized
   */
 ErrorStatus LL_I2S_DeInit(SPI_TypeDef *SPIx)
 {
@@ -392,7 +392,7 @@ ErrorStatus LL_I2S_DeInit(SPI_TypeDef *SPIx)
   * @param  I2S_InitStruct pointer to a @ref LL_I2S_InitTypeDef structure
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: SPI registers are Initialized
-  *          - ERRORx: SPI registers are not Initialized
+  *          - ERROR: SPI registers are not Initialized
   */
 ErrorStatus LL_I2S_Init(SPI_TypeDef *SPIx, LL_I2S_InitTypeDef *I2S_InitStruct)
 {

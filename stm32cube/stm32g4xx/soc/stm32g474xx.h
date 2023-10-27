@@ -1448,7 +1448,7 @@ typedef struct {
 #define RCC                 ((RCC_TypeDef *) RCC_BASE)
 #define FMAC                ((FMAC_TypeDef *) FMAC_BASE)
 #define FLASH               ((FLASH_TypeDef *) FLASH_R_BASE)
-#define CRCx                ((CRC_TypeDef *) CRC_BASE) /* #CUSTOM@NDRS,  */
+#define CRCx                ((CRC_TypeDef *) CRC_BASE) /* #CUSTOM@NDRS */
 
 #define GPIOA               ((GPIO_TypeDef *) GPIOA_BASE)
 #define GPIOB               ((GPIO_TypeDef *) GPIOB_BASE)

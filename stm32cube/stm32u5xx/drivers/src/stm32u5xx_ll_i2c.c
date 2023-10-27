@@ -145,7 +145,7 @@ ErrorStatus LL_I2C_DeInit(const I2C_TypeDef *I2Cx)
 #endif /* I2C6 */
   else
   {
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;

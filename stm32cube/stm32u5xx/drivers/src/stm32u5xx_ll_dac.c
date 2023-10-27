@@ -251,7 +251,7 @@ ErrorStatus LL_DAC_Init(DAC_TypeDef *DACx, uint32_t DAC_Channel, const LL_DAC_In
   else
   {
     /* Initialization error: DAC instance is not disabled.                    */
-    status = ERROR;
+    status = ERRORx;
   }
   return status;
 }

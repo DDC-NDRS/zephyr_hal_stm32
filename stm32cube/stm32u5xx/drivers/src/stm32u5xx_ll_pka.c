@@ -104,7 +104,7 @@ ErrorStatus LL_PKA_DeInit(const PKA_TypeDef *PKAx)
   }
   else
   {
-    status = ERROR;
+    status = ERRORx;
   }
 
   return (status);

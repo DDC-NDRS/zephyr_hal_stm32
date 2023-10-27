@@ -175,7 +175,7 @@ ErrorStatus LL_GPIO_DeInit(const GPIO_TypeDef *GPIOx)
 #endif /* GPIOJ */
   else
   {
-    status = ERROR;
+    status = ERRORx;
   }
 
   return (status);

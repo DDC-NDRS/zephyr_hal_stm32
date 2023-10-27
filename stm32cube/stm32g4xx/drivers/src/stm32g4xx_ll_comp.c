@@ -300,7 +300,7 @@ ErrorStatus LL_COMP_DeInit(COMP_TypeDef *COMPx)
     /* Comparator instance is locked: de-initialization by software is         */
     /* not possible.                                                           */
     /* The only way to unlock the comparator is a device hardware reset.       */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -360,7 +360,7 @@ ErrorStatus LL_COMP_Init(COMP_TypeDef *COMPx, LL_COMP_InitTypeDef *COMP_InitStru
   else
   {
     /* Initialization error: COMP instance is locked.                         */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;

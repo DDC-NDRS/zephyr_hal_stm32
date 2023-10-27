@@ -302,7 +302,7 @@ ErrorStatus LL_USART_Init(USART_TypeDef *USARTx, LL_USART_InitTypeDef *USART_Ini
      */
     LL_USART_SetPrescaler(USARTx, USART_InitStruct->PrescalerValue);
   }
-  /* Endif (=> USART not in Disabled state => return ERROR) */
+  /* Endif (=> USART not in Disabled state => return ERROR; */
 
   return (status);
 }

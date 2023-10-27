@@ -31,7 +31,7 @@
   * @{
   */
 
-#if defined (CRC)
+#if defined (CRCx)
 
 /** @addtogroup CRC_LL
   * @{
@@ -59,14 +59,14 @@
   *          - SUCCESS: CRC registers are de-initialized
   *          - ERROR: CRC registers are not de-initialized
   */
-ErrorStatus LL_CRC_DeInit(CRC_TypeDef *CRCx)
+ErrorStatus LL_CRC_DeInit(CRC_TypeDef* _CRC)
 {
   ErrorStatus status = SUCCESS;
 
   /* Check the parameters */
-  assert_param(IS_CRC_ALL_INSTANCE(CRCx));
+  assert_param(IS_CRC_ALL_INSTANCE(_CRC));
 
-  if (CRCx == CRC)
+  if (_CRC == CRCx)
   {
     /* Force CRC reset */
     LL_AHB1_GRP1_ForceReset(LL_AHB1_GRP1_PERIPH_CRC);
@@ -76,7 +76,7 @@ ErrorStatus LL_CRC_DeInit(CRC_TypeDef *CRCx)
   }
   else
   {
-    status = ERROR;
+    status = ERRORx;
   }
 
   return (status);

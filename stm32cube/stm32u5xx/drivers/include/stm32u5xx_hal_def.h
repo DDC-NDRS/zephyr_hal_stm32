@@ -131,6 +131,10 @@ typedef enum
 #endif /* __packed */
 #endif /* __ARMCC_VERSION */
 
+#if defined(_MSC_VER)  /* #CUSTOM@NDRS */
+#define __weak
+#endif
+
 /* Macro to get variable aligned on 4-bytes, for __ICCARM__ the directive "#pragma data_alignment=4" must be used
    instead */
 #if defined   (__GNUC__)        /* GNU Compiler */
@@ -174,7 +178,7 @@ typedef enum
 /**
   * @brief  __RAM_FUNC definition
   */
-#if defined ( __CC_ARM   ) || ((__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050))
+#if defined(__CC_ARM) || ((__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)) || defined(_MSC_VER) /* #CUSTOM@NDRS */
 
 /* ARM Compiler
    ------------
@@ -187,14 +191,14 @@ typedef enum
 */
 #define __RAM_FUNC HAL_StatusTypeDef
 
-#elif defined ( __ICCARM__ )
+#elif defined(__ICCARM__)
 /* ICCARM Compiler
    ---------------
    RAM functions are defined using a specific toolchain keyword "__ramfunc".
 */
 #define __RAM_FUNC __ramfunc HAL_StatusTypeDef
 
-#elif defined   (  __GNUC__  )
+#elif defined(__GNUC__)
 /* GNU Compiler
    ------------
   RAM functions are defined using a specific toolchain attribute
@@ -207,7 +211,7 @@ typedef enum
 /**
   * @brief  __NOINLINE definition
   */
-#if defined ( __CC_ARM   ) || ((__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)) || defined   (  __GNUC__  )
+#if defined(__CC_ARM) || ((__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)) || defined(__GNUC__)
 /* ARM & GNUCompiler
    ----------------
 */

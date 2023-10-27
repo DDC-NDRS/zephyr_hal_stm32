@@ -77,7 +77,7 @@ ErrorStatus LL_FMAC_Init(FMAC_TypeDef *FMACx)
   }
   else
   {
-    status = ERROR;
+    status = ERRORx;
   }
 
   return (status);
@@ -107,7 +107,7 @@ ErrorStatus LL_FMAC_DeInit(const FMAC_TypeDef *FMACx)
   }
   else
   {
-    status = ERROR;
+    status = ERRORx;
   }
 
   return (status);

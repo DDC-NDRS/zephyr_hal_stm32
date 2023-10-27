@@ -120,7 +120,7 @@ ErrorStatus LL_OPAMP_DeInit(OPAMP_TypeDef *OPAMPx)
     /* OPAMP instance is locked: de-initialization by software is              */
     /* not possible.                                                           */
     /* The only way to unlock the OPAMP is a device hardware reset.            */
-    status = ERROR;
+    status = ERRORx;
   }
 
   /* Timer controlled mux mode register reset                                  */
@@ -132,7 +132,7 @@ ErrorStatus LL_OPAMP_DeInit(OPAMP_TypeDef *OPAMPx)
   {
     /* OPAMP instance timer controlled mux is locked configured, deinit error  */
     /* The only way to unlock the OPAMP is a device hardware reset.            */
-    status = ERROR;
+    status = ERRORx;
   }
   else
   {
@@ -216,7 +216,7 @@ ErrorStatus LL_OPAMP_Init(OPAMP_TypeDef *OPAMPx, LL_OPAMP_InitTypeDef *OPAMP_Ini
   else
   {
     /* Initialization error: OPAMP instance is locked.                        */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;

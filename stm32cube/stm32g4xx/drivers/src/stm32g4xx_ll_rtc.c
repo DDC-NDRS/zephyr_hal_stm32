@@ -129,7 +129,7 @@
   * @param  RTCx RTC Instance
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: RTC registers are de-initialized
-  *          - ERRORx: RTC registers are not de-initialized
+  *          - ERROR: RTC registers are not de-initialized
   */
 ErrorStatus LL_RTC_DeInit(RTC_TypeDef *RTCx)
 {
@@ -208,7 +208,7 @@ ErrorStatus LL_RTC_DeInit(RTC_TypeDef *RTCx)
   *         initialization mode only.
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: RTC registers are initialized
-  *          - ERRORx: RTC registers are not initialized
+  *          - ERROR: RTC registers are not initialized
   */
 ErrorStatus LL_RTC_Init(RTC_TypeDef *RTCx, LL_RTC_InitTypeDef *RTC_InitStruct)
 {
@@ -268,7 +268,7 @@ void LL_RTC_StructInit(LL_RTC_InitTypeDef *RTC_InitStruct)
   *                        the time configuration information for the RTC.
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: RTC Time register is configured
-  *          - ERRORx: RTC Time register is not configured
+  *          - ERROR: RTC Time register is not configured
   */
 ErrorStatus LL_RTC_TIME_Init(RTC_TypeDef *RTCx, uint32_t RTC_Format, LL_RTC_TimeTypeDef *RTC_TimeStruct)
 {
@@ -371,7 +371,7 @@ void LL_RTC_TIME_StructInit(LL_RTC_TimeTypeDef *RTC_TimeStruct)
   *                         the date configuration information for the RTC.
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: RTC Day register is configured
-  *          - ERRORx: RTC Day register is not configured
+  *          - ERROR: RTC Day register is not configured
   */
 ErrorStatus LL_RTC_DATE_Init(RTC_TypeDef *RTCx, uint32_t RTC_Format, LL_RTC_DateTypeDef *RTC_DateStruct)
 {
@@ -461,7 +461,7 @@ void LL_RTC_DATE_StructInit(LL_RTC_DateTypeDef *RTC_DateStruct)
   *                         contains the alarm configuration parameters.
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: ALARMA registers are configured
-  *          - ERRORx: ALARMA registers are not configured
+  *          - ERROR: ALARMA registers are not configured
   */
 ErrorStatus LL_RTC_ALMA_Init(RTC_TypeDef *RTCx, uint32_t RTC_Format, LL_RTC_AlarmTypeDef *RTC_AlarmStruct)
 {
@@ -581,7 +581,7 @@ ErrorStatus LL_RTC_ALMA_Init(RTC_TypeDef *RTCx, uint32_t RTC_Format, LL_RTC_Alar
   *                         contains the alarm configuration parameters.
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: ALARMB registers are configured
-  *          - ERRORx: ALARMB registers are not configured
+  *          - ERROR: ALARMB registers are not configured
   */
 ErrorStatus LL_RTC_ALMB_Init(RTC_TypeDef *RTCx, uint32_t RTC_Format, LL_RTC_AlarmTypeDef *RTC_AlarmStruct)
 {
@@ -740,7 +740,7 @@ void LL_RTC_ALMB_StructInit(LL_RTC_AlarmTypeDef *RTC_AlarmStruct)
   * @param  RTCx RTC Instance
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: RTC is in Init mode
-  *          - ERRORx: RTC is not in Init mode
+  *          - ERROR: RTC is not in Init mode
   */
 ErrorStatus LL_RTC_EnterInitMode(RTC_TypeDef *RTCx)
 {
@@ -784,7 +784,7 @@ ErrorStatus LL_RTC_EnterInitMode(RTC_TypeDef *RTCx)
   * @param  RTCx RTC Instance
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: RTC exited from in Init mode
-  *          - ERRORx: Not applicable
+  *          - ERROR: Not applicable
   */
 ErrorStatus LL_RTC_ExitInitMode(RTC_TypeDef *RTCx)
 {
@@ -811,7 +811,7 @@ ErrorStatus LL_RTC_ExitInitMode(RTC_TypeDef *RTCx)
   * @param  RTCx RTC Instance
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: RTC registers are synchronised
-  *          - ERRORx: RTC registers are not synchronised
+  *          - ERROR: RTC registers are not synchronised
   */
 ErrorStatus LL_RTC_WaitForSynchro(RTC_TypeDef *RTCx)
 {

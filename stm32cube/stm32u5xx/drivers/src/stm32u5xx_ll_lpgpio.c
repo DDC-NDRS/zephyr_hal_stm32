@@ -85,7 +85,7 @@ ErrorStatus LL_LPGPIO_DeInit(const GPIO_TypeDef *LPGPIOx)
   }
   else
   {
-    status = ERROR;
+    status = ERRORx;
   }
 
   return (status);

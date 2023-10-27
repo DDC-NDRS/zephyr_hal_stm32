@@ -652,7 +652,7 @@
   *         (can be set directly from CMSIS definition or by using helper macro @ref __LL_ADC_COMMON_INSTANCE() )
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: ADC common registers are de-initialized
-  *          - ERRORx: not applicable
+  *          - ERROR: not applicable
   */
 ErrorStatus LL_ADC_CommonDeInit(ADC_Common_TypeDef *ADCxy_COMMON)
 {
@@ -694,7 +694,7 @@ ErrorStatus LL_ADC_CommonDeInit(ADC_Common_TypeDef *ADCxy_COMMON)
   * @param  ADC_CommonInitStruct Pointer to a @ref LL_ADC_CommonInitTypeDef structure
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: ADC common registers are initialized
-  *          - ERRORx: ADC common registers are not initialized
+  *          - ERROR: ADC common registers are not initialized
   */
 ErrorStatus LL_ADC_CommonInit(ADC_Common_TypeDef *ADCxy_COMMON, LL_ADC_CommonInitTypeDef *ADC_CommonInitStruct)
 {

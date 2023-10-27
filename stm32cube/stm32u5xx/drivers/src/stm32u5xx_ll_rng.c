@@ -95,7 +95,7 @@ ErrorStatus LL_RNG_DeInit(const RNG_TypeDef *RNGx)
   }
   else
   {
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;

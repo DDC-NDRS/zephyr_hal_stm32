@@ -272,7 +272,7 @@ void LL_SetSystemCoreClock(uint32_t HCLKFrequency)
   * @param  HCLKFrequency  HCLK frequency
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: Latency has been modified
-  *          - ERRORx: Latency cannot be modified
+  *          - ERROR: Latency cannot be modified
   */
 ErrorStatus LL_SetFlashLatency(uint32_t HCLKFrequency)
 {
@@ -392,7 +392,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLKFrequency)
   *                             the configuration information for the BUS prescalers.
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: Max frequency configuration done
-  *          - ERRORx: Max frequency configuration not done
+  *          - ERROR: Max frequency configuration not done
   */
 ErrorStatus LL_PLL_ConfigSystemClock_HSI(LL_UTILS_PLLInitTypeDef *UTILS_PLLInitStruct,
                                          LL_UTILS_ClkInitTypeDef *UTILS_ClkInitStruct)
@@ -474,7 +474,7 @@ ErrorStatus LL_PLL_ConfigSystemClock_HSI(LL_UTILS_PLLInitTypeDef *UTILS_PLLInitS
   *                             the configuration information for the BUS prescalers.
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: Max frequency configuration done
-  *          - ERRORx: Max frequency configuration not done
+  *          - ERROR: Max frequency configuration not done
   */
 ErrorStatus LL_PLL_ConfigSystemClock_HSE(uint32_t HSEFrequency, uint32_t HSEBypass,
                                          LL_UTILS_PLLInitTypeDef *UTILS_PLLInitStruct, LL_UTILS_ClkInitTypeDef *UTILS_ClkInitStruct)
@@ -601,7 +601,7 @@ static uint32_t UTILS_GetPLLOutputFrequency(uint32_t PLL_InputFrequency, LL_UTIL
   * @brief  Function to check that PLL can be modified
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: PLL modification can be done
-  *          - ERRORx: PLL is busy
+  *          - ERROR: PLL is busy
   */
 static ErrorStatus UTILS_PLL_IsBusy(void)
 {
@@ -624,7 +624,7 @@ static ErrorStatus UTILS_PLL_IsBusy(void)
   *                             the configuration information for the BUS prescalers.
   * @retval An ErrorStatus enumeration value:
   *          - SUCCESS: No problem to switch system to PLL
-  *          - ERRORx: Problem to switch system to PLL
+  *          - ERROR: Problem to switch system to PLL
   */
 static ErrorStatus UTILS_EnablePLLAndSwitchSystem(uint32_t SYSCLK_Frequency, LL_UTILS_ClkInitTypeDef *UTILS_ClkInitStruct)
 {

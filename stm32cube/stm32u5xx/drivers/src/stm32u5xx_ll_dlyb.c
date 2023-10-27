@@ -215,7 +215,7 @@ uint32_t LL_DLYB_GetClockPeriod(DLYB_TypeDef *DLYBx, LL_DLYB_CfgTypeDef *pdlyb_c
   /* Disable the length sampling */
   DLYBx->CR = DLYB_CR_SEN;
 
-  return (uint32_t)ERROR;
+  return (uint32_t)ERRORx;
 
 }
 
