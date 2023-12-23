@@ -524,11 +524,6 @@
 
 			/* ETH_TXD1 */
 
-			/omit-if-no-ref/ eth_txd1_pb13: eth_txd1_pb13 {
-				pinmux = <STM32_PINMUX('B', 13, AF11)>;
-				slew-rate = "very-high-speed";
-			};
-
 			/omit-if-no-ref/ eth_txd1_pb15: eth_txd1_pb15 {
 				pinmux = <STM32_PINMUX('B', 15, AF11)>;
 				slew-rate = "very-high-speed";
@@ -559,11 +554,6 @@
 
 			/omit-if-no-ref/ eth_tx_en_pa5: eth_tx_en_pa5 {
 				pinmux = <STM32_PINMUX('A', 5, AF11)>;
-				slew-rate = "very-high-speed";
-			};
-
-			/omit-if-no-ref/ eth_tx_en_pb14: eth_tx_en_pb14 {
-				pinmux = <STM32_PINMUX('B', 14, AF11)>;
 				slew-rate = "very-high-speed";
 			};
 
@@ -675,6 +665,28 @@
 				pinmux = <STM32_PINMUX('B', 7, AF6)>;
 				bias-pull-up;
 				drive-open-drain;
+			};
+
+			/* I2C_SMBA */
+
+			/omit-if-no-ref/ i2c1_smba_pb5: i2c1_smba_pb5 {
+				pinmux = <STM32_PINMUX('B', 5, AF4)>;
+				bias-pull-up;
+			};
+
+			/omit-if-no-ref/ i2c2_smba_pb13: i2c2_smba_pb13 {
+				pinmux = <STM32_PINMUX('B', 13, AF4)>;
+				bias-pull-up;
+			};
+
+			/omit-if-no-ref/ i2c3_smba_pa9: i2c3_smba_pa9 {
+				pinmux = <STM32_PINMUX('A', 9, AF4)>;
+				bias-pull-up;
+			};
+
+			/omit-if-no-ref/ i2c4_smba_pb5: i2c4_smba_pb5 {
+				pinmux = <STM32_PINMUX('B', 5, AF6)>;
+				bias-pull-up;
 			};
 
 			/* I2S_CK */
