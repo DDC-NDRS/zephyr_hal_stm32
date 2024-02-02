@@ -1795,6 +1795,17 @@ __STATIC_INLINE uint32_t LL_SPI_GetRxFIFOPackingLevel(const SPI_TypeDef *SPIx)
 }
 
 /**
+  * @brief  Clear interrupt/status flag by setting corresponding bit in IFCR register
+  * @param  SPIx SPI Instance
+  * @param  ClearBits Clear bits
+  * @retval None
+  */
+__STATIC_INLINE void LL_SPI_ClearFlag(SPI_TypeDef *SPIx, uint32_t ClearBits)
+{
+  WRITE_REG(SPIx->IFCR, ClearBits);
+}
+
+/**
   * @brief  Clear End Of Transfer flag
   * @rmtoll IFCR         EOTC          LL_SPI_ClearFlag_EOT
   * @param  SPIx SPI Instance
@@ -1802,7 +1813,7 @@ __STATIC_INLINE uint32_t LL_SPI_GetRxFIFOPackingLevel(const SPI_TypeDef *SPIx)
   */
 __STATIC_INLINE void LL_SPI_ClearFlag_EOT(SPI_TypeDef *SPIx)
 {
-  SET_BIT(SPIx->IFCR, SPI_IFCR_EOTC);
+  WRITE_REG(SPIx->IFCR, SPI_IFCR_EOTC);
 }
 
 /**
@@ -1813,7 +1824,7 @@ __STATIC_INLINE void LL_SPI_ClearFlag_EOT(SPI_TypeDef *SPIx)
   */
 __STATIC_INLINE void LL_SPI_ClearFlag_TXTF(SPI_TypeDef *SPIx)
 {
-  SET_BIT(SPIx->IFCR, SPI_IFCR_TXTFC);
+  WRITE_REG(SPIx->IFCR, SPI_IFCR_TXTFC);
 }
 
 /**
@@ -1824,7 +1835,7 @@ __STATIC_INLINE void LL_SPI_ClearFlag_TXTF(SPI_TypeDef *SPIx)
   */
 __STATIC_INLINE void LL_SPI_ClearFlag_UDR(SPI_TypeDef *SPIx)
 {
-  SET_BIT(SPIx->IFCR, SPI_IFCR_UDRC);
+  WRITE_REG(SPIx->IFCR, SPI_IFCR_UDRC);
 }
 
 /**
@@ -1835,7 +1846,7 @@ __STATIC_INLINE void LL_SPI_ClearFlag_UDR(SPI_TypeDef *SPIx)
   */
 __STATIC_INLINE void LL_SPI_ClearFlag_OVR(SPI_TypeDef *SPIx)
 {
-  SET_BIT(SPIx->IFCR, SPI_IFCR_OVRC);
+  WRITE_REG(SPIx->IFCR, SPI_IFCR_OVRC);
 }
 
 /**
@@ -1846,7 +1857,7 @@ __STATIC_INLINE void LL_SPI_ClearFlag_OVR(SPI_TypeDef *SPIx)
   */
 __STATIC_INLINE void LL_SPI_ClearFlag_CRCERR(SPI_TypeDef *SPIx)
 {
-  SET_BIT(SPIx->IFCR, SPI_IFCR_CRCEC);
+  WRITE_REG(SPIx->IFCR, SPI_IFCR_CRCEC);
 }
 
 /**
@@ -1857,7 +1868,7 @@ __STATIC_INLINE void LL_SPI_ClearFlag_CRCERR(SPI_TypeDef *SPIx)
   */
 __STATIC_INLINE void LL_SPI_ClearFlag_MODF(SPI_TypeDef *SPIx)
 {
-  SET_BIT(SPIx->IFCR, SPI_IFCR_MODFC);
+  WRITE_REG(SPIx->IFCR, SPI_IFCR_MODFC);
 }
 
 /**
@@ -1868,7 +1879,7 @@ __STATIC_INLINE void LL_SPI_ClearFlag_MODF(SPI_TypeDef *SPIx)
   */
 __STATIC_INLINE void LL_SPI_ClearFlag_FRE(SPI_TypeDef *SPIx)
 {
-  SET_BIT(SPIx->IFCR, SPI_IFCR_TIFREC);
+  WRITE_REG(SPIx->IFCR, SPI_IFCR_TIFREC);
 }
 
 /**
@@ -1879,7 +1890,7 @@ __STATIC_INLINE void LL_SPI_ClearFlag_FRE(SPI_TypeDef *SPIx)
   */
 __STATIC_INLINE void LL_SPI_ClearFlag_SUSP(SPI_TypeDef *SPIx)
 {
-  SET_BIT(SPIx->IFCR, SPI_IFCR_SUSPC);
+  WRITE_REG(SPIx->IFCR, SPI_IFCR_SUSPC);
 }
 
 /**
@@ -1889,6 +1900,17 @@ __STATIC_INLINE void LL_SPI_ClearFlag_SUSP(SPI_TypeDef *SPIx)
 /** @defgroup SPI_LL_EF_IT_Management IT_Management
   * @{
   */
+
+/**
+  * @brief  Enable IT by setting corresponding bit in IER register
+  * @param  SPIx SPI Instance
+  * @param  EnableBits Enable bits
+  * @retval None
+  */
+__STATIC_INLINE void LL_SPI_EnableIT(SPI_TypeDef *SPIx, uint32_t EnableBits)
+{
+  SET_BIT(SPIx->IER, EnableBits);
+}
 
 /**
   * @brief  Enable Rx Packet available IT
@@ -1998,6 +2020,17 @@ __STATIC_INLINE void LL_SPI_EnableIT_FRE(SPI_TypeDef *SPIx)
 __STATIC_INLINE void LL_SPI_EnableIT_MODF(SPI_TypeDef *SPIx)
 {
   SET_BIT(SPIx->IER, SPI_IER_MODFIE);
+}
+
+/**
+  * @brief  Disable IT by setting corresponding bit in IER register
+  * @param  SPIx SPI Instance
+  * @param  DisableBits Disable bits
+  * @retval None
+  */
+__STATIC_INLINE void LL_SPI_DisableIT(SPI_TypeDef *SPIx, uint32_t DisableBits)
+{
+  CLEAR_BIT(SPIx->IER, DisableBits);
 }
 
 /**
