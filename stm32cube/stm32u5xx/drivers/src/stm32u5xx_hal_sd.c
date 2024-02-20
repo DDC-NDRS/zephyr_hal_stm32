@@ -1760,6 +1760,7 @@ uint32_t HAL_SD_GetError(const SD_HandleTypeDef *hsd)
   * @param hsd: Pointer to SD handle
   * @retval None
   */
+#if (__GTEST == 0U) /* #CUSTOM@NDRS */
 __weak void HAL_SD_TxCpltCallback(SD_HandleTypeDef *hsd)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1769,12 +1770,14 @@ __weak void HAL_SD_TxCpltCallback(SD_HandleTypeDef *hsd)
             the HAL_SD_TxCpltCallback can be implemented in the user file
    */
 }
+#endif
 
 /**
   * @brief Rx Transfer completed callbacks
   * @param hsd: Pointer SD handle
   * @retval None
   */
+#if (__GTEST == 0U) /* #CUSTOM@NDRS */
 __weak void HAL_SD_RxCpltCallback(SD_HandleTypeDef *hsd)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1784,12 +1787,14 @@ __weak void HAL_SD_RxCpltCallback(SD_HandleTypeDef *hsd)
             the HAL_SD_RxCpltCallback can be implemented in the user file
    */
 }
+#endif
 
 /**
   * @brief SD error callbacks
   * @param hsd: Pointer SD handle
   * @retval None
   */
+#if (__GTEST == 0U) /* #CUSTOM@NDRS */
 __weak void HAL_SD_ErrorCallback(SD_HandleTypeDef *hsd)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1799,6 +1804,7 @@ __weak void HAL_SD_ErrorCallback(SD_HandleTypeDef *hsd)
             the HAL_SD_ErrorCallback can be implemented in the user file
    */
 }
+#endif
 
 /**
   * @brief SD Abort callbacks

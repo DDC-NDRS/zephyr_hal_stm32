@@ -2053,7 +2053,12 @@ typedef struct
 
 #define PACKAGE_BASE            (0x0BFA0500UL) /*!< Package data register base address     */
 #define UID_BASE                (0x0BFA0700UL) /*!< Unique device ID register base address */
+
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define FLASHSIZE_BASE          ((uintptr_t)ut_mcu_flashsize_reg_ptr)
+#else
 #define FLASHSIZE_BASE          (0x0BFA07A0UL) /*!< Flash size data register base address  */
+#endif
 
 /* Internal Flash OTP Area */
 #define FLASH_OTP_BASE          (0x0BFA0000UL) /*!< FLASH OTP (one-time programmable) base address */
