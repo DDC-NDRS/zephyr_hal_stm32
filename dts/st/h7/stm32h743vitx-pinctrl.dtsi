@@ -1377,6 +1377,15 @@
 				pinmux = <STM32_PINMUX('E', 15, AF14)>;
 			};
 
+			/* MCO1, MCO2 */
+			/omit-if-no-ref/ mco1_pa8: mco1_pa8 {
+				pinmux = <STM32_PINMUX('A', 8, AF0)>;
+			};
+
+			/omit-if-no-ref/ mco2_pc9: mco2_pc9 {
+				pinmux = <STM32_PINMUX('C', 9, AF0)>;
+			};
+
 			/* QUADSPI */
 
 			/omit-if-no-ref/ quadspi_bk1_io3_pa1: quadspi_bk1_io3_pa1 {
@@ -2208,6 +2217,13 @@
 
 			/omit-if-no-ref/ tim8_ch4_pc9: tim8_ch4_pc9 {
 				pinmux = <STM32_PINMUX('C', 9, AF3)>;
+			};
+
+			/* USART_CK */
+			/omit-if-no-ref/ usart2_ck_pa4: usart2_ck_pa4 {
+				pinmux = <STM32_PINMUX('A', 4, AF7)>;
+				bias-pull-up;
+				drive-open-drain;
 			};
 
 			/* UART_CTS / USART_CTS / LPUART_CTS */
