@@ -146,7 +146,7 @@ ErrorStatus LL_LPUART_DeInit(const USART_TypeDef *LPUARTx)
   }
   else
   {
-    status = ERROR;
+    status = ERRORx;
   }
 
   return (status);
@@ -169,7 +169,7 @@ ErrorStatus LL_LPUART_DeInit(const USART_TypeDef *LPUARTx)
   */
 ErrorStatus LL_LPUART_Init(USART_TypeDef *LPUARTx, const LL_LPUART_InitTypeDef *LPUART_InitStruct)
 {
-  ErrorStatus status = ERROR;
+  ErrorStatus status = ERRORx;
   uint32_t periphclk;
 
   /* Check the parameters */

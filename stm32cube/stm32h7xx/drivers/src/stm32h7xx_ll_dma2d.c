@@ -154,7 +154,7 @@ ErrorStatus LL_DMA2D_DeInit(DMA2D_TypeDef *DMA2Dx)
   }
   else
   {
-    status = ERROR;
+    status = ERRORx;
   }
 
   return (status);
@@ -173,7 +173,7 @@ ErrorStatus LL_DMA2D_DeInit(DMA2D_TypeDef *DMA2Dx)
   */
 ErrorStatus LL_DMA2D_Init(DMA2D_TypeDef *DMA2Dx, LL_DMA2D_InitTypeDef *DMA2D_InitStruct)
 {
-  ErrorStatus status = ERROR;
+  ErrorStatus status = ERRORx;
   LL_DMA2D_ColorTypeDef dma2d_colorstruct;
   uint32_t tmp;
   uint32_t tmp1;

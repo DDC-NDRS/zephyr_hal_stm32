@@ -125,6 +125,9 @@ typedef enum
   #endif /* __packed */
 #endif /* __GNUC__ */
 
+#if defined(_MSC_VER)  /* #CUSTOM@NDRS */
+#define __weak
+#endif
 
 /* Macro to get variable aligned on 4-bytes, for __ICCARM__ the directive "#pragma data_alignment=4" must be used instead */
 #if defined (__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050) /* ARM Compiler V6 */

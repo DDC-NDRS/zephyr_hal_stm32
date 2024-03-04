@@ -31,7 +31,7 @@
   * @{
   */
 
-#if defined (CRCx)
+#if defined(CRCx) /* #CUSTOM@NDRS */
 
 /** @addtogroup CRC_LL
   * @{

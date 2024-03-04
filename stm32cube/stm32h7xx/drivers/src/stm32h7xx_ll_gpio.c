@@ -182,7 +182,7 @@ ErrorStatus LL_GPIO_DeInit(GPIO_TypeDef *GPIOx)
 #endif /* GPIOK */
   else
   {
-    status = ERROR;
+    status = ERRORx;
   }
 
   return (status);

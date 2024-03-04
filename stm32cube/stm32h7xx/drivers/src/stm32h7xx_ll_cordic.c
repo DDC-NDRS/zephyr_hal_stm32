@@ -75,7 +75,7 @@ ErrorStatus LL_CORDIC_DeInit(const CORDIC_TypeDef *CORDICx)
   }
   else
   {
-    status = ERROR;
+    status = ERRORx;
   }
 
   return (status);

@@ -90,7 +90,7 @@ ErrorStatus LL_SWPMI_DeInit(SWPMI_TypeDef *SWPMIx)
   }
   else
   {
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -136,7 +136,7 @@ ErrorStatus LL_SWPMI_Init(SWPMI_TypeDef *SWPMIx, LL_SWPMI_InitTypeDef *SWPMI_Ini
   /* Else (SWPMI not in deactivated state => return ERROR) */
   else
   {
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;

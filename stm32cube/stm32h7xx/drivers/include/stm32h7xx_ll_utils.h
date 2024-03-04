@@ -40,6 +40,7 @@ extern "C" {
 #include "stm32h7xx.h"
 #include "stm32h7xx_ll_system.h"
 #include "stm32h7xx_ll_bus.h"
+#include <stdint.h>             /* #CUSTOM@NDRS */
 
 /** @addtogroup STM32H7xx_LL_Driver
   * @{

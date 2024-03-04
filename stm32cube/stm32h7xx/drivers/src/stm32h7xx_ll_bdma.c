@@ -140,7 +140,7 @@ uint32_t LL_BDMA_DeInit(BDMA_TypeDef *BDMAx, uint32_t Channel)
     }
     else
     {
-      status = ERROR;
+      status = ERRORx;
     }
   }
   else
@@ -211,7 +211,7 @@ uint32_t LL_BDMA_DeInit(BDMA_TypeDef *BDMAx, uint32_t Channel)
     }
     else
     {
-      status = ERROR;
+      status = ERRORx;
     }
   }
 

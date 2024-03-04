@@ -97,7 +97,7 @@ ErrorStatus LL_RNG_DeInit(RNG_TypeDef *RNGx)
   }
   else
   {
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;

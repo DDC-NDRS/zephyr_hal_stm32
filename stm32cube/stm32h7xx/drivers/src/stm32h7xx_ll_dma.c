@@ -179,7 +179,7 @@ uint32_t LL_DMA_DeInit(DMA_TypeDef *DMAx, uint32_t Stream)
     }
     else
     {
-      status = ERROR;
+      status = ERRORx;
     }
   }
   else
@@ -253,7 +253,7 @@ uint32_t LL_DMA_DeInit(DMA_TypeDef *DMAx, uint32_t Stream)
     }
     else
     {
-      status = ERROR;
+      status = ERRORx;
     }
   }
 

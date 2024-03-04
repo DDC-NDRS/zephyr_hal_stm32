@@ -236,7 +236,7 @@ ErrorStatus LL_EXTI_Init(LL_EXTI_InitTypeDef *EXTI_InitStruct)
             LL_EXTI_EnableFallingTrig_0_31(EXTI_InitStruct->Line_0_31);
             break;
           default:
-            status = ERROR;
+            status = ERRORx;
             break;
         }
       }
@@ -310,7 +310,7 @@ ErrorStatus LL_EXTI_Init(LL_EXTI_InitTypeDef *EXTI_InitStruct)
             LL_EXTI_EnableFallingTrig_32_63(EXTI_InitStruct->Line_32_63);
             break;
           default:
-            status = ERROR;
+            status = ERRORx;
             break;
         }
       }
@@ -385,7 +385,7 @@ ErrorStatus LL_EXTI_Init(LL_EXTI_InitTypeDef *EXTI_InitStruct)
             LL_EXTI_EnableFallingTrig_64_95(EXTI_InitStruct->Line_64_95);
             break;
           default:
-            status = ERROR;
+            status = ERRORx;
             break;
         }
       }

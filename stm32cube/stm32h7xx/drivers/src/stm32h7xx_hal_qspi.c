@@ -1752,7 +1752,7 @@ HAL_StatusTypeDef HAL_QSPI_MemoryMapped(QSPI_HandleTypeDef *hqspi, QSPI_CommandT
         assert_param(IS_QSPI_TIMEOUT_PERIOD(cfg->TimeOutPeriod));
 
         /* Configure QSPI: LPTR register with the low-power timeout value */
-        WRITE_REG(hqspi->Instance->LPTR, cfg->TimeOutPeriod);
+        WRITE_REG(hqspi->Instance->LPTRx, cfg->TimeOutPeriod);
 
         /* Clear interrupt */
         __HAL_QSPI_CLEAR_FLAG(hqspi, QSPI_FLAG_TO);
@@ -1782,6 +1782,7 @@ HAL_StatusTypeDef HAL_QSPI_MemoryMapped(QSPI_HandleTypeDef *hqspi, QSPI_CommandT
   * @param  hqspi QSPI handle
   * @retval None
   */
+#if (__GTEST == 0U) /* #CUSTOM@NDRS */
 __weak void HAL_QSPI_ErrorCallback(QSPI_HandleTypeDef *hqspi)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1791,6 +1792,7 @@ __weak void HAL_QSPI_ErrorCallback(QSPI_HandleTypeDef *hqspi)
             the HAL_QSPI_ErrorCallback could be implemented in the user file
    */
 }
+#endif
 
 /**
   * @brief  Abort completed callback.
@@ -1812,6 +1814,7 @@ __weak void HAL_QSPI_AbortCpltCallback(QSPI_HandleTypeDef *hqspi)
   * @param  hqspi QSPI handle
   * @retval None
   */
+#if (__GTEST == 0U) /* #CUSTOM@NDRS */
 __weak void HAL_QSPI_CmdCpltCallback(QSPI_HandleTypeDef *hqspi)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1821,12 +1824,14 @@ __weak void HAL_QSPI_CmdCpltCallback(QSPI_HandleTypeDef *hqspi)
            the HAL_QSPI_CmdCpltCallback could be implemented in the user file
    */
 }
+#endif
 
 /**
   * @brief  Rx Transfer completed callback.
   * @param  hqspi QSPI handle
   * @retval None
   */
+#if (__GTEST == 0U) /* #CUSTOM@NDRS */
 __weak void HAL_QSPI_RxCpltCallback(QSPI_HandleTypeDef *hqspi)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1836,12 +1841,14 @@ __weak void HAL_QSPI_RxCpltCallback(QSPI_HandleTypeDef *hqspi)
            the HAL_QSPI_RxCpltCallback could be implemented in the user file
    */
 }
+#endif
 
 /**
   * @brief  Tx Transfer completed callback.
   * @param  hqspi QSPI handle
   * @retval None
   */
+#if (__GTEST == 0U) /* #CUSTOM@NDRS */
 __weak void HAL_QSPI_TxCpltCallback(QSPI_HandleTypeDef *hqspi)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1851,7 +1858,7 @@ __weak void HAL_QSPI_TxCpltCallback(QSPI_HandleTypeDef *hqspi)
            the HAL_QSPI_TxCpltCallback could be implemented in the user file
    */
 }
-
+#endif
 
 /**
   * @brief  FIFO Threshold callback.
@@ -1873,6 +1880,7 @@ __weak void HAL_QSPI_FifoThresholdCallback(QSPI_HandleTypeDef *hqspi)
   * @param  hqspi QSPI handle
   * @retval None
   */
+#if (__GTEST == 0U) /* #CUSTOM@NDRS */
 __weak void HAL_QSPI_StatusMatchCallback(QSPI_HandleTypeDef *hqspi)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1882,12 +1890,14 @@ __weak void HAL_QSPI_StatusMatchCallback(QSPI_HandleTypeDef *hqspi)
             the HAL_QSPI_StatusMatchCallback could be implemented in the user file
    */
 }
+#endif
 
 /**
   * @brief  Timeout callback.
   * @param  hqspi QSPI handle
   * @retval None
   */
+#if (__GTEST == 0U) /* #CUSTOM@NDRS */
 __weak void HAL_QSPI_TimeOutCallback(QSPI_HandleTypeDef *hqspi)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1897,6 +1907,8 @@ __weak void HAL_QSPI_TimeOutCallback(QSPI_HandleTypeDef *hqspi)
             the HAL_QSPI_TimeOutCallback could be implemented in the user file
    */
 }
+#endif
+
 #if (USE_HAL_QSPI_REGISTER_CALLBACKS == 1)
 /**
   * @brief  Register a User QSPI Callback

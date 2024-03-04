@@ -230,7 +230,7 @@ ErrorStatus LL_USART_DeInit(const USART_TypeDef *USARTx)
 #endif /* USART10 */
   else
   {
-    status = ERROR;
+    status = ERRORx;
   }
 
   return (status);
@@ -252,7 +252,7 @@ ErrorStatus LL_USART_DeInit(const USART_TypeDef *USARTx)
   */
 ErrorStatus LL_USART_Init(USART_TypeDef *USARTx, const LL_USART_InitTypeDef *USART_InitStruct)
 {
-  ErrorStatus status = ERROR;
+  ErrorStatus status = ERRORx;
   uint32_t periphclk = LL_RCC_PERIPH_FREQUENCY_NO;
 
   /* Check the parameters */
@@ -448,7 +448,7 @@ ErrorStatus LL_USART_ClockInit(USART_TypeDef *USARTx, const LL_USART_ClockInitTy
   /* Else (USART not in Disabled state => return ERROR */
   else
   {
-    status = ERROR;
+    status = ERRORx;
   }
 
   return (status);

@@ -1788,12 +1788,14 @@ void HAL_RCC_NMI_IRQHandler(void)
   * @brief  RCC Clock Security System interrupt callback
   * @retval none
   */
+#if !defined(_MSC_VER)
 __weak void HAL_RCC_CSSCallback(void)
 {
   /* NOTE : This function Should not be modified, when the callback is needed,
             the HAL_RCC_CSSCallback could be implemented in the user file
    */
 }
+#endif
 
 /**
   * @}

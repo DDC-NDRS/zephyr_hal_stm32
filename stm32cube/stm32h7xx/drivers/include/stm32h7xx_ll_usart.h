@@ -26,6 +26,7 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32h7xx.h"
+#include <stdint.h>             /* #CUSTOM@NDRS */
 
 /** @addtogroup STM32H7xx_LL_Driver
   * @{

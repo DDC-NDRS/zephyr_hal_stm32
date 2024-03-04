@@ -424,7 +424,7 @@ typedef struct
   __IO uint32_t RXDR;         /*!< CEC Rx Data Register,              Address offset:0x0C */
   __IO uint32_t ISR;          /*!< CEC Interrupt and Status Register, Address offset:0x10 */
   __IO uint32_t IER;          /*!< CEC interrupt enable register,     Address offset:0x14 */
-}CEC_TypeDef;
+} CEC_TypeDef;
 
 /**
   * @brief CRC calculation unit
@@ -533,7 +533,7 @@ typedef struct
   __IO uint32_t APB2FZ1;     /*!< Debug MCU APB2FZ1 freeze register,    Address offset: 0x4C */
   uint32_t RESERVED8;          /*!< Reserved,                             Address offset: 0x50 */
   __IO uint32_t APB4FZ1;     /*!< Debug MCU APB4FZ1 freeze register,    Address offset: 0x54 */
-}DBGMCU_TypeDef;
+} DBGMCU_TypeDef;
 /**
   * @brief DCMI
   */
@@ -593,24 +593,24 @@ typedef struct
 typedef struct
 {
   __IO uint32_t  CCR;        /*!< DMA Multiplexer Channel x Control Register   */
-}DMAMUX_Channel_TypeDef;
+} DMAMUX_Channel_TypeDef;
 
 typedef struct
 {
   __IO uint32_t  CSR;      /*!< DMA Channel Status Register     */
   __IO uint32_t  CFR;      /*!< DMA Channel Clear Flag Register */
-}DMAMUX_ChannelStatus_TypeDef;
+} DMAMUX_ChannelStatus_TypeDef;
 
 typedef struct
 {
   __IO uint32_t  RGCR;        /*!< DMA Request Generator x Control Register   */
-}DMAMUX_RequestGen_TypeDef;
+} DMAMUX_RequestGen_TypeDef;
 
 typedef struct
 {
   __IO uint32_t  RGSR;        /*!< DMA Request Generator Status Register       */
   __IO uint32_t  RGCFR;       /*!< DMA Request Generator Clear Flag Register   */
-}DMAMUX_RequestGenStatus_TypeDef;
+} DMAMUX_RequestGenStatus_TypeDef;
 
 /**
   * @brief MDMA Controller
@@ -618,7 +618,7 @@ typedef struct
 typedef struct
 {
   __IO uint32_t  GISR0;   /*!< MDMA Global Interrupt/Status Register 0,          Address offset: 0x00 */
-}MDMA_TypeDef;
+} MDMA_TypeDef;
 
 typedef struct
 {
@@ -636,7 +636,7 @@ typedef struct
   uint32_t       RESERVED0; /*!< Reserved, 0x6C                                                             */
   __IO uint32_t  CMAR;      /*!< MDMA channel x Mask address register,                 Address offset: 0x70 */
   __IO uint32_t  CMDR;      /*!< MDMA channel x Mask Data register,                    Address offset: 0x74 */
-}MDMA_Channel_TypeDef;
+} MDMA_Channel_TypeDef;
 
 /**
   * @brief DMA2D Controller
@@ -840,9 +840,9 @@ __IO uint32_t DMACSFCSR;
   uint32_t      RESERVED44;
   __IO uint32_t DMACCARBR;
   __IO uint32_t DMACSR;
-uint32_t      RESERVED45[2];
-__IO uint32_t DMACMFCR;
-}ETH_TypeDef;
+  uint32_t      RESERVED45[2];
+  __IO uint32_t DMACMFCR;
+} ETH_TypeDef;
 /**
   * @brief External Interrupt/Event Controller
   */
@@ -905,7 +905,7 @@ uint32_t      RESERVED2;           /*!< Reserved, 0x1C                          
 __IO uint32_t IMR3;                /*!< EXTI Interrupt mask register,                Address offset: 0x20 */
 __IO uint32_t EMR3;                /*!< EXTI Event mask register,                    Address offset: 0x24 */
 __IO uint32_t PR3;                 /*!< EXTI Pending register,                       Address offset: 0x28 */
-}EXTI_Core_TypeDef;
+} EXTI_Core_TypeDef;
 
 
 /**
@@ -1512,7 +1512,7 @@ typedef struct
   __IO uint32_t PSMKR;    /*!< QUADSPI Polling Status Mask register,               Address offset: 0x24 */
   __IO uint32_t PSMAR;    /*!< QUADSPI Polling Status Match register,              Address offset: 0x28 */
   __IO uint32_t PIR;      /*!< QUADSPI Polling Interval register,                  Address offset: 0x2C */
-  __IO uint32_t LPTR;     /*!< QUADSPI Low Power Timeout register,                 Address offset: 0x30 */
+  __IO uint32_t LPTRx;    /*!< QUADSPI Low Power Timeout register,                 Address offset: 0x30 */
 } QUADSPI_TypeDef;
 
 /**
@@ -1642,7 +1642,7 @@ typedef struct
 {
   __IO uint32_t CR;           /*!< RAMECC monitor configuration register          */
   __IO uint32_t SR;           /*!< RAMECC monitor status register                 */
-  __IO uint32_t FAR;          /*!< RAMECC monitor failing address register        */
+  __IO uint32_t FARx;         /*!< RAMECC monitor failing address register        */
   __IO uint32_t FDRL;         /*!< RAMECC monitor failing data low register       */
   __IO uint32_t FDRH;         /*!< RAMECC monitor failing data high register      */
   __IO uint32_t FECR;         /*!< RAMECC monitor failing ECC error code register */
@@ -2055,6 +2055,10 @@ typedef struct
 
 } GPV_TypeDef;
 
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#include "mcu_reg_stub.h"
+#endif
+
 /** @addtogroup Peripheral_memory_map
   * @{
   */
@@ -2110,7 +2114,11 @@ typedef struct
 #define MDMA_BASE             (D1_AHB1PERIPH_BASE + 0x0000UL)
 #define DMA2D_BASE            (D1_AHB1PERIPH_BASE + 0x1000UL)
 #define JPGDEC_BASE           (D1_AHB1PERIPH_BASE + 0x3000UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define FLASH_R_BASE          ((uintptr_t)ut_mcu_flash_r_ptr)
+#else
 #define FLASH_R_BASE          (D1_AHB1PERIPH_BASE + 0x2000UL)
+#endif
 #define FMC_R_BASE            (D1_AHB1PERIPH_BASE + 0x4000UL)
 #define QSPI_R_BASE           (D1_AHB1PERIPH_BASE + 0x5000UL)
 #define DLYB_QSPI_BASE        (D1_AHB1PERIPH_BASE + 0x6000UL)
@@ -2147,13 +2155,26 @@ typedef struct
 
 /*!< D2_AHB2PERIPH peripherals */
 
-#define DCMI_BASE              (D2_AHB2PERIPH_BASE + 0x0000UL)
-#define RNG_BASE               (D2_AHB2PERIPH_BASE + 0x1800UL)
-#define SDMMC2_BASE            (D2_AHB2PERIPH_BASE + 0x2400UL)
-#define DLYB_SDMMC2_BASE       (D2_AHB2PERIPH_BASE + 0x2800UL)
-#define RAMECC2_BASE           (D2_AHB2PERIPH_BASE + 0x3000UL)
+#define DCMI_BASE             (D2_AHB2PERIPH_BASE + 0x0000UL)
+#define RNG_BASE              (D2_AHB2PERIPH_BASE + 0x1800UL)
+#define SDMMC2_BASE           (D2_AHB2PERIPH_BASE + 0x2400UL)
+#define DLYB_SDMMC2_BASE      (D2_AHB2PERIPH_BASE + 0x2800UL)
+#define RAMECC2_BASE          (D2_AHB2PERIPH_BASE + 0x3000UL)
 
 /*!< D3_AHB1PERIPH peripherals */
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define GPIOA_BASE            ((uintptr_t)ut_mcu_gpio_a_ptr)
+#define GPIOB_BASE            ((uintptr_t)ut_mcu_gpio_b_ptr)
+#define GPIOC_BASE            ((uintptr_t)ut_mcu_gpio_c_ptr)
+#define GPIOD_BASE            ((uintptr_t)ut_mcu_gpio_d_ptr)
+#define GPIOE_BASE            ((uintptr_t)ut_mcu_gpio_e_ptr)
+#define GPIOF_BASE            ((uintptr_t)ut_mcu_gpio_f_ptr)
+#define GPIOG_BASE            ((uintptr_t)ut_mcu_gpio_g_ptr)
+#define GPIOH_BASE            ((uintptr_t)ut_mcu_gpio_h_ptr)
+#define GPIOI_BASE            ((uintptr_t)ut_mcu_gpio_i_ptr)
+#define GPIOJ_BASE            ((uintptr_t)ut_mcu_gpio_j_ptr)
+#define GPIOK_BASE            ((uintptr_t)ut_mcu_gpio_k_ptr)
+#else
 #define GPIOA_BASE            (D3_AHB1PERIPH_BASE + 0x0000UL)
 #define GPIOB_BASE            (D3_AHB1PERIPH_BASE + 0x0400UL)
 #define GPIOC_BASE            (D3_AHB1PERIPH_BASE + 0x0800UL)
@@ -2165,8 +2186,15 @@ typedef struct
 #define GPIOI_BASE            (D3_AHB1PERIPH_BASE + 0x2000UL)
 #define GPIOJ_BASE            (D3_AHB1PERIPH_BASE + 0x2400UL)
 #define GPIOK_BASE            (D3_AHB1PERIPH_BASE + 0x2800UL)
+#endif
+
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define RCC_BASE              ((uintptr_t)ut_mcu_rcc_ptr)
+#define PWR_BASE              ((uintptr_t)ut_mcu_pwr_ptr)
+#else
 #define RCC_BASE              (D3_AHB1PERIPH_BASE + 0x4400UL)
 #define PWR_BASE              (D3_AHB1PERIPH_BASE + 0x4800UL)
+#endif
 #define CRC_BASE              (D3_AHB1PERIPH_BASE + 0x4C00UL)
 #define BDMA_BASE             (D3_AHB1PERIPH_BASE + 0x5400UL)
 #define DMAMUX2_BASE          (D3_AHB1PERIPH_BASE + 0x5800UL)
@@ -2263,10 +2291,18 @@ typedef struct
 
 
 /*!< D3_APB1PERIPH peripherals */
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define EXTI_BASE             ((uintptr_t)ut_mcu_exti_ptr)
+#else
 #define EXTI_BASE             (D3_APB1PERIPH_BASE + 0x0000UL)
+#endif
 #define EXTI_D1_BASE          (EXTI_BASE + 0x0080UL)
 #define EXTI_D2_BASE          (EXTI_BASE + 0x00C0UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define SYSCFG_BASE           ((uintptr_t)ut_mcu_syscfg_ptr)
+#else
 #define SYSCFG_BASE           (D3_APB1PERIPH_BASE + 0x0400UL)
+#endif
 #define LPUART1_BASE          (D3_APB1PERIPH_BASE + 0x0C00UL)
 #define SPI6_BASE             (D3_APB1PERIPH_BASE + 0x1400UL)
 #define I2C4_BASE             (D3_APB1PERIPH_BASE + 0x1C00UL)
@@ -2522,7 +2558,7 @@ typedef struct
 #define DCMI                ((DCMI_TypeDef *) DCMI_BASE)
 #define RCC                 ((RCC_TypeDef *) RCC_BASE)
 #define FLASH               ((FLASH_TypeDef *) FLASH_R_BASE)
-#define CRC                 ((CRC_TypeDef *) CRC_BASE)
+#define CRCx                ((CRC_TypeDef *) CRC_BASE) /* #CUSTOM@NDRS */
 
 #define GPIOA               ((GPIO_TypeDef *) GPIOA_BASE)
 #define GPIOB               ((GPIO_TypeDef *) GPIOB_BASE)

@@ -562,7 +562,7 @@ ErrorStatus LL_PLL_ConfigSystemClock_HSI(LL_UTILS_PLLInitTypeDef *UTILS_PLLInitS
   else
   {
     /* Current PLL configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -669,7 +669,7 @@ ErrorStatus LL_PLL_ConfigSystemClock_HSE(uint32_t HSEFrequency, uint32_t HSEBypa
   else
   {
     /* Current PLL configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -699,7 +699,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
   /* Frequency cannot be equal to 0 */
   if (HCLK_Frequency == 0U)
   {
-    status = ERROR;
+    status = ERRORx;
   }
   else
   {
@@ -746,7 +746,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
       }
       else
       {
-        status = ERROR;
+        status = ERRORx;
       }
     }
 #if (STM32H7_DEV_ID == 0x480UL)
@@ -793,7 +793,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
       }
       else
       {
-        status = ERROR;
+        status = ERRORx;
       }
     }
     else if(LL_PWR_GetRegulVoltageScaling() == LL_PWR_REGU_VOLTAGE_SCALE2)
@@ -832,7 +832,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
       }
       else
       {
-        status = ERROR;
+        status = ERRORx;
       }
     }
     else /* Scale 3 */
@@ -871,7 +871,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
       }
       else
       {
-        status = ERROR;
+        status = ERRORx;
       }
     }
 
@@ -891,7 +891,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
 
       if(getlatency != latency)
       {
-        status = ERROR;
+        status = ERRORx;
       }
     }
   }
@@ -945,21 +945,21 @@ static ErrorStatus UTILS_IsPLLsReady(void)
   if(LL_RCC_PLL1_IsReady() != 0U)
   {
     /* PLL1 configuration cannot be done */
-    status = ERROR;
+    status = ERRORx;
   }
 
   /* Check if one of the PLL2 is busy */
   if(LL_RCC_PLL2_IsReady() != 0U)
   {
     /* PLL2 configuration cannot be done */
-    status = ERROR;
+    status = ERRORx;
   }
 
   /* Check if one of the PLL3 is busy */
   if(LL_RCC_PLL3_IsReady() != 0U)
   {
     /* PLL3 configuration cannot be done */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;

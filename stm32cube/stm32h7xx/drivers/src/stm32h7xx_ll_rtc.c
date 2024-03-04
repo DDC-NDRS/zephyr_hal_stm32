@@ -136,7 +136,7 @@
   */
 ErrorStatus LL_RTC_DeInit(RTC_TypeDef *RTCx)
 {
-  ErrorStatus status = ERROR;
+  ErrorStatus status = ERRORx;
 
   /* Check the parameter */
   assert_param(IS_RTC_ALL_INSTANCE(RTCx));
@@ -145,7 +145,7 @@ ErrorStatus LL_RTC_DeInit(RTC_TypeDef *RTCx)
   LL_RTC_DisableWriteProtection(RTCx);
 
   /* Set Initialization mode */
-  if (LL_RTC_EnterInitMode(RTCx) != ERROR)
+  if (LL_RTC_EnterInitMode(RTCx) != ERRORx)
   {
     /* Reset TR, DR and CR registers */
     LL_RTC_WriteReg(RTCx, TR,       0x00000000U);
@@ -210,7 +210,7 @@ ErrorStatus LL_RTC_DeInit(RTC_TypeDef *RTCx)
   */
 ErrorStatus LL_RTC_Init(RTC_TypeDef *RTCx, LL_RTC_InitTypeDef *RTC_InitStruct)
 {
-  ErrorStatus status = ERROR;
+  ErrorStatus status = ERRORx;
 
   /* Check the parameters */
   assert_param(IS_RTC_ALL_INSTANCE(RTCx));
@@ -222,7 +222,7 @@ ErrorStatus LL_RTC_Init(RTC_TypeDef *RTCx, LL_RTC_InitTypeDef *RTC_InitStruct)
   LL_RTC_DisableWriteProtection(RTCx);
 
   /* Set Initialization mode */
-  if (LL_RTC_EnterInitMode(RTCx) != ERROR)
+  if (LL_RTC_EnterInitMode(RTCx) != ERRORx)
   {
     /* Set Hour Format */
     LL_RTC_SetHourFormat(RTCx, RTC_InitStruct->HourFormat);
@@ -269,7 +269,7 @@ void LL_RTC_StructInit(LL_RTC_InitTypeDef *RTC_InitStruct)
   */
 ErrorStatus LL_RTC_TIME_Init(RTC_TypeDef *RTCx, uint32_t RTC_Format, LL_RTC_TimeTypeDef *RTC_TimeStruct)
 {
-  ErrorStatus status = ERROR;
+  ErrorStatus status = ERRORx;
 
   /* Check the parameters */
   assert_param(IS_RTC_ALL_INSTANCE(RTCx));
@@ -310,7 +310,7 @@ ErrorStatus LL_RTC_TIME_Init(RTC_TypeDef *RTCx, uint32_t RTC_Format, LL_RTC_Time
   LL_RTC_DisableWriteProtection(RTCx);
 
   /* Set Initialization mode */
-  if (LL_RTC_EnterInitMode(RTCx) != ERROR)
+  if (LL_RTC_EnterInitMode(RTCx) != ERRORx)
   {
     /* Check the input parameters format */
     if (RTC_Format != LL_RTC_FORMAT_BIN)
@@ -372,7 +372,7 @@ void LL_RTC_TIME_StructInit(LL_RTC_TimeTypeDef *RTC_TimeStruct)
   */
 ErrorStatus LL_RTC_DATE_Init(RTC_TypeDef *RTCx, uint32_t RTC_Format, LL_RTC_DateTypeDef *RTC_DateStruct)
 {
-  ErrorStatus status = ERROR;
+  ErrorStatus status = ERRORx;
 
   /* Check the parameters */
   assert_param(IS_RTC_ALL_INSTANCE(RTCx));
@@ -400,7 +400,7 @@ ErrorStatus LL_RTC_DATE_Init(RTC_TypeDef *RTCx, uint32_t RTC_Format, LL_RTC_Date
   LL_RTC_DisableWriteProtection(RTCx);
 
   /* Set Initialization mode */
-  if (LL_RTC_EnterInitMode(RTCx) != ERROR)
+  if (LL_RTC_EnterInitMode(RTCx) != ERRORx)
   {
     /* Check the input parameters format */
     if (RTC_Format != LL_RTC_FORMAT_BIN)
@@ -761,7 +761,7 @@ ErrorStatus LL_RTC_EnterInitMode(RTC_TypeDef *RTCx)
       tmp = LL_RTC_IsActiveFlag_INIT(RTCx);
       if (timeout == 0U)
       {
-        status = ERROR;
+        status = ERRORx;
       }
     }
   }
@@ -829,11 +829,11 @@ ErrorStatus LL_RTC_WaitForSynchro(RTC_TypeDef *RTCx)
     tmp = LL_RTC_IsActiveFlag_RS(RTCx);
     if (timeout == 0U)
     {
-      status = ERROR;
+      status = ERRORx;
     }
   }
 
-  if (status != ERROR)
+  if (status != ERRORx)
   {
     timeout = RTC_SYNCHRO_TIMEOUT;
     tmp = LL_RTC_IsActiveFlag_RS(RTCx);
@@ -846,7 +846,7 @@ ErrorStatus LL_RTC_WaitForSynchro(RTC_TypeDef *RTCx)
       tmp = LL_RTC_IsActiveFlag_RS(RTCx);
       if (timeout == 0U)
       {
-        status = ERROR;
+        status = ERRORx;
       }
     }
   }

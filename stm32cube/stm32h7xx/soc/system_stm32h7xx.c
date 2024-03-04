@@ -145,9 +145,12 @@
                is no need to call the 2 first functions listed above, since SystemCoreClock
                variable is updated automatically.
   */
-  uint32_t SystemCoreClock = 64000000;
-  uint32_t SystemD2Clock = 64000000;
-  const  uint8_t D1CorePrescTable[16] = {0, 0, 0, 0, 1, 2, 3, 4, 1, 2, 3, 4, 6, 7, 8, 9};
+#if (__GTEST == 0U) /* #CUSTOM@NDRS */
+uint32_t SystemCoreClock = 64000000;
+#endif
+
+uint32_t SystemD2Clock = 64000000;
+const  uint8_t D1CorePrescTable[16] = {0, 0, 0, 0, 1, 2, 3, 4, 1, 2, 3, 4, 6, 7, 8, 9};
 
 /**
   * @}
