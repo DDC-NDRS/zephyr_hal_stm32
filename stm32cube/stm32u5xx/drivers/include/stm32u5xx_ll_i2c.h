@@ -1923,7 +1923,7 @@ __STATIC_INLINE uint32_t LL_I2C_IsActiveFlag_BUSY(const I2C_TypeDef *I2Cx)
   */
 __STATIC_INLINE void LL_I2C_ClearFlag_ADDR(I2C_TypeDef *I2Cx)
 {
-  SET_BIT(I2Cx->ICR, I2C_ICR_ADDRCF);
+  WRITE_REG(I2Cx->ICR, I2C_ICR_ADDRCF);
 }
 
 /**
@@ -1934,7 +1934,7 @@ __STATIC_INLINE void LL_I2C_ClearFlag_ADDR(I2C_TypeDef *I2Cx)
   */
 __STATIC_INLINE void LL_I2C_ClearFlag_NACK(I2C_TypeDef *I2Cx)
 {
-  SET_BIT(I2Cx->ICR, I2C_ICR_NACKCF);
+  WRITE_REG(I2Cx->ICR, I2C_ICR_NACKCF);
 }
 
 /**
@@ -1945,7 +1945,7 @@ __STATIC_INLINE void LL_I2C_ClearFlag_NACK(I2C_TypeDef *I2Cx)
   */
 __STATIC_INLINE void LL_I2C_ClearFlag_STOP(I2C_TypeDef *I2Cx)
 {
-  SET_BIT(I2Cx->ICR, I2C_ICR_STOPCF);
+  WRITE_REG(I2Cx->ICR, I2C_ICR_STOPCF);
 }
 
 /**
@@ -1968,7 +1968,7 @@ __STATIC_INLINE void LL_I2C_ClearFlag_TXE(I2C_TypeDef *I2Cx)
   */
 __STATIC_INLINE void LL_I2C_ClearFlag_BERR(I2C_TypeDef *I2Cx)
 {
-  SET_BIT(I2Cx->ICR, I2C_ICR_BERRCF);
+  WRITE_REG(I2Cx->ICR, I2C_ICR_BERRCF);
 }
 
 /**
@@ -1979,7 +1979,7 @@ __STATIC_INLINE void LL_I2C_ClearFlag_BERR(I2C_TypeDef *I2Cx)
   */
 __STATIC_INLINE void LL_I2C_ClearFlag_ARLO(I2C_TypeDef *I2Cx)
 {
-  SET_BIT(I2Cx->ICR, I2C_ICR_ARLOCF);
+  WRITE_REG(I2Cx->ICR, I2C_ICR_ARLOCF);
 }
 
 /**
@@ -1990,7 +1990,7 @@ __STATIC_INLINE void LL_I2C_ClearFlag_ARLO(I2C_TypeDef *I2Cx)
   */
 __STATIC_INLINE void LL_I2C_ClearFlag_OVR(I2C_TypeDef *I2Cx)
 {
-  SET_BIT(I2Cx->ICR, I2C_ICR_OVRCF);
+  WRITE_REG(I2Cx->ICR, I2C_ICR_OVRCF);
 }
 
 /**
@@ -2003,7 +2003,7 @@ __STATIC_INLINE void LL_I2C_ClearFlag_OVR(I2C_TypeDef *I2Cx)
   */
 __STATIC_INLINE void LL_I2C_ClearSMBusFlag_PECERR(I2C_TypeDef *I2Cx)
 {
-  SET_BIT(I2Cx->ICR, I2C_ICR_PECCF);
+  WRITE_REG(I2Cx->ICR, I2C_ICR_PECCF);
 }
 
 /**
@@ -2016,7 +2016,7 @@ __STATIC_INLINE void LL_I2C_ClearSMBusFlag_PECERR(I2C_TypeDef *I2Cx)
   */
 __STATIC_INLINE void LL_I2C_ClearSMBusFlag_TIMEOUT(I2C_TypeDef *I2Cx)
 {
-  SET_BIT(I2Cx->ICR, I2C_ICR_TIMOUTCF);
+  WRITE_REG(I2Cx->ICR, I2C_ICR_TIMOUTCF);
 }
 
 /**
@@ -2029,7 +2029,7 @@ __STATIC_INLINE void LL_I2C_ClearSMBusFlag_TIMEOUT(I2C_TypeDef *I2Cx)
   */
 __STATIC_INLINE void LL_I2C_ClearSMBusFlag_ALERT(I2C_TypeDef *I2Cx)
 {
-  SET_BIT(I2Cx->ICR, I2C_ICR_ALERTCF);
+  WRITE_REG(I2Cx->ICR, I2C_ICR_ALERTCF);
 }
 
 /**
