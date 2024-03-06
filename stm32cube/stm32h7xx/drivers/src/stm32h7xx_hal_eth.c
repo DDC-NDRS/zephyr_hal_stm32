@@ -1265,6 +1265,7 @@ HAL_StatusTypeDef HAL_ETH_UnRegisterRxAllocateCallback(ETH_HandleTypeDef *heth)
   * @param  buff: pointer to allocated buffer
   * @retval None
   */
+#if (__GTEST == 0U) /* #CUSTOM@NDRS */
 __weak void HAL_ETH_RxAllocateCallback(uint8_t **buff)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1273,6 +1274,7 @@ __weak void HAL_ETH_RxAllocateCallback(uint8_t **buff)
   the HAL_ETH_RxAllocateCallback could be implemented in the user file
   */
 }
+#endif
 
 /**
   * @brief  Rx Link callback.
@@ -1282,6 +1284,7 @@ __weak void HAL_ETH_RxAllocateCallback(uint8_t **buff)
   * @param  Length: received data length
   * @retval None
   */
+#if (__GTEST == 0U) /* #CUSTOM@NDRS */
 __weak void HAL_ETH_RxLinkCallback(void **pStart, void **pEnd, uint8_t *buff, uint16_t Length)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1293,6 +1296,7 @@ __weak void HAL_ETH_RxLinkCallback(void **pStart, void **pEnd, uint8_t *buff, ui
   the HAL_ETH_RxLinkCallback could be implemented in the user file
   */
 }
+#endif
 
 /**
   * @brief  Set the Rx link data function.
@@ -1384,6 +1388,7 @@ HAL_StatusTypeDef HAL_ETH_UnRegisterTxFreeCallback(ETH_HandleTypeDef *heth)
   * @param  buff: pointer to buffer to free
   * @retval None
   */
+#if (__GTEST == 0U) /* #CUSTOM@NDRS */
 __weak void HAL_ETH_TxFreeCallback(uint32_t *buff)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1392,6 +1397,7 @@ __weak void HAL_ETH_TxFreeCallback(uint32_t *buff)
   the HAL_ETH_TxFreeCallback could be implemented in the user file
   */
 }
+#endif
 
 /**
   * @brief  Release transmitted Tx packets.
@@ -2046,6 +2052,7 @@ void HAL_ETH_IRQHandler(ETH_HandleTypeDef *heth)
   *         the configuration information for ETHERNET module
   * @retval None
   */
+#if (__GTEST == 0U) /* #CUSTOM@NDRS */
 __weak void HAL_ETH_TxCpltCallback(ETH_HandleTypeDef *heth)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -2054,6 +2061,7 @@ __weak void HAL_ETH_TxCpltCallback(ETH_HandleTypeDef *heth)
   the HAL_ETH_TxCpltCallback could be implemented in the user file
   */
 }
+#endif
 
 /**
   * @brief  Rx Transfer completed callbacks.
@@ -2061,6 +2069,7 @@ __weak void HAL_ETH_TxCpltCallback(ETH_HandleTypeDef *heth)
   *         the configuration information for ETHERNET module
   * @retval None
   */
+#if (__GTEST == 0U) /* #CUSTOM@NDRS */
 __weak void HAL_ETH_RxCpltCallback(ETH_HandleTypeDef *heth)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -2069,6 +2078,7 @@ __weak void HAL_ETH_RxCpltCallback(ETH_HandleTypeDef *heth)
   the HAL_ETH_RxCpltCallback could be implemented in the user file
   */
 }
+#endif
 
 /**
   * @brief  Ethernet transfer error callbacks
@@ -2076,6 +2086,7 @@ __weak void HAL_ETH_RxCpltCallback(ETH_HandleTypeDef *heth)
   *         the configuration information for ETHERNET module
   * @retval None
   */
+#if (__GTEST == 0U) /* #CUSTOM@NDRS */
 __weak void HAL_ETH_ErrorCallback(ETH_HandleTypeDef *heth)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -2084,6 +2095,7 @@ __weak void HAL_ETH_ErrorCallback(ETH_HandleTypeDef *heth)
   the HAL_ETH_ErrorCallback could be implemented in the user file
   */
 }
+#endif
 
 /**
   * @brief  Ethernet Power Management module IT callback
