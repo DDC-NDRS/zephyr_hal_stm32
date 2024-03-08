@@ -28,7 +28,7 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "stm32h7xx_hal_def.h"
 
-#if defined(ETH)
+#if defined(ETH) && defined(CONFIG_USE_STM32_HAL_ETH)
 
 /** @addtogroup STM32H7xx_HAL_Driver
   * @{

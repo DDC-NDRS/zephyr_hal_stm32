@@ -24,7 +24,7 @@
 extern "C" {
 #endif
 
-#if defined(ETH)
+#if defined(ETH) && defined(CONFIG_USE_STM32_HAL_ETH_EX)
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32h7xx_hal_def.h"
