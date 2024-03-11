@@ -273,7 +273,7 @@ static void QSPI_DMATxCplt(MDMA_HandleTypeDef *hmdma);
 static void QSPI_DMAError(MDMA_HandleTypeDef *hmdma);
 static void QSPI_DMAAbortCplt(MDMA_HandleTypeDef *hmdma);
 static HAL_StatusTypeDef QSPI_WaitFlagStateUntilTimeout(QSPI_HandleTypeDef *hqspi, uint32_t Flag, FlagStatus State, uint32_t Tickstart, uint32_t Timeout);
-static void QSPI_Config(QSPI_HandleTypeDef *hqspi, QSPI_CommandTypeDef *cmd, uint32_t FunctionalMode);
+static void QSPI_Config(QSPI_HandleTypeDef *hqspi, QSPI_CommandTypeDef const* cmd, uint32_t FunctionalMode);
 
 /* Exported functions --------------------------------------------------------*/
 
@@ -870,7 +870,7 @@ HAL_StatusTypeDef HAL_QSPI_Command(QSPI_HandleTypeDef *hqspi, QSPI_CommandTypeDe
   * @note   This function is used only in Indirect Read or Write Modes
   * @retval HAL status
   */
-HAL_StatusTypeDef HAL_QSPI_Command_IT(QSPI_HandleTypeDef *hqspi, QSPI_CommandTypeDef *cmd)
+HAL_StatusTypeDef HAL_QSPI_Command_IT(QSPI_HandleTypeDef *hqspi, QSPI_CommandTypeDef const* cmd)
 {
   HAL_StatusTypeDef status;
   uint32_t tickstart = HAL_GetTick();
@@ -1303,7 +1303,7 @@ HAL_StatusTypeDef HAL_QSPI_Transmit_DMA(QSPI_HandleTypeDef *hqspi, uint8_t *pDat
         hqspi->hmdma->XferAbortCallback = NULL;
 
         /* In Transmit mode , the MDMA destination is the QSPI DR register : Force the MDMA Destination Increment to disable */
-        MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_DINC | MDMA_CTCR_DINCOS) ,MDMA_DEST_INC_DISABLE);
+        MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_DINC | MDMA_CTCR_DINCOS), MDMA_DEST_INC_DISABLE);
 
         /* Update MDMA configuration with the correct SourceInc field for Write operation */
         if (hqspi->hmdma->Init.SourceDataSize == MDMA_SRC_DATASIZE_BYTE)
@@ -2520,7 +2520,7 @@ static HAL_StatusTypeDef QSPI_WaitFlagStateUntilTimeout(QSPI_HandleTypeDef *hqsp
   *            @arg QSPI_FUNCTIONAL_MODE_MEMORY_MAPPED: Memory-mapped mode
   * @retval None
   */
-static void QSPI_Config(QSPI_HandleTypeDef *hqspi, QSPI_CommandTypeDef *cmd, uint32_t FunctionalMode)
+static void QSPI_Config(QSPI_HandleTypeDef *hqspi, QSPI_CommandTypeDef const* cmd, uint32_t FunctionalMode)
 {
   assert_param(IS_QSPI_FUNCTIONAL_MODE(FunctionalMode));
 

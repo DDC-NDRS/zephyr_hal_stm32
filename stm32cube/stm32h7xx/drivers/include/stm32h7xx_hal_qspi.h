@@ -103,7 +103,7 @@ typedef struct
   uint8_t                    *pRxBuffPtr;      /* Pointer to QSPI Rx transfer Buffer */
   __IO uint32_t              RxXferSize;       /* QSPI Rx Transfer size              */
   __IO uint32_t              RxXferCount;      /* QSPI Rx Transfer Counter           */
-  MDMA_HandleTypeDef          *hmdma;            /* QSPI Rx/Tx MDMA Handle parameters   */
+  MDMA_HandleTypeDef*        hmdma;            /* QSPI Rx/Tx MDMA Handle parameters   */
   __IO HAL_LockTypeDef       Lock;             /* Locking object                     */
   __IO HAL_QSPI_StateTypeDef State;            /* QSPI communication state           */
   __IO uint32_t              ErrorCode;        /* QSPI Error code                    */
@@ -575,7 +575,7 @@ void                  HAL_QSPI_IRQHandler(QSPI_HandleTypeDef *hqspi);
 HAL_StatusTypeDef     HAL_QSPI_Command      (QSPI_HandleTypeDef *hqspi, QSPI_CommandTypeDef *cmd, uint32_t Timeout);
 HAL_StatusTypeDef     HAL_QSPI_Transmit     (QSPI_HandleTypeDef *hqspi, uint8_t *pData, uint32_t Timeout);
 HAL_StatusTypeDef     HAL_QSPI_Receive      (QSPI_HandleTypeDef *hqspi, uint8_t *pData, uint32_t Timeout);
-HAL_StatusTypeDef     HAL_QSPI_Command_IT   (QSPI_HandleTypeDef *hqspi, QSPI_CommandTypeDef *cmd);
+HAL_StatusTypeDef     HAL_QSPI_Command_IT   (QSPI_HandleTypeDef *hqspi, QSPI_CommandTypeDef const* cmd);
 HAL_StatusTypeDef     HAL_QSPI_Transmit_IT  (QSPI_HandleTypeDef *hqspi, uint8_t *pData);
 HAL_StatusTypeDef     HAL_QSPI_Receive_IT   (QSPI_HandleTypeDef *hqspi, uint8_t *pData);
 HAL_StatusTypeDef     HAL_QSPI_Transmit_DMA (QSPI_HandleTypeDef *hqspi, uint8_t *pData);

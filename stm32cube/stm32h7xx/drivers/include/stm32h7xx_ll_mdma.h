@@ -31,7 +31,7 @@ extern "C" {
   * @{
   */
 
-#if defined (MDMA)
+#if defined(MDMA)
 
 /** @defgroup MDMA_LL MDMA
   * @{
@@ -240,7 +240,7 @@ typedef struct
   __IO uint32_t CMAR;     /*!< New CMAR register configuration for the given MDMA linked list node   */
   __IO uint32_t CMDR;     /*!< New CMDR register configuration for the given MDMA linked list node   */
 
-}LL_MDMA_LinkNodeTypeDef;
+} LL_MDMA_LinkNodeTypeDef;
 
 /**
   * @}
@@ -3404,7 +3404,7 @@ __STATIC_INLINE uint32_t LL_MDMA_GetXferErrorLSBAddress(MDMA_TypeDef *MDMAx, uin
   */
 __STATIC_INLINE uint32_t LL_MDMA_IsActiveFlag_GI(MDMA_TypeDef *MDMAx, uint32_t Channel)
 {
-  return ((READ_BIT(MDMAx->GISR0 ,(MDMA_GISR0_GIF0 << (Channel & 0x0000000FU)))==(MDMA_GISR0_GIF0 << (Channel & 0x0000000FU))) ? 1UL : 0UL);
+  return ((READ_BIT(MDMAx->GISR0, (MDMA_GISR0_GIF0 << (Channel & 0x0000000FU)))==(MDMA_GISR0_GIF0 << (Channel & 0x0000000FU))) ? 1UL : 0UL);
 }
 
 /**
@@ -3734,7 +3734,7 @@ __STATIC_INLINE void LL_MDMA_ClearFlag_TE(MDMA_TypeDef *MDMAx, uint32_t Channel)
 {
   uint32_t mdma_base_addr = (uint32_t)MDMAx;
 
-  WRITE_REG(((MDMA_Channel_TypeDef*)(mdma_base_addr + LL_MDMA_CH_OFFSET_TAB[Channel]))->CIFCR ,MDMA_CIFCR_CTEIF);
+  WRITE_REG(((MDMA_Channel_TypeDef*)(mdma_base_addr + LL_MDMA_CH_OFFSET_TAB[Channel]))->CIFCR, MDMA_CIFCR_CTEIF);
 }
 
 /**
