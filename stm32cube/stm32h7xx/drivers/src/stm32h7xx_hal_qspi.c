@@ -1270,15 +1270,15 @@ HAL_StatusTypeDef HAL_QSPI_Transmit_DMA(QSPI_HandleTypeDef *hqspi, uint8_t *pDat
   /* Process locked */
   __HAL_LOCK(hqspi);
 
-  if(hqspi->State == HAL_QSPI_STATE_READY)
+  if (hqspi->State == HAL_QSPI_STATE_READY)
   {
     /* Clear the error code */
     hqspi->ErrorCode = HAL_QSPI_ERROR_NONE;
 
-    if(pData != NULL )
+    if (pData != NULL )
     {
-      /* Configure counters of the handle */
-      hqspi->TxXferCount = data_size;
+        /* Configure counters of the handle */
+        hqspi->TxXferCount = data_size;
 
         /* Update state */
         hqspi->State = HAL_QSPI_STATE_BUSY_INDIRECT_TX;
@@ -1308,15 +1308,15 @@ HAL_StatusTypeDef HAL_QSPI_Transmit_DMA(QSPI_HandleTypeDef *hqspi, uint8_t *pDat
         /* Update MDMA configuration with the correct SourceInc field for Write operation */
         if (hqspi->hmdma->Init.SourceDataSize == MDMA_SRC_DATASIZE_BYTE)
         {
-          MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_SINC | MDMA_CTCR_SINCOS) , MDMA_SRC_INC_BYTE);
+          MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_SINC | MDMA_CTCR_SINCOS), MDMA_SRC_INC_BYTE);
         }
         else if (hqspi->hmdma->Init.SourceDataSize == MDMA_SRC_DATASIZE_HALFWORD)
         {
-          MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_SINC | MDMA_CTCR_SINCOS) , MDMA_SRC_INC_HALFWORD);
+          MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_SINC | MDMA_CTCR_SINCOS), MDMA_SRC_INC_HALFWORD);
         }
         else if (hqspi->hmdma->Init.SourceDataSize == MDMA_SRC_DATASIZE_WORD)
         {
-          MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_SINC | MDMA_CTCR_SINCOS) , MDMA_SRC_INC_WORD);
+          MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_SINC | MDMA_CTCR_SINCOS), MDMA_SRC_INC_WORD);
         }
         else
         {
@@ -1389,10 +1389,11 @@ HAL_StatusTypeDef HAL_QSPI_Receive_DMA(QSPI_HandleTypeDef *hqspi, uint8_t *pData
     /* Clear the error code */
     hqspi->ErrorCode = HAL_QSPI_ERROR_NONE;
 
-    if(pData != NULL )
+    if (pData != NULL )
     {
-      /* Configure counters of the handle */
-      hqspi->RxXferCount = data_size;
+        /* Configure counters of the handle */
+        hqspi->RxXferCount = data_size;
+
         /* Update state */
         hqspi->State = HAL_QSPI_STATE_BUSY_INDIRECT_RX;
 
