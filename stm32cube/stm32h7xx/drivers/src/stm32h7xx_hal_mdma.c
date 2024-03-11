@@ -272,9 +272,9 @@ HAL_StatusTypeDef HAL_MDMA_Init(MDMA_HandleTypeDef *hmdma)
   MDMA_Init(hmdma);
 
   /* Reset the MDMA first/last linkedlist node addresses and node counter */
-  hmdma->FirstLinkedListNodeAddress  = 0;
-  hmdma->LastLinkedListNodeAddress   = 0;
-  hmdma->LinkedListNodeCounter  = 0;
+  hmdma->FirstLinkedListNodeAddress = 0;
+  hmdma->LastLinkedListNodeAddress  = 0;
+  hmdma->LinkedListNodeCounter      = 0;
 
   /* Initialize the error code */
   hmdma->ErrorCode = HAL_MDMA_ERROR_NONE;
@@ -1161,19 +1161,19 @@ HAL_StatusTypeDef HAL_MDMA_Start_IT(MDMA_HandleTypeDef *hmdma, uint32_t SrcAddre
     /* Enable Common interrupts i.e Transfer Error IT and Channel Transfer Complete IT*/
     __HAL_MDMA_ENABLE_IT(hmdma, (MDMA_IT_TE | MDMA_IT_CTC));
 
-    if(hmdma->XferBlockCpltCallback != NULL)
+    if (hmdma->XferBlockCpltCallback != NULL)
     {
       /* if Block transfer complete Callback is set enable the corresponding IT*/
       __HAL_MDMA_ENABLE_IT(hmdma, MDMA_IT_BT);
     }
 
-    if(hmdma->XferRepeatBlockCpltCallback != NULL)
+    if (hmdma->XferRepeatBlockCpltCallback != NULL)
     {
       /* if Repeated Block transfer complete Callback is set enable the corresponding IT*/
       __HAL_MDMA_ENABLE_IT(hmdma, MDMA_IT_BRT);
     }
 
-    if(hmdma->XferBufferCpltCallback != NULL)
+    if (hmdma->XferBufferCpltCallback != NULL)
     {
       /* if buffer transfer complete Callback is set enable the corresponding IT*/
       __HAL_MDMA_ENABLE_IT(hmdma, MDMA_IT_BFTC);
@@ -1182,7 +1182,7 @@ HAL_StatusTypeDef HAL_MDMA_Start_IT(MDMA_HandleTypeDef *hmdma, uint32_t SrcAddre
     /* Enable the Peripheral */
     __HAL_MDMA_ENABLE(hmdma);
 
-    if(hmdma->Init.Request == MDMA_REQUEST_SW)
+    if (hmdma->Init.Request == MDMA_REQUEST_SW)
     {
       /* activate If SW request mode*/
       hmdma->Instance->CCR |=  MDMA_CCR_SWRQ;
