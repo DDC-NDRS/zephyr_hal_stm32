@@ -290,10 +290,6 @@
   #include "stm32h7xx_hal_eth.h"
 #endif /* HAL_ETH_MODULE_ENABLED */
 
-#ifdef HAL_ETH_LEGACY_MODULE_ENABLED
-  #include "Legacy/stm32h7xx_hal_eth_legacy.h"
-#endif /* HAL_ETH_LEGACY_MODULE_ENABLED */
-
 #ifdef HAL_EXTI_MODULE_ENABLED
   #include "stm32h7xx_hal_exti.h"
 #endif /* HAL_EXTI_MODULE_ENABLED */
