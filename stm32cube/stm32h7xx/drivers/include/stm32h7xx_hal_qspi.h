@@ -572,7 +572,7 @@ void                  HAL_QSPI_MspDeInit(QSPI_HandleTypeDef *hqspi);
 void                  HAL_QSPI_IRQHandler(QSPI_HandleTypeDef *hqspi);
 
 /* QSPI indirect mode */
-HAL_StatusTypeDef     HAL_QSPI_Command      (QSPI_HandleTypeDef *hqspi, QSPI_CommandTypeDef *cmd, uint32_t Timeout);
+HAL_StatusTypeDef     HAL_QSPI_Command      (QSPI_HandleTypeDef *hqspi, QSPI_CommandTypeDef const* cmd, uint32_t Timeout);
 HAL_StatusTypeDef     HAL_QSPI_Transmit     (QSPI_HandleTypeDef *hqspi, uint8_t *pData, uint32_t Timeout);
 HAL_StatusTypeDef     HAL_QSPI_Receive      (QSPI_HandleTypeDef *hqspi, uint8_t *pData, uint32_t Timeout);
 HAL_StatusTypeDef     HAL_QSPI_Command_IT   (QSPI_HandleTypeDef *hqspi, QSPI_CommandTypeDef const* cmd);

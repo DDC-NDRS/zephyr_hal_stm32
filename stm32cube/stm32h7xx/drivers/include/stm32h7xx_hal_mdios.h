@@ -108,7 +108,7 @@ typedef struct
   void    (* MspDeInitCallback)  ( struct __MDIOS_HandleTypeDef * hmdios);    /*!< MDIOS Msp DeInit callback            */
 
 #endif  /* USE_HAL_MDIOS_REGISTER_CALLBACKS */
-}MDIOS_HandleTypeDef;
+} MDIOS_HandleTypeDef;
 
 /**
   * @}

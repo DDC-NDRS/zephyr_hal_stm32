@@ -2749,6 +2749,7 @@ __STATIC_INLINE uint32_t LL_SPI_GetSelectedTrigger(const SPI_TypeDef *SPIx)
 ErrorStatus LL_SPI_DeInit(const SPI_TypeDef *SPIx);
 ErrorStatus LL_SPI_Init(SPI_TypeDef *SPIx, LL_SPI_InitTypeDef *SPI_InitStruct);
 void        LL_SPI_StructInit(LL_SPI_InitTypeDef *SPI_InitStruct);
+ErrorStatus LL_SPIEx_FlushRxFifo(SPI_TypeDef const* SPIx);
 
 /**
   * @}

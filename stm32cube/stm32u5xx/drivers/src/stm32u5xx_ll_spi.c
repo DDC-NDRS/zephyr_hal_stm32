@@ -440,6 +440,27 @@ void LL_SPI_StructInit(LL_SPI_InitTypeDef *SPI_InitStruct)
   SPI_InitStruct->CRCPoly           = 7UL;
 }
 
+ErrorStatus LL_SPIEx_FlushRxFifo(SPI_TypeDef const* SPIx) {
+    uint_fast8_t count;
+    uint32_t itflag;
+    __IO uint32_t tmpreg;
+
+    itflag = SPIx->SR;
+    count  = 0UL;
+    while (((SPIx->SR & SPI_FLAG_FRLVL) != SPI_RX_FIFO_0PACKET) ||
+           ((itflag   & SPI_FLAG_RXWNE) != 0UL)) {
+        count += 4UL;
+        tmpreg = SPIx->RXDR;
+        UNUSED(tmpreg); /* To avoid GCC warning */
+
+        if (count > SPI_HIGHEND_FIFO_SIZE) {
+            return (ERRORx);
+        }
+    }
+
+    return (SUCCESS);
+}
+
 /**
   * @}
   */

@@ -92,7 +92,7 @@
  #error "Dual core device, please select CORE_CM4 or CORE_CM7"
 #endif
 
-#if !defined  (USE_HAL_DRIVER)
+#if !defined(USE_HAL_DRIVER)
 /**
  * @brief Comment the line below if you will not use the peripherals drivers.
    In this case, these drivers will not be included and the application code will
@@ -278,7 +278,7 @@ typedef enum
   * @}
   */
 
-#if defined (USE_HAL_DRIVER)
+#if defined(USE_HAL_DRIVER)
  #include "stm32h7xx_hal.h"
 #endif /* USE_HAL_DRIVER */
 

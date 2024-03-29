@@ -109,7 +109,7 @@ typedef struct
                                                           if == 0, the next block destination address starts from where the last block ends
                                        */
 
-}MDMA_InitTypeDef;
+} MDMA_InitTypeDef;
 
 /**
   * @brief  HAL MDMA linked list node structure definition

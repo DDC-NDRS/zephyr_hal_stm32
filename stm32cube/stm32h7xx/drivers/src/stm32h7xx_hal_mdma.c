@@ -1136,7 +1136,7 @@ HAL_StatusTypeDef HAL_MDMA_Start_IT(MDMA_HandleTypeDef *hmdma, uint32_t SrcAddre
   assert_param(IS_MDMA_BLOCK_COUNT(BlockCount));
 
   /* Check the MDMA peripheral handle */
-  if(hmdma == NULL)
+  if (hmdma == NULL)
   {
     return HAL_ERROR;
   }
@@ -1144,7 +1144,7 @@ HAL_StatusTypeDef HAL_MDMA_Start_IT(MDMA_HandleTypeDef *hmdma, uint32_t SrcAddre
   /* Process locked */
   __HAL_LOCK(hmdma);
 
-  if(HAL_MDMA_STATE_READY == hmdma->State)
+  if (HAL_MDMA_STATE_READY == hmdma->State)
   {
     /* Change MDMA peripheral state */
     hmdma->State = HAL_MDMA_STATE_BUSY;
@@ -1762,10 +1762,10 @@ static void MDMA_SetConfig(MDMA_HandleTypeDef *hmdma, uint32_t SrcAddress, uint3
   uint32_t addressMask;
 
   /* Configure the MDMA Channel data length */
-  MODIFY_REG(hmdma->Instance->CBNDTR ,MDMA_CBNDTR_BNDT, (BlockDataLength & MDMA_CBNDTR_BNDT));
+  MODIFY_REG(hmdma->Instance->CBNDTR, MDMA_CBNDTR_BNDT, (BlockDataLength & MDMA_CBNDTR_BNDT));
 
   /* Configure the MDMA block repeat count */
-  MODIFY_REG(hmdma->Instance->CBNDTR , MDMA_CBNDTR_BRC , ((BlockCount - 1U) << MDMA_CBNDTR_BRC_Pos) & MDMA_CBNDTR_BRC);
+  MODIFY_REG(hmdma->Instance->CBNDTR, MDMA_CBNDTR_BRC , ((BlockCount - 1U) << MDMA_CBNDTR_BRC_Pos) & MDMA_CBNDTR_BRC);
 
   /* Clear all interrupt flags */
   __HAL_MDMA_CLEAR_FLAG(hmdma, MDMA_FLAG_TE | MDMA_FLAG_CTC | MDMA_CISR_BRTIF | MDMA_CISR_BTIF | MDMA_CISR_TCIF);
@@ -1779,24 +1779,24 @@ static void MDMA_SetConfig(MDMA_HandleTypeDef *hmdma, uint32_t SrcAddress, uint3
   addressMask = SrcAddress & 0xFF000000U;
   if((addressMask == 0x20000000U) || (addressMask == 0x00000000U))
   {
-    /*The AHBSbus is used as source (read operation) on channel x */
+    /* The AHBSbus is used as source (read operation) on channel x */
     hmdma->Instance->CTBR |= MDMA_CTBR_SBUS;
   }
   else
   {
-    /*The AXI bus is used as source (read operation) on channel x */
+    /* The AXI bus is used as source (read operation) on channel x */
     hmdma->Instance->CTBR &= (~MDMA_CTBR_SBUS);
   }
 
   addressMask = DstAddress & 0xFF000000U;
   if((addressMask == 0x20000000U) || (addressMask == 0x00000000U))
   {
-    /*The AHB bus is used as destination (write operation) on channel x */
+    /* The AHB bus is used as destination (write operation) on channel x */
     hmdma->Instance->CTBR |= MDMA_CTBR_DBUS;
   }
   else
   {
-    /*The AXI bus is used as destination (write operation) on channel x */
+    /* The AXI bus is used as destination (write operation) on channel x */
     hmdma->Instance->CTBR &= (~MDMA_CTBR_DBUS);
   }
 

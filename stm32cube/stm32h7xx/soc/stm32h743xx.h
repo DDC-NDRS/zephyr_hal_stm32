@@ -2134,7 +2134,11 @@ typedef struct
 #define ADC1_BASE               (D2_AHB1PERIPH_BASE + 0x2000UL)
 #define ADC2_BASE               (D2_AHB1PERIPH_BASE + 0x2100UL)
 #define ADC12_COMMON_BASE       (D2_AHB1PERIPH_BASE + 0x2300UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define ETH_BASE                ((uintptr_t)ut_mcu_eth_ptr)
+#else
 #define ETH_BASE                (D2_AHB1PERIPH_BASE + 0x8000UL)
+#endif
 #define ETH_MAC_BASE            (ETH_BASE)
 
 /*!< USB registers base address */
