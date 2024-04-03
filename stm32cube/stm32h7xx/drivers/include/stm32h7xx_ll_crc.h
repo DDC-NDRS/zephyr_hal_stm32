@@ -31,7 +31,7 @@ extern "C" {
   * @{
   */
 
-#if defined(CRC)
+#if defined(CRCx)   /* #CUSTOM@NDRS */
 
 /** @defgroup CRC_LL CRC
   * @{
@@ -153,9 +153,9 @@ extern "C" {
   * @param  CRCx CRC Instance
   * @retval None
   */
-__STATIC_INLINE void LL_CRC_ResetCRCCalculationUnit(CRC_TypeDef *CRCx)
+__STATIC_INLINE void LL_CRC_ResetCRCCalculationUnit(CRC_TypeDef *_CRC)
 {
-  SET_BIT(CRCx->CR, CRC_CR_RESET);
+  SET_BIT(_CRC->CR, CRC_CR_RESET);
 }
 
 /**
@@ -169,9 +169,9 @@ __STATIC_INLINE void LL_CRC_ResetCRCCalculationUnit(CRC_TypeDef *CRCx)
   *         @arg @ref LL_CRC_POLYLENGTH_7B
   * @retval None
   */
-__STATIC_INLINE void LL_CRC_SetPolynomialSize(CRC_TypeDef *CRCx, uint32_t PolySize)
+__STATIC_INLINE void LL_CRC_SetPolynomialSize(CRC_TypeDef *_CRC, uint32_t PolySize)
 {
-  MODIFY_REG(CRCx->CR, CRC_CR_POLYSIZE, PolySize);
+  MODIFY_REG(_CRC->CR, CRC_CR_POLYSIZE, PolySize);
 }
 
 /**
@@ -184,9 +184,9 @@ __STATIC_INLINE void LL_CRC_SetPolynomialSize(CRC_TypeDef *CRCx, uint32_t PolySi
   *         @arg @ref LL_CRC_POLYLENGTH_8B
   *         @arg @ref LL_CRC_POLYLENGTH_7B
   */
-__STATIC_INLINE uint32_t LL_CRC_GetPolynomialSize(CRC_TypeDef *CRCx)
+__STATIC_INLINE uint32_t LL_CRC_GetPolynomialSize(CRC_TypeDef *_CRC)
 {
-  return (uint32_t)(READ_BIT(CRCx->CR, CRC_CR_POLYSIZE));
+  return (uint32_t)(READ_BIT(_CRC->CR, CRC_CR_POLYSIZE));
 }
 
 /**
@@ -200,9 +200,9 @@ __STATIC_INLINE uint32_t LL_CRC_GetPolynomialSize(CRC_TypeDef *CRCx)
   *         @arg @ref LL_CRC_INDATA_REVERSE_WORD
   * @retval None
   */
-__STATIC_INLINE void LL_CRC_SetInputDataReverseMode(CRC_TypeDef *CRCx, uint32_t ReverseMode)
+__STATIC_INLINE void LL_CRC_SetInputDataReverseMode(CRC_TypeDef *_CRC, uint32_t ReverseMode)
 {
-  MODIFY_REG(CRCx->CR, CRC_CR_REV_IN, ReverseMode);
+  MODIFY_REG(_CRC->CR, CRC_CR_REV_IN, ReverseMode);
 }
 
 /**
@@ -215,9 +215,9 @@ __STATIC_INLINE void LL_CRC_SetInputDataReverseMode(CRC_TypeDef *CRCx, uint32_t 
   *         @arg @ref LL_CRC_INDATA_REVERSE_HALFWORD
   *         @arg @ref LL_CRC_INDATA_REVERSE_WORD
   */
-__STATIC_INLINE uint32_t LL_CRC_GetInputDataReverseMode(CRC_TypeDef *CRCx)
+__STATIC_INLINE uint32_t LL_CRC_GetInputDataReverseMode(CRC_TypeDef *_CRC)
 {
-  return (uint32_t)(READ_BIT(CRCx->CR, CRC_CR_REV_IN));
+  return (uint32_t)(READ_BIT(_CRC->CR, CRC_CR_REV_IN));
 }
 
 /**
@@ -229,9 +229,9 @@ __STATIC_INLINE uint32_t LL_CRC_GetInputDataReverseMode(CRC_TypeDef *CRCx)
   *         @arg @ref LL_CRC_OUTDATA_REVERSE_BIT
   * @retval None
   */
-__STATIC_INLINE void LL_CRC_SetOutputDataReverseMode(CRC_TypeDef *CRCx, uint32_t ReverseMode)
+__STATIC_INLINE void LL_CRC_SetOutputDataReverseMode(CRC_TypeDef *_CRC, uint32_t ReverseMode)
 {
-  MODIFY_REG(CRCx->CR, CRC_CR_REV_OUT, ReverseMode);
+  MODIFY_REG(_CRC->CR, CRC_CR_REV_OUT, ReverseMode);
 }
 
 /**
@@ -242,9 +242,9 @@ __STATIC_INLINE void LL_CRC_SetOutputDataReverseMode(CRC_TypeDef *CRCx, uint32_t
   *         @arg @ref LL_CRC_OUTDATA_REVERSE_NONE
   *         @arg @ref LL_CRC_OUTDATA_REVERSE_BIT
   */
-__STATIC_INLINE uint32_t LL_CRC_GetOutputDataReverseMode(CRC_TypeDef *CRCx)
+__STATIC_INLINE uint32_t LL_CRC_GetOutputDataReverseMode(CRC_TypeDef *_CRC)
 {
-  return (uint32_t)(READ_BIT(CRCx->CR, CRC_CR_REV_OUT));
+  return (uint32_t)(READ_BIT(_CRC->CR, CRC_CR_REV_OUT));
 }
 
 /**
@@ -257,9 +257,9 @@ __STATIC_INLINE uint32_t LL_CRC_GetOutputDataReverseMode(CRC_TypeDef *CRCx)
   * @param  InitCrc Value to be programmed in Programmable initial CRC value register
   * @retval None
   */
-__STATIC_INLINE void LL_CRC_SetInitialData(CRC_TypeDef *CRCx, uint32_t InitCrc)
+__STATIC_INLINE void LL_CRC_SetInitialData(CRC_TypeDef *_CRC, uint32_t InitCrc)
 {
-  WRITE_REG(CRCx->INIT, InitCrc);
+  WRITE_REG(_CRC->INIT, InitCrc);
 }
 
 /**
@@ -270,9 +270,9 @@ __STATIC_INLINE void LL_CRC_SetInitialData(CRC_TypeDef *CRCx, uint32_t InitCrc)
   * @param  CRCx CRC Instance
   * @retval Value programmed in Programmable initial CRC value register
   */
-__STATIC_INLINE uint32_t LL_CRC_GetInitialData(CRC_TypeDef *CRCx)
+__STATIC_INLINE uint32_t LL_CRC_GetInitialData(CRC_TypeDef *_CRC)
 {
-  return (uint32_t)(READ_REG(CRCx->INIT));
+  return (uint32_t)(READ_REG(_CRC->INIT));
 }
 
 /**
@@ -287,9 +287,9 @@ __STATIC_INLINE uint32_t LL_CRC_GetInitialData(CRC_TypeDef *CRCx)
   * @param  PolynomCoef Value to be programmed in Programmable Polynomial value register
   * @retval None
   */
-__STATIC_INLINE void LL_CRC_SetPolynomialCoef(CRC_TypeDef *CRCx, uint32_t PolynomCoef)
+__STATIC_INLINE void LL_CRC_SetPolynomialCoef(CRC_TypeDef *_CRC, uint32_t PolynomCoef)
 {
-  WRITE_REG(CRCx->POL, PolynomCoef);
+  WRITE_REG(_CRC->POL, PolynomCoef);
 }
 
 /**
@@ -301,9 +301,9 @@ __STATIC_INLINE void LL_CRC_SetPolynomialCoef(CRC_TypeDef *CRCx, uint32_t Polyno
   * @param  CRCx CRC Instance
   * @retval Value programmed in Programmable Polynomial value register
   */
-__STATIC_INLINE uint32_t LL_CRC_GetPolynomialCoef(CRC_TypeDef *CRCx)
+__STATIC_INLINE uint32_t LL_CRC_GetPolynomialCoef(CRC_TypeDef *_CRC)
 {
-  return (uint32_t)(READ_REG(CRCx->POL));
+  return (uint32_t)(READ_REG(_CRC->POL));
 }
 
 /**
@@ -321,9 +321,9 @@ __STATIC_INLINE uint32_t LL_CRC_GetPolynomialCoef(CRC_TypeDef *CRCx)
   * @param  InData value to be provided to CRC calculator between between Min_Data=0 and Max_Data=0xFFFFFFFF
   * @retval None
   */
-__STATIC_INLINE void LL_CRC_FeedData32(CRC_TypeDef *CRCx, uint32_t InData)
+__STATIC_INLINE void LL_CRC_FeedData32(CRC_TypeDef* _CRC, uint32_t InData)
 {
-  WRITE_REG(CRCx->DR, InData);
+  WRITE_REG(_CRC->DR, InData);
 }
 
 /**
@@ -333,11 +333,11 @@ __STATIC_INLINE void LL_CRC_FeedData32(CRC_TypeDef *CRCx, uint32_t InData)
   * @param  InData 16 bit value to be provided to CRC calculator between between Min_Data=0 and Max_Data=0xFFFF
   * @retval None
   */
-__STATIC_INLINE void LL_CRC_FeedData16(CRC_TypeDef *CRCx, uint16_t InData)
+__STATIC_INLINE void LL_CRC_FeedData16(CRC_TypeDef* _CRC, uint16_t InData)
 {
   __IO uint16_t *pReg;
 
-  pReg = (__IO uint16_t *)(__IO void *)(&CRCx->DR);                             /* Derogation MisraC2012 R.11.5 */
+  pReg = (__IO uint16_t *)(__IO void *)(&_CRC->DR);                             /* Derogation MisraC2012 R.11.5 */
   *pReg = InData;
 }
 
@@ -348,9 +348,9 @@ __STATIC_INLINE void LL_CRC_FeedData16(CRC_TypeDef *CRCx, uint16_t InData)
   * @param  InData 8 bit value to be provided to CRC calculator between between Min_Data=0 and Max_Data=0xFF
   * @retval None
   */
-__STATIC_INLINE void LL_CRC_FeedData8(CRC_TypeDef *CRCx, uint8_t InData)
+__STATIC_INLINE void LL_CRC_FeedData8(CRC_TypeDef* _CRC, uint8_t InData)
 {
-  *(uint8_t __IO *)(&CRCx->DR) = (uint8_t) InData;
+  *(uint8_t __IO *)(&_CRC->DR) = (uint8_t) InData;
 }
 
 /**
@@ -359,9 +359,9 @@ __STATIC_INLINE void LL_CRC_FeedData8(CRC_TypeDef *CRCx, uint8_t InData)
   * @param  CRCx CRC Instance
   * @retval Current CRC calculation result as stored in CRC_DR register (32 bits).
   */
-__STATIC_INLINE uint32_t LL_CRC_ReadData32(CRC_TypeDef *CRCx)
+__STATIC_INLINE uint32_t LL_CRC_ReadData32(CRC_TypeDef* _CRC)
 {
-  return (uint32_t)(READ_REG(CRCx->DR));
+  return (uint32_t)(READ_REG(_CRC->DR));
 }
 
 /**
@@ -371,9 +371,9 @@ __STATIC_INLINE uint32_t LL_CRC_ReadData32(CRC_TypeDef *CRCx)
   * @param  CRCx CRC Instance
   * @retval Current CRC calculation result as stored in CRC_DR register (16 bits).
   */
-__STATIC_INLINE uint16_t LL_CRC_ReadData16(CRC_TypeDef *CRCx)
+__STATIC_INLINE uint16_t LL_CRC_ReadData16(CRC_TypeDef* _CRC)
 {
-  return (uint16_t)READ_REG(CRCx->DR);
+  return (uint16_t)READ_REG(_CRC->DR);
 }
 
 /**
@@ -383,9 +383,9 @@ __STATIC_INLINE uint16_t LL_CRC_ReadData16(CRC_TypeDef *CRCx)
   * @param  CRCx CRC Instance
   * @retval Current CRC calculation result as stored in CRC_DR register (8 bits).
   */
-__STATIC_INLINE uint8_t LL_CRC_ReadData8(CRC_TypeDef *CRCx)
+__STATIC_INLINE uint8_t LL_CRC_ReadData8(CRC_TypeDef* _CRC)
 {
-  return (uint8_t)READ_REG(CRCx->DR);
+  return (uint8_t)READ_REG(_CRC->DR);
 }
 
 /**
@@ -395,9 +395,9 @@ __STATIC_INLINE uint8_t LL_CRC_ReadData8(CRC_TypeDef *CRCx)
   * @param  CRCx CRC Instance
   * @retval Current CRC calculation result as stored in CRC_DR register (7 bits).
   */
-__STATIC_INLINE uint8_t LL_CRC_ReadData7(CRC_TypeDef *CRCx)
+__STATIC_INLINE uint8_t LL_CRC_ReadData7(CRC_TypeDef* _CRC)
 {
-  return (uint8_t)(READ_REG(CRCx->DR) & 0x7FU);
+  return (uint8_t)(READ_REG(_CRC->DR) & 0x7FU);
 }
 
 /**
@@ -407,9 +407,9 @@ __STATIC_INLINE uint8_t LL_CRC_ReadData7(CRC_TypeDef *CRCx)
   * @param  CRCx CRC Instance
   * @retval Value stored in CRC_IDR register (General-purpose 32-bit data register).
   */
-__STATIC_INLINE uint32_t LL_CRC_Read_IDR(CRC_TypeDef *CRCx)
+__STATIC_INLINE uint32_t LL_CRC_Read_IDR(CRC_TypeDef* _CRC)
 {
-  return (uint32_t)(READ_REG(CRCx->IDR));
+  return (uint32_t)(READ_REG(_CRC->IDR));
 }
 
 /**
@@ -420,9 +420,9 @@ __STATIC_INLINE uint32_t LL_CRC_Read_IDR(CRC_TypeDef *CRCx)
   * @param  InData value to be stored in CRC_IDR register (32-bit) between Min_Data=0 and Max_Data=0xFFFFFFFF
   * @retval None
   */
-__STATIC_INLINE void LL_CRC_Write_IDR(CRC_TypeDef *CRCx, uint32_t InData)
+__STATIC_INLINE void LL_CRC_Write_IDR(CRC_TypeDef* _CRC, uint32_t InData)
 {
-  *((uint32_t __IO *)(&CRCx->IDR)) = (uint32_t) InData;
+  *((uint32_t __IO *)(&_CRC->IDR)) = (uint32_t) InData;
 }
 /**
   * @}
@@ -433,7 +433,7 @@ __STATIC_INLINE void LL_CRC_Write_IDR(CRC_TypeDef *CRCx, uint32_t InData)
   * @{
   */
 
-ErrorStatus LL_CRC_DeInit(CRC_TypeDef *CRCx);
+ErrorStatus LL_CRC_DeInit(CRC_TypeDef* _CRC);
 
 /**
   * @}
