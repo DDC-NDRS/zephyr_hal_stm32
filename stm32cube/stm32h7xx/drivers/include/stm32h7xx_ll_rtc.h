@@ -824,14 +824,14 @@ typedef struct
   *         @arg @ref LL_RTC_MONTH_NOVEMBER
   *         @arg @ref LL_RTC_MONTH_DECEMBER
   */
-#define __LL_RTC_GET_MONTH(__RTC_DATE__) (((__RTC_DATE__) >>RTC_OFFSET_MONTH) & 0x000000FFU)
+#define __LL_RTC_GET_MONTH(__RTC_DATE__) (((__RTC_DATE__) >> RTC_OFFSET_MONTH) & 0x000000FFU)
 
 /**
   * @brief  Helper macro to retrieve Day in BCD format
   * @param  __RTC_DATE__ Value returned by @ref  LL_RTC_DATE_Get
   * @retval Day in BCD format (0x01 . . . 0x31)
   */
-#define __LL_RTC_GET_DAY(__RTC_DATE__) (((__RTC_DATE__) >>RTC_OFFSET_DAY) & 0x000000FFU)
+#define __LL_RTC_GET_DAY(__RTC_DATE__) (((__RTC_DATE__) >> RTC_OFFSET_DAY) & 0x000000FFU)
 
 /**
   * @}

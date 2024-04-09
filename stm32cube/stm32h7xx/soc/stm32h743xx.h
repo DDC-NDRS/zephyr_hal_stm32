@@ -2195,11 +2195,12 @@ typedef struct
 #if defined(_MSC_VER) /* #CUSTOM@NDRS */
 #define RCC_BASE              ((uintptr_t)ut_mcu_rcc_ptr)
 #define PWR_BASE              ((uintptr_t)ut_mcu_pwr_ptr)
+#define CRC_BASE              ((uintptr_t)ut_mcu_crc_ptr)
 #else
 #define RCC_BASE              (D3_AHB1PERIPH_BASE + 0x4400UL)
 #define PWR_BASE              (D3_AHB1PERIPH_BASE + 0x4800UL)
-#endif
 #define CRC_BASE              (D3_AHB1PERIPH_BASE + 0x4C00UL)
+#endif
 #define BDMA_BASE             (D3_AHB1PERIPH_BASE + 0x5400UL)
 #define DMAMUX2_BASE          (D3_AHB1PERIPH_BASE + 0x5800UL)
 #define ADC3_BASE             (D3_AHB1PERIPH_BASE + 0x6000UL)
