@@ -2319,7 +2319,11 @@ typedef struct
 #define COMP1_BASE            (COMP12_BASE + 0x0CUL)
 #define COMP2_BASE            (COMP12_BASE + 0x10UL)
 #define VREFBUF_BASE          (D3_APB1PERIPH_BASE + 0x3C00UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define RTC_BASE              ((uintptr_t)ut_mcu_rtc_ptr)
+#else
 #define RTC_BASE              (D3_APB1PERIPH_BASE + 0x4000UL)
+#endif
 #define IWDG1_BASE            (D3_APB1PERIPH_BASE + 0x4800UL)
 
 
