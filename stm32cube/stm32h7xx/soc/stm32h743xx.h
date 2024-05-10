@@ -2419,7 +2419,11 @@ typedef struct
 #define FMC_Bank5_6_R_BASE    (FMC_R_BASE + 0x0140UL)
 
 /* Debug MCU registers base address */
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define DBGMCU_BASE           ((uintptr_t)ut_mcu_dbgmcu_ptr)
+#else
 #define DBGMCU_BASE           (0x5C001000UL)
+#endif
 
 #define MDMA_Channel0_BASE    (MDMA_BASE + 0x00000040UL)
 #define MDMA_Channel1_BASE    (MDMA_BASE + 0x00000080UL)
