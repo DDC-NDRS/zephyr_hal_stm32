@@ -59,7 +59,7 @@
   *          - SUCCESS: CRC registers are de-initialized
   *          - ERROR: CRC registers are not de-initialized
   */
-ErrorStatus LL_CRC_DeInit(CRC_TypeDef *_CRC)
+ErrorStatus LL_CRC_DeInit(const CRC_TypeDef *_CRC)
 {
   ErrorStatus status = SUCCESS;
 
