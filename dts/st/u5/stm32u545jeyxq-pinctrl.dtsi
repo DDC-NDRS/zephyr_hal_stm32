@@ -588,6 +588,12 @@
 				slew-rate = "very-high-speed";
 			};
 
+			/* RCC_MCO */
+
+			/omit-if-no-ref/ rcc_mco_pa8: rcc_mco_pa8 {
+				pinmux = <STM32_PINMUX('A', 8, AF0)>;
+			};
+
 			/* SPI_MISO */
 
 			/omit-if-no-ref/ spi1_miso_pa6: spi1_miso_pa6 {
@@ -1268,11 +1274,11 @@
 			/* USB */
 
 			/omit-if-no-ref/ usb_dm_pa11: usb_dm_pa11 {
-				pinmux = <STM32_PINMUX('A', 11, AF10)>;
+				pinmux = <STM32_PINMUX('A', 11, ANALOG)>;
 			};
 
 			/omit-if-no-ref/ usb_dp_pa12: usb_dp_pa12 {
-				pinmux = <STM32_PINMUX('A', 12, AF10)>;
+				pinmux = <STM32_PINMUX('A', 12, ANALOG)>;
 			};
 
 			/omit-if-no-ref/ usb_noe_pa13: usb_noe_pa13 {
