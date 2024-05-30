@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include <autoconf.h>
+#include <zephyr/autoconf.h>
 
 #if defined(CONFIG_SOC_SERIES_STM32F1X)
 #include <stm32f1xx_ll_fsmc.h>
