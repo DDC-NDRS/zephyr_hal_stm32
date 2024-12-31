@@ -1134,7 +1134,9 @@ void HAL_PCD_IRQHandler(PCD_HandleTypeDef *hpcd)
 #if (USE_HAL_PCD_REGISTER_CALLBACKS == 1U)
     hpcd->SOFCallback(hpcd);
 #else
+#if !defined(_MSC_VER) /* #CUSTOM@NDRS */
     HAL_PCD_SOFCallback(hpcd);
+#endif
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
 
     return;
@@ -1149,7 +1151,7 @@ void HAL_PCD_IRQHandler(PCD_HandleTypeDef *hpcd)
   }
 }
 
-
+#if !defined(_MSC_VER) /* #CUSTOM@NDRS */
 /**
   * @brief  Data OUT stage callback.
   * @param  hpcd PCD handle
@@ -1321,6 +1323,7 @@ __weak void HAL_PCD_DisconnectCallback(PCD_HandleTypeDef *hpcd)
             the HAL_PCD_DisconnectCallback could be implemented in the user file
    */
 }
+#endif
 
 /**
   * @}

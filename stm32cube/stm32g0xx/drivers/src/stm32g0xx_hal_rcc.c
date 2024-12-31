@@ -1412,6 +1412,7 @@ void HAL_RCC_NMI_IRQHandler(void)
   }
 }
 
+#if !defined(_MSC_VER) /* #CUSTOM@NDRS */
 /**
   * @brief Handle the RCC HSE Clock Security System interrupt callback.
   * @retval none
@@ -1422,6 +1423,7 @@ __weak void HAL_RCC_CSSCallback(void)
             the @ref HAL_RCC_CSSCallback should be implemented in the user file
    */
 }
+#endif
 
 /**
   * @brief  RCC LSE Clock Security System interrupt callback.

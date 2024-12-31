@@ -286,7 +286,7 @@ ErrorStatus LL_PLL_ConfigSystemClock_HSI(LL_UTILS_PLLInitTypeDef *UTILS_PLLInitS
   else
   {
     /* Current PLL configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -359,7 +359,7 @@ ErrorStatus LL_PLL_ConfigSystemClock_HSE(uint32_t HSEFrequency, uint32_t HSEBypa
   else
   {
     /* Current PLL configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -383,7 +383,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLKFrequency)
   /* Frequency cannot be equal to 0 or greater than max clock */
   if ((HCLKFrequency == 0U) || (HCLKFrequency > UTILS_SCALE1_LATENCY3_FREQ))
   {
-    status = ERROR;
+    status = ERRORx;
   }
   else
   {
@@ -420,7 +420,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLKFrequency)
 
     if(getlatency != latency)
     {
-      status = ERROR;
+      status = ERRORx;
     }
     else
     {
@@ -489,7 +489,7 @@ static ErrorStatus UTILS_PLL_IsBusy(void)
   if (LL_RCC_PLL_IsReady() != 0U)
   {
     /* PLL configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;

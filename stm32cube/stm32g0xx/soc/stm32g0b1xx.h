@@ -741,6 +741,10 @@ typedef struct
   * @}
   */
 
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#include "mcu_reg_stub.h"
+#endif
+
 /** @addtogroup Peripheral_memory_map
   * @{
   */
@@ -782,7 +786,11 @@ typedef struct
 #define FDCAN1_BASE           (APBPERIPH_BASE + 0x00006400UL)
 #define FDCAN_CONFIG_BASE     (APBPERIPH_BASE + 0x00006500UL)  /*!< FDCAN configuration registers base address */
 #define FDCAN2_BASE           (APBPERIPH_BASE + 0x00006800UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define CRS_BASE              ((uintptr_t)ut_mcu_crs_ptr)
+#else
 #define CRS_BASE              (APBPERIPH_BASE + 0x00006C00UL)
+#endif
 #define PWR_BASE              (APBPERIPH_BASE + 0x00007000UL)
 #define DAC1_BASE             (APBPERIPH_BASE + 0x00007400UL)
 #define DAC_BASE              (APBPERIPH_BASE + 0x00007400UL) /* Kept for legacy purpose */
@@ -820,9 +828,17 @@ typedef struct
 #define DMA1_BASE             (AHBPERIPH_BASE)
 #define DMA2_BASE             (AHBPERIPH_BASE + 0x00000400UL)
 #define DMAMUX1_BASE          (AHBPERIPH_BASE + 0x00000800UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define RCC_BASE              ((uintptr_t)ut_mcu_rcc_ptr)
+#else
 #define RCC_BASE              (AHBPERIPH_BASE + 0x00001000UL)
+#endif
 #define EXTI_BASE             (AHBPERIPH_BASE + 0x00001800UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define FLASH_R_BASE          ((uintptr_t)ut_mcu_flash_r_ptr)
+#else
 #define FLASH_R_BASE          (AHBPERIPH_BASE + 0x00002000UL)
+#endif
 #define CRC_BASE              (AHBPERIPH_BASE + 0x00003000UL)
 
 
@@ -932,7 +948,7 @@ typedef struct
 #define DMA1                ((DMA_TypeDef *) DMA1_BASE)
 #define DMA2                ((DMA_TypeDef *) DMA2_BASE)
 #define FLASH               ((FLASH_TypeDef *) FLASH_R_BASE)
-#define CRC                 ((CRC_TypeDef *) CRC_BASE)
+#define CRCx                ((CRC_TypeDef *) CRC_BASE)
 #define GPIOA               ((GPIO_TypeDef *) GPIOA_BASE)
 #define GPIOB               ((GPIO_TypeDef *) GPIOB_BASE)
 #define GPIOC               ((GPIO_TypeDef *) GPIOC_BASE)

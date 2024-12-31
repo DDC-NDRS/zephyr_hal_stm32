@@ -27,7 +27,6 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32g0xx.h"
-#include "Legacy/stm32_hal_legacy.h"   /* Aliases file for old names compatibility */
 #include <stddef.h>
 
 /* Exported types ------------------------------------------------------------*/
@@ -124,6 +123,9 @@ typedef enum
 #endif /* __packed */
 #endif /* __GNUC__ */
 
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define __weak
+#endif
 
 /* Macro to get variable aligned on 4-bytes, for __ICCARM__ the directive "#pragma data_alignment=4" must be used instead */
 /* GNU Compiler */
