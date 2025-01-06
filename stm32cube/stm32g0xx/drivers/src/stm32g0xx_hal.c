@@ -444,7 +444,7 @@ uint32_t HAL_GetHalVersion(void)
   */
 uint32_t HAL_GetREVID(void)
 {
-  return ((DBG->IDCODE & DBG_IDCODE_REV_ID) >> 16U);
+  return ((DBGx->IDCODE & DBG_IDCODE_REV_ID) >> 16U);
 }
 
 /**
@@ -453,7 +453,7 @@ uint32_t HAL_GetREVID(void)
   */
 uint32_t HAL_GetDEVID(void)
 {
-  return ((DBG->IDCODE) & DBG_IDCODE_DEV_ID);
+  return ((DBGx->IDCODE) & DBG_IDCODE_DEV_ID);
 }
 
 /**
@@ -508,7 +508,7 @@ uint32_t HAL_GetUIDw2(void)
   */
 void HAL_DBGMCU_EnableDBGStopMode(void)
 {
-  SET_BIT(DBG->CR, DBG_CR_DBG_STOP);
+  SET_BIT(DBGx->CR, DBG_CR_DBG_STOP);
 }
 
 /**
@@ -517,7 +517,7 @@ void HAL_DBGMCU_EnableDBGStopMode(void)
   */
 void HAL_DBGMCU_DisableDBGStopMode(void)
 {
-  CLEAR_BIT(DBG->CR, DBG_CR_DBG_STOP);
+  CLEAR_BIT(DBGx->CR, DBG_CR_DBG_STOP);
 }
 
 /**
@@ -526,7 +526,7 @@ void HAL_DBGMCU_DisableDBGStopMode(void)
   */
 void HAL_DBGMCU_EnableDBGStandbyMode(void)
 {
-  SET_BIT(DBG->CR, DBG_CR_DBG_STANDBY);
+  SET_BIT(DBGx->CR, DBG_CR_DBG_STANDBY);
 }
 
 /**
@@ -535,7 +535,7 @@ void HAL_DBGMCU_EnableDBGStandbyMode(void)
   */
 void HAL_DBGMCU_DisableDBGStandbyMode(void)
 {
-  CLEAR_BIT(DBG->CR, DBG_CR_DBG_STANDBY);
+  CLEAR_BIT(DBGx->CR, DBG_CR_DBG_STANDBY);
 }
 
 /**

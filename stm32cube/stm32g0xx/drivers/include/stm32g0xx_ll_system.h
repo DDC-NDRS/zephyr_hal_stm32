@@ -1672,7 +1672,7 @@ __STATIC_INLINE uint32_t LL_SYSCFG_IsEnabledClampingDiode(uint32_t ConfigClampin
   */
 __STATIC_INLINE uint32_t LL_DBGMCU_GetDeviceID(void)
 {
-  return (uint32_t)(READ_BIT(DBG->IDCODE, DBG_IDCODE_DEV_ID));
+  return (uint32_t)(READ_BIT(DBGx->IDCODE, DBG_IDCODE_DEV_ID));
 }
 
 /**
@@ -1683,7 +1683,7 @@ __STATIC_INLINE uint32_t LL_DBGMCU_GetDeviceID(void)
   */
 __STATIC_INLINE uint32_t LL_DBGMCU_GetRevisionID(void)
 {
-  return (uint32_t)(READ_BIT(DBG->IDCODE, DBG_IDCODE_REV_ID) >> DBG_IDCODE_REV_ID_Pos);
+  return (uint32_t)(READ_BIT(DBGx->IDCODE, DBG_IDCODE_REV_ID) >> DBG_IDCODE_REV_ID_Pos);
 }
 
 /**
@@ -1693,7 +1693,7 @@ __STATIC_INLINE uint32_t LL_DBGMCU_GetRevisionID(void)
   */
 __STATIC_INLINE void LL_DBGMCU_EnableDBGStopMode(void)
 {
-  SET_BIT(DBG->CR, DBG_CR_DBG_STOP);
+  SET_BIT(DBGx->CR, DBG_CR_DBG_STOP);
 }
 
 /**
@@ -1703,7 +1703,7 @@ __STATIC_INLINE void LL_DBGMCU_EnableDBGStopMode(void)
   */
 __STATIC_INLINE void LL_DBGMCU_DisableDBGStopMode(void)
 {
-  CLEAR_BIT(DBG->CR, DBG_CR_DBG_STOP);
+  CLEAR_BIT(DBGx->CR, DBG_CR_DBG_STOP);
 }
 
 /**
@@ -1713,7 +1713,7 @@ __STATIC_INLINE void LL_DBGMCU_DisableDBGStopMode(void)
   */
 __STATIC_INLINE void LL_DBGMCU_EnableDBGStandbyMode(void)
 {
-  SET_BIT(DBG->CR, DBG_CR_DBG_STANDBY);
+  SET_BIT(DBGx->CR, DBG_CR_DBG_STANDBY);
 }
 
 /**
@@ -1723,7 +1723,7 @@ __STATIC_INLINE void LL_DBGMCU_EnableDBGStandbyMode(void)
   */
 __STATIC_INLINE void LL_DBGMCU_DisableDBGStandbyMode(void)
 {
-  CLEAR_BIT(DBG->CR, DBG_CR_DBG_STANDBY);
+  CLEAR_BIT(DBGx->CR, DBG_CR_DBG_STANDBY);
 }
 
 /**
@@ -1759,7 +1759,7 @@ __STATIC_INLINE void LL_DBGMCU_DisableDBGStandbyMode(void)
   */
 __STATIC_INLINE void LL_DBGMCU_APB1_GRP1_FreezePeriph(uint32_t Periphs)
 {
-  SET_BIT(DBG->APBFZ1, Periphs);
+  SET_BIT(DBGx->APBFZ1, Periphs);
 }
 
 /**
@@ -1795,7 +1795,7 @@ __STATIC_INLINE void LL_DBGMCU_APB1_GRP1_FreezePeriph(uint32_t Periphs)
   */
 __STATIC_INLINE void LL_DBGMCU_APB1_GRP1_UnFreezePeriph(uint32_t Periphs)
 {
-  CLEAR_BIT(DBG->APBFZ1, Periphs);
+  CLEAR_BIT(DBGx->APBFZ1, Periphs);
 }
 
 /**
@@ -1817,7 +1817,7 @@ __STATIC_INLINE void LL_DBGMCU_APB1_GRP1_UnFreezePeriph(uint32_t Periphs)
   */
 __STATIC_INLINE void LL_DBGMCU_APB2_GRP1_FreezePeriph(uint32_t Periphs)
 {
-  SET_BIT(DBG->APBFZ2, Periphs);
+  SET_BIT(DBGx->APBFZ2, Periphs);
 }
 
 /**
@@ -1839,7 +1839,7 @@ __STATIC_INLINE void LL_DBGMCU_APB2_GRP1_FreezePeriph(uint32_t Periphs)
   */
 __STATIC_INLINE void LL_DBGMCU_APB2_GRP1_UnFreezePeriph(uint32_t Periphs)
 {
-  CLEAR_BIT(DBG->APBFZ2, Periphs);
+  CLEAR_BIT(DBGx->APBFZ2, Periphs);
 }
 /**
   * @}

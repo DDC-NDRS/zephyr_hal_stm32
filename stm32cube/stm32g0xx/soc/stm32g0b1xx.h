@@ -784,7 +784,11 @@ typedef struct
 #define I2C2_BASE             (APBPERIPH_BASE + 0x00005800UL)
 #define USB_BASE              (APBPERIPH_BASE + 0x00005C00UL)  /*!< USB_IP Peripheral Registers base address */
 #define FDCAN1_BASE           (APBPERIPH_BASE + 0x00006400UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define FDCAN_CONFIG_BASE     ((uintptr_t)ut_mcu_fdcan_cfg_ptr)
+#else
 #define FDCAN_CONFIG_BASE     (APBPERIPH_BASE + 0x00006500UL)  /*!< FDCAN configuration registers base address */
+#endif
 #define FDCAN2_BASE           (APBPERIPH_BASE + 0x00006800UL)
 #if defined(_MSC_VER) /* #CUSTOM@NDRS */
 #define CRS_BASE              ((uintptr_t)ut_mcu_crs_ptr)
@@ -997,7 +1001,7 @@ typedef struct
 #define DMAMUX1_ChannelStatus      ((DMAMUX_ChannelStatus_TypeDef *) DMAMUX1_ChannelStatus_BASE)
 #define DMAMUX1_RequestGenStatus   ((DMAMUX_RequestGenStatus_TypeDef *) DMAMUX1_RequestGenStatus_BASE)
 
-#define DBG              ((DBG_TypeDef *) DBG_BASE)
+#define DBGx             ((DBG_TypeDef *) DBG_BASE)
 
 /**
   * @}
