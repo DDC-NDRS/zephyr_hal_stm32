@@ -1382,8 +1382,9 @@ HAL_StatusTypeDef HAL_PCD_EP_Receive(PCD_HandleTypeDef* hpcd, uint8_t ep_addr, u
     ep->xfer_len   = len;
     ep->xfer_count = 0U;
     ep->is_in      = 0U;
-    ep->num        = ep_addr & EP_ADDR_MSK;
-    (void)USB_EPStartXfer(hpcd->Instance, ep);
+    ep->num        = (ep_addr & EP_ADDR_MSK);
+
+    (void) USB_EPStartXfer(hpcd->Instance, ep);
 
     return HAL_OK;
 }
