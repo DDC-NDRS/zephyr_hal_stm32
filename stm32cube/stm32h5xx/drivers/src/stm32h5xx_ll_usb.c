@@ -780,10 +780,10 @@ HAL_StatusTypeDef USB_DeActivateRemoteWakeup(USB_DRD_TypeDef* USBx) {
  */
 void USB_WritePMA(USB_DRD_TypeDef const* USBx, uint8_t* pbUsrBuf, uint16_t wPMABufAddr, uint16_t wNBytes) {
     UNUSED(USBx);
-    uint32_t       WrVal;
-    uint32_t       count;
+    uint32_t WrVal;
+    uint32_t count;
     __IO uint32_t* pdwVal;
-    uint32_t       NbWords = ((uint32_t)wNBytes + 3U) >> 2U;
+    uint32_t NbWords = ((uint32_t)wNBytes + 3U) >> 2U;
     /* Due to the PMA access 32bit only so the last non word data should be processed alone */
     uint16_t remaining_bytes = wNBytes % 4U;
     uint8_t* pBuf            = pbUsrBuf;
@@ -832,7 +832,6 @@ void USB_WritePMA(USB_DRD_TypeDef const* USBx, uint8_t* pbUsrBuf, uint16_t wPMAB
  * @retval None
  */
 void USB_ReadPMA(USB_DRD_TypeDef const* USBx, uint8_t* pbUsrBuf, uint16_t wPMABufAddr, uint16_t wNBytes) {
-    UNUSED(USBx);
     uint32_t count;
     uint32_t RdVal;
     __IO uint32_t* pdwVal;
@@ -840,6 +839,8 @@ void USB_ReadPMA(USB_DRD_TypeDef const* USBx, uint8_t* pbUsrBuf, uint16_t wPMABu
     /*Due to the PMA access 32bit only so the last non word data should be processed alone */
     uint16_t remaining_bytes = wNBytes % 4U;
     uint8_t* pBuf = pbUsrBuf;
+
+    UNUSED(USBx);
 
     /* Get the PMA Buffer pointer */
     pdwVal = (__IO uint32_t*)(USB_DRD_PMAADDR + (uint32_t)wPMABufAddr);
