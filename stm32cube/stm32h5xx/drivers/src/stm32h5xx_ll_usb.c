@@ -39,7 +39,6 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32h562xx.h"
 #include "stm32h5xx_hal.h"
 
 /** @addtogroup STM32H5xx_LL_USB_DRIVER

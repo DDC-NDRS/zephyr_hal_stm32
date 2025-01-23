@@ -430,7 +430,7 @@ ErrorStatus LL_PLL_ConfigSystemClock_CSI(LL_UTILS_PLLInitTypeDef *UTILS_PLLInitS
   else
   {
     /* Current PLL configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -523,7 +523,7 @@ ErrorStatus LL_PLL_ConfigSystemClock_HSI(LL_UTILS_PLLInitTypeDef *UTILS_PLLInitS
   else
   {
     /* Current PLL configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -634,7 +634,7 @@ ErrorStatus LL_PLL_ConfigSystemClock_HSE(uint32_t HSEFrequency, uint32_t HSEBypa
   else
   {
     /* Current PLL configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;
@@ -666,7 +666,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
   /* Frequency cannot be equal to 0 */
   if (HCLK_Frequency == 0U)
   {
-    status = ERROR;
+    status = ERRORx;
   }
   else
   {
@@ -703,7 +703,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
       }
       else
       {
-        status = ERROR;
+        status = ERRORx;
       }
     }
     else if (LL_PWR_GetRegulVoltageScaling() == LL_PWR_REGU_VOLTAGE_SCALE1)
@@ -739,7 +739,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
       }
       else
       {
-        status = ERROR;
+        status = ERRORx;
       }
     }
     else if (LL_PWR_GetRegulVoltageScaling() == LL_PWR_REGU_VOLTAGE_SCALE2)
@@ -770,7 +770,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
       }
       else
       {
-        status = ERROR;
+        status = ERRORx;
       }
     }
     else /* Voltage Scale 3 */
@@ -801,7 +801,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
       }
       else
       {
-        status = ERROR;
+        status = ERRORx;
       }
     }
   }
@@ -822,7 +822,7 @@ ErrorStatus LL_SetFlashLatency(uint32_t HCLK_Frequency)
 
     if (getlatency != latency)
     {
-      status = ERROR;
+      status = ERRORx;
     }
   }
   return status;
@@ -879,7 +879,7 @@ static ErrorStatus UTILS_PLL_IsBusy(void)
   if (LL_RCC_PLL1_IsReady() != 0U)
   {
     /* PLL configuration cannot be modified */
-    status = ERROR;
+    status = ERRORx;
   }
 
   return status;

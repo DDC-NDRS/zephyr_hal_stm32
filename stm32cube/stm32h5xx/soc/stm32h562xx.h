@@ -198,16 +198,16 @@ typedef enum
 /* =========================================================================================================================== */
 
 /* -------  Start of section using anonymous unions and disabling warnings  ------- */
-#if   defined (__CC_ARM)
+#if defined(__CC_ARM)
   #pragma push
   #pragma anon_unions
-#elif defined (__ICCARM__)
+#elif defined(__ICCARM__)
   #pragma language=extended
 #elif defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wc11-extensions"
   #pragma clang diagnostic ignored "-Wreserved-id-macro"
-#elif defined (__GNUC__)
+#elif defined(__GNUC__) || defined(_MSC_VER) /* #CUSTOM@NDRS */
   /* anonymous unions are enabled by default */
 #elif defined (__TMS470__)
   /* anonymous unions are enabled by default */
@@ -838,7 +838,7 @@ typedef struct
   uint32_t RESERVED11[3];    /*!< Reserved,                                            Address offset: 0x114-0x11C */
   __IO uint32_t ABR;         /*!< OCTOSPI Alternate Bytes register,                    Address offset: 0x120 */
   uint32_t RESERVED12[3];    /*!< Reserved,                                            Address offset: 0x124-0x12C */
-  __IO uint32_t LPTR;        /*!< OCTOSPI Low Power Timeout register,                  Address offset: 0x130 */
+  __IO uint32_t LPTRx;       /*!< OCTOSPI Low Power Timeout register,                  Address offset: 0x130 */
   uint32_t RESERVED13[3];    /*!< Reserved,                                            Address offset: 0x134-0x13C */
   __IO uint32_t WPCCR;       /*!< OCTOSPI Wrap Communication Configuration register,   Address offset: 0x140 */
   uint32_t RESERVED14;       /*!< Reserved,                                            Address offset: 0x144 */
@@ -1538,7 +1538,7 @@ typedef struct
   /* leave anonymous unions enabled */
 #elif defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
   #pragma clang diagnostic pop
-#elif defined (__GNUC__)
+#elif defined (__GNUC__) || defined(_MSC_VER) /* #CUSTOM@NDRS */
   /* anonymous unions are enabled by default */
 #elif defined (__TMS470__)
   /* anonymous unions are enabled by default */
@@ -1554,7 +1554,9 @@ typedef struct
 /* =========================================================================================================================== */
 /* ================                          Device Specific Peripheral Address Map                           ================ */
 /* =========================================================================================================================== */
-
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#include "mcu_reg_stub.h"
+#endif
 
 /** @addtogroup STM32H5xx_Peripheral_peripheralAddr
   * @{
@@ -1655,8 +1657,13 @@ typedef struct
 /*!< AHB1 Non secure peripherals */
 #define GPDMA1_BASE_NS           AHB1PERIPH_BASE_NS
 #define GPDMA2_BASE_NS           (AHB1PERIPH_BASE_NS + 0x01000UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define FLASH_R_BASE_NS          ((uintptr_t)ut_mcu_flash_r_ptr)
+#define CRC_BASE_NS              ((uintptr_t)ut_mcu_crc_ptr)
+#else
 #define FLASH_R_BASE_NS          (AHB1PERIPH_BASE_NS + 0x02000UL)
 #define CRC_BASE_NS              (AHB1PERIPH_BASE_NS + 0x03000UL)
+#endif
 #define CORDIC_BASE_NS           (AHB1PERIPH_BASE_NS + 0x03800UL)
 #define FMAC_BASE_NS             (AHB1PERIPH_BASE_NS + 0x03C00UL)
 #define RAMCFG_BASE_NS           (AHB1PERIPH_BASE_NS + 0x06000UL)
@@ -1729,8 +1736,13 @@ typedef struct
 #define TAMP_BASE_NS             (APB3PERIPH_BASE_NS + 0x7C00UL)
 
 /*!< AHB3 Non secure peripherals */
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define PWR_BASE_NS              ((uintptr_t)ut_mcu_pwr_ptr)
+#define RCC_BASE_NS              ((uintptr_t)ut_mcu_rcc_ptr)
+#else
 #define PWR_BASE_NS              (AHB3PERIPH_BASE_NS + 0x0800UL)
 #define RCC_BASE_NS              (AHB3PERIPH_BASE_NS + 0x0C00UL)
+#endif
 #define EXTI_BASE_NS             (AHB3PERIPH_BASE_NS + 0x2000UL)
 #define DEBUG_BASE_NS            (AHB3PERIPH_BASE_NS + 0x4000UL)
 
@@ -2781,7 +2793,8 @@ typedef struct
 #define USB_DRD_PMAADDR                USB_DRD_PMAADDR_S
 #define USB_DRD_PMA_BUFF               USB_DRD_PMA_BUFF_S
 
-#define CRC                            CRC_S
+/* #CUSTOM@NDRS */
+#define CRCx                           CRC_S
 #define CRC_BASE                       CRC_BASE_S
 
 #define ADC1                           ADC1_S
@@ -3190,7 +3203,8 @@ typedef struct
 #define USB_DRD_PMAADDR                USB_DRD_PMAADDR_NS
 #define USB_DRD_PMA_BUFF               USB_DRD_PMA_BUFF_NS
 
-#define CRC                            CRC_NS
+/* #CUSTOM@NDRS */
+#define CRCx                           CRC_NS
 #define CRC_BASE                       CRC_BASE_NS
 
 #define ADC1                           ADC1_NS
