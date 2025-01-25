@@ -417,7 +417,7 @@ uint32_t SDMMC_GetResponse(const SDMMC_TypeDef *SDMMCx, uint32_t Response)
   *         that contains the configuration information for the SDMMC data.
   * @retval HAL status
   */
-HAL_StatusTypeDef SDMMC_ConfigData(SDMMC_TypeDef *SDMMCx, const SDMMC_DataInitTypeDef *Data)
+HAL_StatusTypeDef /**/SDMMC_ConfigData(SDMMC_TypeDef *SDMMCx, const SDMMC_DataInitTypeDef *Data)
 {
   uint32_t tmpreg = 0;
 

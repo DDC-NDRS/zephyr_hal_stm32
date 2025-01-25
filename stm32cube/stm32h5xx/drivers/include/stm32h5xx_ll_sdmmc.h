@@ -958,7 +958,7 @@ typedef struct
   *            @arg SDMMC_FLAG_IDMABTC:    IDMA buffer transfer complete
   * @retval The new state of SDMMC_FLAG (SET or RESET).
   */
-#define __SDMMC_GET_FLAG(__INSTANCE__, __FLAG__)  (((__INSTANCE__)->STA &(__FLAG__)) != 0U)
+#define /**/__SDMMC_GET_FLAG(__INSTANCE__, __FLAG__)  (((__INSTANCE__)->STA & (__FLAG__)) != 0U)
 
 
 /**
@@ -988,7 +988,7 @@ typedef struct
   *            @arg SDMMC_FLAG_IDMABTC:    IDMA buffer transfer complete
   * @retval None
   */
-#define __SDMMC_CLEAR_FLAG(__INSTANCE__, __FLAG__)  ((__INSTANCE__)->ICR = (__FLAG__))
+#define /**/__SDMMC_CLEAR_FLAG(__INSTANCE__, __FLAG__)  ((__INSTANCE__)->ICR = (__FLAG__))
 
 /**
   * @brief  Checks whether the specified SDMMC interrupt has occurred or not.
@@ -1143,7 +1143,7 @@ typedef struct
   * @param  __INSTANCE__ Pointer to SDMMC register base
   * @retval None
   */
-#define __SDMMC_CMDTRANS_ENABLE(__INSTANCE__)  ((__INSTANCE__)->CMD |= SDMMC_CMD_CMDTRANS)
+#define /**/__SDMMC_CMDTRANS_ENABLE(__INSTANCE__)  ((__INSTANCE__)->CMD |= SDMMC_CMD_CMDTRANS)
 
 /**
   * @brief  Disable the CMDTRANS mode.
