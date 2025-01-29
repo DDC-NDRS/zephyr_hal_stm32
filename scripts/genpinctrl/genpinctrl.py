@@ -66,6 +66,7 @@ PINCTRL_ADDRESSES = {
     "stm32l4": 0x48000000,
     "stm32l5": 0x42020000,
     "stm32mp1": 0x50002000,
+    "stm32n6": 0x56020000,
     "stm32u0": 0x50000000,
     "stm32u5": 0x42020000,
     "stm32wba": 0x42020000,
@@ -695,13 +696,18 @@ def main(data_path, output):
                 )
 
             # write pinctrl file
-            ref_file = family_dir / (ref["name"].lower() + "-pinctrl.dtsi")
-            with open(ref_file, "w") as f:
-                f.write(
-                    pinctrl_template.render(
-                        family=family, pinctrl_addr=pinctrl_addr, entries=entries
-                    )
+            pinctrl_filename = f"{ref['name'].lower()}-pinctrl.dtsi"
+            rendered = ""
+            try:
+                rendered = pinctrl_template.render(
+                    family=family, pinctrl_addr=pinctrl_addr, entries=entries
                 )
+            except Exception:
+                logger.error(f"Skipping '{pinctrl_filename}' (rendering failed)")
+                continue
+
+            with open(family_dir / pinctrl_filename, "w") as f:
+                f.write(rendered)
 
     # write readme file
     try:
