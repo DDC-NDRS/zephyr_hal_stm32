@@ -258,11 +258,6 @@ typedef struct
        uint32_t RESERVED2;      /*!< Reserved,                                                    0x0C */
   __IO uint32_t INIT;           /*!< Initial CRC value register,                  Address offset: 0x10 */
   __IO uint32_t POL;            /*!< CRC polynomial register,                     Address offset: 0x14 */
-       uint32_t RESERVED3[246]; /*!< Reserved,                                                         */
-  __IO uint32_t HWCFGR;         /*!< CRC IP HWCFGR register,                     Address offset: 0x3F0 */
-  __IO uint32_t VERR;           /*!< CRC IP version register,                    Address offset: 0x3F4 */
-  __IO uint32_t PIDR;           /*!< CRC IP type identification register,        Address offset: 0x3F8 */
-  __IO uint32_t SIDR;           /*!< CRC IP map Size ID register,                Address offset: 0x3FC */
 } CRC_TypeDef;
 
 /**
@@ -860,6 +855,8 @@ typedef struct
 } XSPI_TypeDef;
 
 typedef  XSPI_TypeDef OCTOSPI_TypeDef;
+
+
 
 /**
   * @brief Power Control
@@ -4059,7 +4056,7 @@ typedef struct
 #define ADC_AWD3CR_AWD3CH_16           (0x10000UL << ADC_AWD3CR_AWD3CH_Pos)    /*!< 0x00010000 */
 #define ADC_AWD3CR_AWD3CH_17           (0x20000UL << ADC_AWD3CR_AWD3CH_Pos)    /*!< 0x00020000 */
 #define ADC_AWD3CR_AWD3CH_18           (0x40000UL << ADC_AWD3CR_AWD3CH_Pos)    /*!< 0x00040000 */
-#define ADC_AWD3CR_AWD2CH_19           (0x80000UL << ADC_AWD3CR_AWD2CH_Pos)    /*!< 0x00080000 */
+#define ADC_AWD3CR_AWD3CH_19           (0x80000UL << ADC_AWD3CR_AWD3CH_Pos)    /*!< 0x00080000 */
 
 /********************  Bit definition for ADC_DIFSEL register  ****************/
 #define ADC_DIFSEL_DIFSEL_Pos          (0U)
@@ -4247,7 +4244,6 @@ typedef struct
 #define ADC_CDR_RDATA_SLV_Pos          (16U)
 #define ADC_CDR_RDATA_SLV_Msk          (0xFFFFUL << ADC_CDR_RDATA_SLV_Pos)     /*!< 0xFFFF0000 */
 #define ADC_CDR_RDATA_SLV              ADC_CDR_RDATA_SLV_Msk                   /*!< ADC multimode slave group regular conversion data */
-
 
 /******************************************************************************/
 /*                                                                            */
@@ -8741,6 +8737,7 @@ typedef struct
 #define FMC_SDSR_MODES2_0          (0x1UL << FMC_SDSR_MODES2_Pos)               /*!< 0x00000008 */
 #define FMC_SDSR_MODES2_1          (0x2UL << FMC_SDSR_MODES2_Pos)               /*!< 0x00000010 */
 
+
 /******************************************************************************/
 /*                                                                            */
 /*                       General Purpose IOs (GPIO)                           */
@@ -9494,7 +9491,7 @@ typedef struct
 #define GPIO_HSLVR_HSLV10_Msk               (0x1UL << GPIO_HSLVR_HSLV10_Pos)        /*!< 0x00000400 */
 #define GPIO_HSLVR_HSLV10                   GPIO_HSLVR_HSLV10_Msk
 #define GPIO_HSLVR_HSLV11_Pos               (11U)
-#define GPIO_HSLVR_HSLV11_Msk               (x1UL << GPIO_HSLVR_HSLV11_Pos)         /*!< 0x00000800 */
+#define GPIO_HSLVR_HSLV11_Msk               (0x1UL << GPIO_HSLVR_HSLV11_Pos)        /*!< 0x00000800 */
 #define GPIO_HSLVR_HSLV11                   GPIO_HSLVR_HSLV11_Msk
 #define GPIO_HSLVR_HSLV12_Pos               (12U)
 #define GPIO_HSLVR_HSLV12_Msk               (0x1UL << GPIO_HSLVR_HSLV12_Pos)        /*!< 0x00001000 */
@@ -9544,7 +9541,7 @@ typedef struct
 #define GPIO_SECCFGR_SEC10_Msk              (0x1UL << GPIO_SECCFGR_SEC10_Pos)       /*!< 0x00000400 */
 #define GPIO_SECCFGR_SEC10                  GPIO_SECCFGR_SEC10_Msk
 #define GPIO_SECCFGR_SEC11_Pos              (11U)
-#define GPIO_SECCFGR_SEC11_Msk              (x1UL << GPIO_SECCFGR_SEC11_Pos)        /*!< 0x00000800 */
+#define GPIO_SECCFGR_SEC11_Msk              (0x1UL << GPIO_SECCFGR_SEC11_Pos)       /*!< 0x00000800 */
 #define GPIO_SECCFGR_SEC11                  GPIO_SECCFGR_SEC11_Msk
 #define GPIO_SECCFGR_SEC12_Pos              (12U)
 #define GPIO_SECCFGR_SEC12_Msk              (0x1UL << GPIO_SECCFGR_SEC12_Pos)       /*!< 0x00001000 */
@@ -14327,6 +14324,9 @@ typedef struct
 #define RCC_AHB2LPENR_RNGLPEN_Pos           (18U)
 #define RCC_AHB2LPENR_RNGLPEN_Msk           (0x1UL << RCC_AHB2LPENR_RNGLPEN_Pos)    /*!< 0x00040000 */
 #define RCC_AHB2LPENR_RNGLPEN               RCC_AHB2LPENR_RNGLPEN_Msk
+#define RCC_AHB2LPENR_PKALPEN_Pos           (19U)
+#define RCC_AHB2LPENR_PKALPEN_Msk           (0x1UL << RCC_AHB2LPENR_PKALPEN_Pos)    /*!< 0x00080000 */
+#define RCC_AHB2LPENR_PKALPEN               RCC_AHB2LPENR_PKALPEN_Msk
 #define RCC_AHB2LPENR_SRAM2LPEN_Pos         (30U)
 #define RCC_AHB2LPENR_SRAM2LPEN_Msk         (0x1UL << RCC_AHB2LPENR_SRAM2LPEN_Pos)  /*!< 0x40000000 */
 #define RCC_AHB2LPENR_SRAM2LPEN             RCC_AHB2LPENR_SRAM2LPEN_Msk
@@ -17198,6 +17198,8 @@ typedef struct
 #define GTZC_CFGR3_HASH_Msk                 (0x01UL << GTZC_CFGR3_HASH_Pos)
 #define GTZC_CFGR3_RNG_Pos                  (18U)
 #define GTZC_CFGR3_RNG_Msk                  (0x01UL << GTZC_CFGR3_RNG_Pos)
+#define GTZC_CFGR3_PKA_Pos                  (20U)
+#define GTZC_CFGR3_PKA_Msk                  (0x01UL << GTZC_CFGR3_PKA_Pos)
 #define GTZC_CFGR3_SDMMC1_Pos               (21U)
 #define GTZC_CFGR3_SDMMC1_Msk               (0x01UL << GTZC_CFGR3_SDMMC1_Pos)
 #define GTZC_CFGR3_FMC_REG_Pos              (23U)
@@ -17387,6 +17389,8 @@ typedef struct
 #define GTZC_TZSC1_SECCFGR3_HASH_Msk            GTZC_CFGR3_HASH_Msk
 #define GTZC_TZSC1_SECCFGR3_RNG_Pos             GTZC_CFGR3_RNG_Pos
 #define GTZC_TZSC1_SECCFGR3_RNG_Msk             GTZC_CFGR3_RNG_Msk
+#define GTZC_TZSC1_SECCFGR3_PKA_Pos             GTZC_CFGR3_PKA_Pos
+#define GTZC_TZSC1_SECCFGR3_PKA_Msk             GTZC_CFGR3_PKA_Msk
 #define GTZC_TZSC1_SECCFGR3_SDMMC1_Pos          GTZC_CFGR3_SDMMC1_Pos
 #define GTZC_TZSC1_SECCFGR3_SDMMC1_Msk          GTZC_CFGR3_SDMMC1_Msk
 #define GTZC_TZSC1_SECCFGR3_FMC_REG_Pos         GTZC_CFGR3_FMC_REG_Pos
@@ -17532,6 +17536,8 @@ typedef struct
 #define GTZC_TZSC1_PRIVCFGR3_HASH_Msk           GTZC_CFGR3_HASH_Msk
 #define GTZC_TZSC1_PRIVCFGR3_RNG_Pos            GTZC_CFGR3_RNG_Pos
 #define GTZC_TZSC1_PRIVCFGR3_RNG_Msk            GTZC_CFGR3_RNG_Msk
+#define GTZC_TZSC1_PRIVCFGR3_PKA_Pos            GTZC_CFGR3_PKA_Pos
+#define GTZC_TZSC1_PRIVCFGR3_PKA_Msk            GTZC_CFGR3_PKA_Msk
 #define GTZC_TZSC1_PRIVCFGR3_SDMMC1_Pos         GTZC_CFGR3_SDMMC1_Pos
 #define GTZC_TZSC1_PRIVCFGR3_SDMMC1_Msk         GTZC_CFGR3_SDMMC1_Msk
 #define GTZC_TZSC1_PRIVCFGR3_FMC_REG_Pos        GTZC_CFGR3_FMC_REG_Pos
@@ -17676,6 +17682,8 @@ typedef struct
 #define GTZC_TZIC1_IER3_HASH_Msk            GTZC_CFGR3_HASH_Msk
 #define GTZC_TZIC1_IER3_RNG_Pos             GTZC_CFGR3_RNG_Pos
 #define GTZC_TZIC1_IER3_RNG_Msk             GTZC_CFGR3_RNG_Msk
+#define GTZC_TZIC1_IER3_PKA_Pos             GTZC_CFGR3_PKA_Pos
+#define GTZC_TZIC1_IER3_PKA_Msk             GTZC_CFGR3_PKA_Msk
 #define GTZC_TZIC1_IER3_SDMMC1_Pos          GTZC_CFGR3_SDMMC1_Pos
 #define GTZC_TZIC1_IER3_SDMMC1_Msk          GTZC_CFGR3_SDMMC1_Msk
 #define GTZC_TZIC1_IER3_FMC_REG_Pos         GTZC_CFGR3_FMC_REG_Pos
@@ -17864,6 +17872,8 @@ typedef struct
 #define GTZC_TZIC1_SR3_HASH_Msk             GTZC_CFGR3_HASH_Msk
 #define GTZC_TZIC1_SR3_RNG_Pos              GTZC_CFGR3_RNG_Pos
 #define GTZC_TZIC1_SR3_RNG_Msk              GTZC_CFGR3_RNG_Msk
+#define GTZC_TZIC1_SR3_PKA_Pos              GTZC_CFGR3_PKA_Pos
+#define GTZC_TZIC1_SR3_PKA_Msk              GTZC_CFGR3_PKA_Msk
 #define GTZC_TZIC1_SR3_SDMMC1_Pos           GTZC_CFGR3_SDMMC1_Pos
 #define GTZC_TZIC1_SR3_SDMMC1_Msk           GTZC_CFGR3_SDMMC1_Msk
 #define GTZC_TZIC1_SR3_FMC_REG_Pos          GTZC_CFGR3_FMC_REG_Pos
@@ -18052,6 +18062,8 @@ typedef struct
 #define GTZC_TZIC1_FCR3_HASH_Msk            GTZC_CFGR3_HASH_Msk
 #define GTZC_TZIC1_FCR3_RNG_Pos             GTZC_CFGR3_RNG_Pos
 #define GTZC_TZIC1_FCR3_RNG_Msk             GTZC_CFGR3_RNG_Msk
+#define GTZC_TZIC1_FCR3_PKA_Pos             GTZC_CFGR3_PKA_Pos
+#define GTZC_TZIC1_FCR3_PKA_Msk             GTZC_CFGR3_PKA_Msk
 #define GTZC_TZIC1_FCR3_SDMMC1_Pos          GTZC_CFGR3_SDMMC1_Pos
 #define GTZC_TZIC1_FCR3_SDMMC1_Msk          GTZC_CFGR3_SDMMC1_Msk
 #define GTZC_TZIC1_FCR3_FMC_REG_Pos         GTZC_CFGR3_FMC_REG_Pos
@@ -21103,6 +21115,7 @@ typedef struct
 /******************************* CORDIC Instances *****************************/
 #define IS_CORDIC_ALL_INSTANCE(INSTANCE) (((INSTANCE) == CORDIC_NS) || ((INSTANCE) == CORDIC_S))
 
+
 /******************************* CRC Instances ********************************/
 #define IS_CRC_ALL_INSTANCE(INSTANCE) (((INSTANCE) == CRC_NS) || ((INSTANCE) == CRC_S))
 
@@ -21869,7 +21882,6 @@ typedef struct
 
 /******************************* USB DRD FS PCD Instances *************************/
 #define IS_PCD_ALL_INSTANCE(INSTANCE) (((INSTANCE) == USB_DRD_FS_NS) || ((INSTANCE) == USB_DRD_FS_S))
-
 /** @} */ /* End of group STM32H5xx_Peripheral_Exported_macros */
 
 /** @} */ /* End of group STM32H562xx */

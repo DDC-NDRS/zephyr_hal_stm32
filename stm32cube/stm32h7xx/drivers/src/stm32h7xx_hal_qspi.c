@@ -389,7 +389,7 @@ HAL_StatusTypeDef HAL_QSPI_Init(QSPI_HandleTypeDef *hqspi)
   }
 
   /* Return function status */
-  return (status);
+  return status;
 }
 
 /**
@@ -860,7 +860,7 @@ HAL_StatusTypeDef HAL_QSPI_Command(QSPI_HandleTypeDef *hqspi, QSPI_CommandTypeDe
   __HAL_UNLOCK(hqspi);
 
   /* Return function status */
-  return (status);
+  return status;
 }
 
 /**
@@ -904,7 +904,7 @@ HAL_StatusTypeDef HAL_QSPI_Command_IT(QSPI_HandleTypeDef *hqspi, QSPI_CommandTyp
   /* Process locked */
   __HAL_LOCK(hqspi);
 
-  if (hqspi->State == HAL_QSPI_STATE_READY)
+  if(hqspi->State == HAL_QSPI_STATE_READY)
   {
     hqspi->ErrorCode = HAL_QSPI_ERROR_NONE;
 
@@ -959,7 +959,7 @@ HAL_StatusTypeDef HAL_QSPI_Command_IT(QSPI_HandleTypeDef *hqspi, QSPI_CommandTyp
   }
 
   /* Return function status */
-  return (status);
+  return status;
 }
 
 /**
@@ -979,11 +979,11 @@ HAL_StatusTypeDef HAL_QSPI_Transmit(QSPI_HandleTypeDef *hqspi, uint8_t *pData, u
   /* Process locked */
   __HAL_LOCK(hqspi);
 
-  if (hqspi->State == HAL_QSPI_STATE_READY)
+  if(hqspi->State == HAL_QSPI_STATE_READY)
   {
     hqspi->ErrorCode = HAL_QSPI_ERROR_NONE;
 
-    if (pData != NULL )
+    if(pData != NULL )
     {
       /* Update state */
       hqspi->State = HAL_QSPI_STATE_BUSY_INDIRECT_TX;
@@ -996,7 +996,7 @@ HAL_StatusTypeDef HAL_QSPI_Transmit(QSPI_HandleTypeDef *hqspi, uint8_t *pData, u
       /* Configure QSPI: CCR register with functional as indirect write */
       MODIFY_REG(hqspi->Instance->CCR, QUADSPI_CCR_FMODE, QSPI_FUNCTIONAL_MODE_INDIRECT_WRITE);
 
-      while (hqspi->TxXferCount > 0U)
+      while(hqspi->TxXferCount > 0U)
       {
         /* Wait until FT flag is set to send data */
         status = QSPI_WaitFlagStateUntilTimeout(hqspi, QSPI_FLAG_FT, SET, tickstart, Timeout);
@@ -1041,7 +1041,7 @@ HAL_StatusTypeDef HAL_QSPI_Transmit(QSPI_HandleTypeDef *hqspi, uint8_t *pData, u
   /* Process unlocked */
   __HAL_UNLOCK(hqspi);
 
-  return (status);
+  return status;
 }
 
 
@@ -1063,11 +1063,11 @@ HAL_StatusTypeDef HAL_QSPI_Receive(QSPI_HandleTypeDef *hqspi, uint8_t *pData, ui
   /* Process locked */
   __HAL_LOCK(hqspi);
 
-  if (hqspi->State == HAL_QSPI_STATE_READY)
+  if(hqspi->State == HAL_QSPI_STATE_READY)
   {
     hqspi->ErrorCode = HAL_QSPI_ERROR_NONE;
 
-    if (pData != NULL )
+    if(pData != NULL )
     {
       /* Update state */
       hqspi->State = HAL_QSPI_STATE_BUSY_INDIRECT_RX;
@@ -1083,12 +1083,12 @@ HAL_StatusTypeDef HAL_QSPI_Receive(QSPI_HandleTypeDef *hqspi, uint8_t *pData, ui
       /* Start the transfer by re-writing the address in AR register */
       WRITE_REG(hqspi->Instance->AR, addr_reg);
 
-      while (hqspi->RxXferCount > 0U)
+      while(hqspi->RxXferCount > 0U)
       {
         /* Wait until FT or TC flag is set to read received data */
         status = QSPI_WaitFlagStateUntilTimeout(hqspi, (QSPI_FLAG_FT | QSPI_FLAG_TC), SET, tickstart, Timeout);
 
-        if (status != HAL_OK)
+        if  (status != HAL_OK)
         {
           break;
         }
@@ -1103,7 +1103,7 @@ HAL_StatusTypeDef HAL_QSPI_Receive(QSPI_HandleTypeDef *hqspi, uint8_t *pData, ui
         /* Wait until TC flag is set to go back in idle state */
         status = QSPI_WaitFlagStateUntilTimeout(hqspi, QSPI_FLAG_TC, SET, tickstart, Timeout);
 
-        if (status == HAL_OK)
+        if  (status == HAL_OK)
         {
           /* Clear Transfer Complete bit */
           __HAL_QSPI_CLEAR_FLAG(hqspi, QSPI_FLAG_TC);
@@ -1128,7 +1128,7 @@ HAL_StatusTypeDef HAL_QSPI_Receive(QSPI_HandleTypeDef *hqspi, uint8_t *pData, ui
   /* Process unlocked */
   __HAL_UNLOCK(hqspi);
 
-  return (status);
+  return status;
 }
 
 /**
@@ -1188,7 +1188,7 @@ HAL_StatusTypeDef HAL_QSPI_Transmit_IT(QSPI_HandleTypeDef *hqspi, uint8_t *pData
     __HAL_UNLOCK(hqspi);
   }
 
-  return (status);
+  return status;
 }
 
 /**
@@ -1252,7 +1252,7 @@ HAL_StatusTypeDef HAL_QSPI_Receive_IT(QSPI_HandleTypeDef *hqspi, uint8_t *pData)
     __HAL_UNLOCK(hqspi);
   }
 
-  return (status);
+  return status;
 }
 
 /**
@@ -1270,15 +1270,15 @@ HAL_StatusTypeDef HAL_QSPI_Transmit_DMA(QSPI_HandleTypeDef *hqspi, uint8_t *pDat
   /* Process locked */
   __HAL_LOCK(hqspi);
 
-  if (hqspi->State == HAL_QSPI_STATE_READY)
+  if(hqspi->State == HAL_QSPI_STATE_READY)
   {
     /* Clear the error code */
     hqspi->ErrorCode = HAL_QSPI_ERROR_NONE;
 
-    if (pData != NULL )
+    if(pData != NULL )
     {
-        /* Configure counters of the handle */
-        hqspi->TxXferCount = data_size;
+      /* Configure counters of the handle */
+      hqspi->TxXferCount = data_size;
 
         /* Update state */
         hqspi->State = HAL_QSPI_STATE_BUSY_INDIRECT_TX;
@@ -1303,20 +1303,20 @@ HAL_StatusTypeDef HAL_QSPI_Transmit_DMA(QSPI_HandleTypeDef *hqspi, uint8_t *pDat
         hqspi->hmdma->XferAbortCallback = NULL;
 
         /* In Transmit mode , the MDMA destination is the QSPI DR register : Force the MDMA Destination Increment to disable */
-        MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_DINC | MDMA_CTCR_DINCOS), MDMA_DEST_INC_DISABLE);
+        MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_DINC | MDMA_CTCR_DINCOS) ,MDMA_DEST_INC_DISABLE);
 
         /* Update MDMA configuration with the correct SourceInc field for Write operation */
         if (hqspi->hmdma->Init.SourceDataSize == MDMA_SRC_DATASIZE_BYTE)
         {
-          MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_SINC | MDMA_CTCR_SINCOS), MDMA_SRC_INC_BYTE);
+          MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_SINC | MDMA_CTCR_SINCOS) , MDMA_SRC_INC_BYTE);
         }
         else if (hqspi->hmdma->Init.SourceDataSize == MDMA_SRC_DATASIZE_HALFWORD)
         {
-          MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_SINC | MDMA_CTCR_SINCOS), MDMA_SRC_INC_HALFWORD);
+          MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_SINC | MDMA_CTCR_SINCOS) , MDMA_SRC_INC_HALFWORD);
         }
         else if (hqspi->hmdma->Init.SourceDataSize == MDMA_SRC_DATASIZE_WORD)
         {
-          MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_SINC | MDMA_CTCR_SINCOS), MDMA_SRC_INC_WORD);
+          MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_SINC | MDMA_CTCR_SINCOS) , MDMA_SRC_INC_WORD);
         }
         else
         {
@@ -1325,21 +1325,24 @@ HAL_StatusTypeDef HAL_QSPI_Transmit_DMA(QSPI_HandleTypeDef *hqspi, uint8_t *pDat
           status = HAL_ERROR;
         }
 
+        /* Enable the QSPI transfer error Interrupt */
+        __HAL_QSPI_ENABLE_IT(hqspi, QSPI_IT_TE);
+
+        /* Use DMAEN bit with no impact on H7 HW to record MDMA transfer request */
+        SET_BIT(hqspi->Instance->CR, QUADSPI_CR_DMAEN);
+
+
         /* Enable the QSPI transmit MDMA */
         if (HAL_MDMA_Start_IT(hqspi->hmdma, (uint32_t)pData, (uint32_t)&hqspi->Instance->DR, hqspi->TxXferSize, 1) == HAL_OK)
         {
           /* Process unlocked */
           __HAL_UNLOCK(hqspi);
-
-          /* Enable the QSPI transfer error Interrupt */
-          __HAL_QSPI_ENABLE_IT(hqspi, QSPI_IT_TE);
-
-          /* Enable using MDMA by setting DMAEN, note that DMAEN bit is "reserved"
-             but no impact on H7 HW and it minimize the cost in the footprint */
-          SET_BIT(hqspi->Instance->CR, QUADSPI_CR_DMAEN);
         }
         else
         {
+          /* Clear DMAEN bit with no impact on H7 HW to cancel MDMA transfer request */
+          CLEAR_BIT(hqspi->Instance->CR, QUADSPI_CR_DMAEN);
+
           status = HAL_ERROR;
           hqspi->ErrorCode |= HAL_QSPI_ERROR_DMA;
           hqspi->State = HAL_QSPI_STATE_READY;
@@ -1365,7 +1368,7 @@ HAL_StatusTypeDef HAL_QSPI_Transmit_DMA(QSPI_HandleTypeDef *hqspi, uint8_t *pDat
     __HAL_UNLOCK(hqspi);
   }
 
-  return (status);
+  return status;
 }
 
 /**
@@ -1389,32 +1392,31 @@ HAL_StatusTypeDef HAL_QSPI_Receive_DMA(QSPI_HandleTypeDef *hqspi, uint8_t *pData
     /* Clear the error code */
     hqspi->ErrorCode = HAL_QSPI_ERROR_NONE;
 
-    if (pData != NULL )
+    if(pData != NULL )
     {
       /* Configure counters of the handle */
       hqspi->RxXferCount = data_size;
+        /* Update state */
+        hqspi->State = HAL_QSPI_STATE_BUSY_INDIRECT_RX;
 
-      /* Update state */
-      hqspi->State = HAL_QSPI_STATE_BUSY_INDIRECT_RX;
+        /* Clear interrupt */
+        __HAL_QSPI_CLEAR_FLAG(hqspi, (QSPI_FLAG_TE | QSPI_FLAG_TC));
 
-      /* Clear interrupt */
-      __HAL_QSPI_CLEAR_FLAG(hqspi, (QSPI_FLAG_TE | QSPI_FLAG_TC));
+        /* Configure size and pointer of the handle */
+        hqspi->RxXferSize = hqspi->RxXferCount;
+        hqspi->pRxBuffPtr = pData;
 
-      /* Configure size and pointer of the handle */
-      hqspi->RxXferSize = hqspi->RxXferCount;
-      hqspi->pRxBuffPtr = pData;
+        /* Set the QSPI MDMA transfer complete callback */
+        hqspi->hmdma->XferCpltCallback = QSPI_DMARxCplt;
 
-      /* Set the QSPI MDMA transfer complete callback */
-      hqspi->hmdma->XferCpltCallback = QSPI_DMARxCplt;
+        /* Set the MDMA error callback */
+        hqspi->hmdma->XferErrorCallback = QSPI_DMAError;
 
-      /* Set the MDMA error callback */
-      hqspi->hmdma->XferErrorCallback = QSPI_DMAError;
+        /* Clear the MDMA abort callback */
+        hqspi->hmdma->XferAbortCallback = NULL;
 
-      /* Clear the MDMA abort callback */
-      hqspi->hmdma->XferAbortCallback = NULL;
-
-      /* In Receive mode, the MDMA source is the QSPI DR register : Force the MDMA Source Increment to disable */
-      MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_SINC | MDMA_CTCR_SINCOS), MDMA_SRC_INC_DISABLE);
+      /* In Receive mode , the MDMA source is the QSPI DR register : Force the MDMA Source Increment to disable */
+      MODIFY_REG(hqspi->hmdma->Instance->CTCR, (MDMA_CTCR_SINC | MDMA_CTCR_SINCOS) , MDMA_SRC_INC_DISABLE);
 
       /* Update MDMA configuration with the correct DestinationInc field for read operation */
       if (hqspi->hmdma->Init.DestDataSize == MDMA_DEST_DATASIZE_BYTE)
@@ -1431,39 +1433,40 @@ HAL_StatusTypeDef HAL_QSPI_Receive_DMA(QSPI_HandleTypeDef *hqspi, uint8_t *pData
       }
       else
       {
-        /* in case of incorrect destination data size */
+       /* in case of incorrect destination data size */
         hqspi->ErrorCode |= HAL_QSPI_ERROR_DMA;
         status = HAL_ERROR;
       }
-      
-      /* Configure QSPI: CCR register with functional as indirect read */
-      MODIFY_REG(hqspi->Instance->CCR, QUADSPI_CCR_FMODE, QSPI_FUNCTIONAL_MODE_INDIRECT_READ);
+          /* Configure QSPI: CCR register with functional as indirect read */
+          MODIFY_REG(hqspi->Instance->CCR, QUADSPI_CCR_FMODE, QSPI_FUNCTIONAL_MODE_INDIRECT_READ);
 
-      /* Start the transfer by re-writing the address in AR register */
-      WRITE_REG(hqspi->Instance->AR, addr_reg);
-
-      /* Enable the MDMA */
-      if (HAL_MDMA_Start_IT(hqspi->hmdma, (uint32_t)&hqspi->Instance->DR, (uint32_t)pData, hqspi->RxXferSize, 1) == HAL_OK)
-      {
-        /* Process unlocked */
-        __HAL_UNLOCK(hqspi);
+          /* Start the transfer by re-writing the address in AR register */
+          WRITE_REG(hqspi->Instance->AR, addr_reg);
 
         /* Enable the QSPI transfer error Interrupt */
         __HAL_QSPI_ENABLE_IT(hqspi, QSPI_IT_TE);
 
-        /* Enable using MDMA by setting DMAEN, note that DMAEN bit is "reserved"
-           but no impact on H7 HW and it minimize the cost in the footprint */
+        /* Use DMAEN bit with no impact on H7 HW to record MDMA transfer request */
         SET_BIT(hqspi->Instance->CR, QUADSPI_CR_DMAEN);
-      }
-      else
-      {
-        status = HAL_ERROR;
-        hqspi->ErrorCode |= HAL_QSPI_ERROR_DMA;
-        hqspi->State = HAL_QSPI_STATE_READY;
 
-        /* Process unlocked */
-        __HAL_UNLOCK(hqspi);
-      }
+        /* Enable the MDMA */
+        if (HAL_MDMA_Start_IT(hqspi->hmdma, (uint32_t)&hqspi->Instance->DR, (uint32_t)pData, hqspi->RxXferSize, 1) == HAL_OK)
+        {
+          /* Process unlocked */
+          __HAL_UNLOCK(hqspi);
+        }
+        else
+        {
+          /* Clear DMAEN bit with no impact on H7 HW to cancel MDMA transfer request */
+          CLEAR_BIT(hqspi->Instance->CR, QUADSPI_CR_DMAEN);
+
+          status = HAL_ERROR;
+          hqspi->ErrorCode |= HAL_QSPI_ERROR_DMA;
+          hqspi->State = HAL_QSPI_STATE_READY;
+
+          /* Process unlocked */
+          __HAL_UNLOCK(hqspi);
+        }
     }
     else
     {
@@ -1482,7 +1485,7 @@ HAL_StatusTypeDef HAL_QSPI_Receive_DMA(QSPI_HandleTypeDef *hqspi, uint8_t *pData
     __HAL_UNLOCK(hqspi);
   }
 
-  return (status);
+  return status;
 }
 
 /**
@@ -1583,7 +1586,7 @@ HAL_StatusTypeDef HAL_QSPI_AutoPolling(QSPI_HandleTypeDef *hqspi, QSPI_CommandTy
   __HAL_UNLOCK(hqspi);
 
   /* Return function status */
-  return (status);
+  return status;
 }
 
 /**
@@ -1687,7 +1690,7 @@ HAL_StatusTypeDef HAL_QSPI_AutoPolling_IT(QSPI_HandleTypeDef *hqspi, QSPI_Comman
   }
 
   /* Return function status */
-  return (status);
+  return status;
 }
 
 /**
@@ -1776,7 +1779,7 @@ HAL_StatusTypeDef HAL_QSPI_MemoryMapped(QSPI_HandleTypeDef *hqspi, QSPI_CommandT
   __HAL_UNLOCK(hqspi);
 
   /* Return function status */
-  return (status);
+  return status;
 }
 
 /**
@@ -2015,7 +2018,7 @@ HAL_StatusTypeDef HAL_QSPI_RegisterCallback (QSPI_HandleTypeDef *hqspi, HAL_QSPI
 
   /* Release Lock */
   __HAL_UNLOCK(hqspi);
-  return (status);
+  return status;
 }
 
 /**
@@ -2113,7 +2116,7 @@ HAL_StatusTypeDef HAL_QSPI_UnRegisterCallback (QSPI_HandleTypeDef *hqspi, HAL_QS
 
   /* Release Lock */
   __HAL_UNLOCK(hqspi);
-  return (status);
+  return status;
 }
 #endif
 
@@ -2222,7 +2225,7 @@ HAL_StatusTypeDef HAL_QSPI_Abort(QSPI_HandleTypeDef *hqspi)
     }
   }
 
-  return (status);
+  return status;
 }
 
 /**
@@ -2287,7 +2290,7 @@ HAL_StatusTypeDef HAL_QSPI_Abort_IT(QSPI_HandleTypeDef *hqspi)
       }
     }
   }
-  return (status);
+  return status;
 }
 
 /** @brief Set QSPI timeout.
@@ -2330,7 +2333,7 @@ HAL_StatusTypeDef HAL_QSPI_SetFifoThreshold(QSPI_HandleTypeDef *hqspi, uint32_t 
   __HAL_UNLOCK(hqspi);
 
   /* Return function status */
-  return (status);
+  return status;
 }
 
 /** @brief Get QSPI Fifo threshold.
@@ -2376,7 +2379,7 @@ HAL_StatusTypeDef HAL_QSPI_SetFlashID(QSPI_HandleTypeDef *hqspi, uint32_t FlashI
   __HAL_UNLOCK(hqspi);
 
   /* Return function status */
-  return (status);
+  return status;
 }
 
 /**
