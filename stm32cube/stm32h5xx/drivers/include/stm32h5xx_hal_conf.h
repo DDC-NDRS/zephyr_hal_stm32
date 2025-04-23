@@ -179,11 +179,6 @@ in voltage and temperature.*/
 #define  TICK_INT_PRIORITY          ((1UL<<__NVIC_PRIO_BITS) - 1UL)  /*!< tick interrupt priority (lowest by default) */
 #define  USE_RTOS                   0U
 #define  PREFETCH_ENABLE            0U       /*!< Enable prefetch */
-#define  USE_SD_TRANSCEIVER         0U       /*!< use uSD Transceiver */
-#define  USE_SPI_CRC                1U       /*!< use CRC in SPI */
-#define  USE_FLASH_ECC              0U       /*!< use ECC error management in FLASH */
-#define  USE_SDIO_TRANSCEIVER       0U       /*!< use SDIO Transceiver */
-#define  SDIO_MAX_IO_NUMBER         7U       /*!< SDIO device support maximum IO number */
 
 /* ############################################ Assert Selection #################################################### */
 /**
