@@ -1665,7 +1665,11 @@ typedef struct
 #define FMAC_BASE_NS             (AHB1PERIPH_BASE_NS + 0x03C00UL)
 #define RAMCFG_BASE_NS           (AHB1PERIPH_BASE_NS + 0x06000UL)
 #define ICACHE_BASE_NS           (AHB1PERIPH_BASE_NS + 0x10400UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define DCACHE1_BASE_NS          ((uintptr_t)ut_mcu_dcache1_ptr)
+#else
 #define DCACHE1_BASE_NS          (AHB1PERIPH_BASE_NS + 0x11400UL)
+#endif
 #define GTZC_TZSC1_BASE_NS       (AHB1PERIPH_BASE_NS + 0x12400UL)
 #define GTZC_TZIC1_BASE_NS       (AHB1PERIPH_BASE_NS + 0x12800UL)
 #define GTZC_MPCBB1_BASE_NS      (AHB1PERIPH_BASE_NS + 0x12C00UL)
