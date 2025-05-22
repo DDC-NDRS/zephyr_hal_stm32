@@ -1978,7 +1978,7 @@ HAL_StatusTypeDef HAL_XSPI_MemoryMapped(XSPI_HandleTypeDef *hxspi, XSPI_MemoryMa
         assert_param(IS_XSPI_TIMEOUT_PERIOD(pCfg->TimeoutPeriodClock));
 
         /* Configure register */
-        WRITE_REG(hxspi->Instance->LPTR, pCfg->TimeoutPeriodClock);
+        WRITE_REG(hxspi->Instance->LPTRx, pCfg->TimeoutPeriodClock);
 
         /* Clear flags related to interrupt */
         HAL_XSPI_CLEAR_FLAG(hxspi, HAL_XSPI_FLAG_TO);
