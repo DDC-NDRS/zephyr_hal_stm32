@@ -1403,11 +1403,16 @@ __STATIC_INLINE uint32_t LL_DMA_GetM2MDstAddress(DMA_TypeDef *DMAx, uint32_t Cha
   *         (*) Not on all G4 devices
   * @retval None
   */
-__STATIC_INLINE void LL_DMA_SetPeriphRequest(DMA_TypeDef *DMAx, uint32_t Channel, uint32_t PeriphRequest)
-{
+#if defined(_MSC_VER)
+__STATIC_INLINE void LL_DMA_SetPeriphRequest(DMA_TypeDef* DMAx, uint32_t Channel, uint32_t PeriphRequest) {
+    /* pass */
+}
+#else
+__STATIC_INLINE void LL_DMA_SetPeriphRequest(DMA_TypeDef *DMAx, uint32_t Channel, uint32_t PeriphRequest) {
   uint32_t dmamux_ccr_offset = ((((uint32_t)DMAx ^ (uint32_t)DMA1) >> 10U) * 8U);
   MODIFY_REG((DMAMUX1_Channel0 + Channel + dmamux_ccr_offset)->CCR, DMAMUX_CxCR_DMAREQ_ID, PeriphRequest);
 }
+#endif
 
 /**
   * @brief  Get DMA request for DMA instance on Channel x.

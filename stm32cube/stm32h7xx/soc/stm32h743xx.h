@@ -2130,9 +2130,16 @@ typedef struct
 #define DMA1_BASE               (D2_AHB1PERIPH_BASE + 0x0000UL)
 #define DMA2_BASE               (D2_AHB1PERIPH_BASE + 0x0400UL)
 #define DMAMUX1_BASE            (D2_AHB1PERIPH_BASE + 0x0800UL)
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define ADC1_BASE               ((uintptr_t)ut_mcu_adc1_ptr)
+#define ADC2_BASE               ((uintptr_t)ut_mcu_adc2_ptr)
+#define ADC12_COMMON_BASE       ((uintptr_t)ut_mcu_adc12_common_ptr)
+#else
 #define ADC1_BASE               (D2_AHB1PERIPH_BASE + 0x2000UL)
 #define ADC2_BASE               (D2_AHB1PERIPH_BASE + 0x2100UL)
 #define ADC12_COMMON_BASE       (D2_AHB1PERIPH_BASE + 0x2300UL)
+#endif
+
 #if defined(_MSC_VER) /* #CUSTOM@NDRS */
 #define ETH_BASE                ((uintptr_t)ut_mcu_eth_ptr)
 #else
@@ -2202,8 +2209,15 @@ typedef struct
 #endif
 #define BDMA_BASE             (D3_AHB1PERIPH_BASE + 0x5400UL)
 #define DMAMUX2_BASE          (D3_AHB1PERIPH_BASE + 0x5800UL)
+
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define ADC3_BASE             ((uintptr_t)ut_mcu_adc3_ptr)
+#define ADC3_COMMON_BASE      ((uintptr_t)ut_mcu_adc3_common_ptr)
+#else
 #define ADC3_BASE             (D3_AHB1PERIPH_BASE + 0x6000UL)
 #define ADC3_COMMON_BASE      (D3_AHB1PERIPH_BASE + 0x6300UL)
+#endif
+
 #define HSEM_BASE             (D3_AHB1PERIPH_BASE + 0x6400UL)
 #define RAMECC3_BASE          (D3_AHB1PERIPH_BASE + 0x7000UL)
 

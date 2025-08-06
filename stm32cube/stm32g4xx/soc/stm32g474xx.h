@@ -1258,7 +1258,12 @@ typedef struct {
 #define DMA1_BASE             (AHB1PERIPH_BASE)
 #define DMA2_BASE             (AHB1PERIPH_BASE + 0x0400UL)
 
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define DMAMUX1_BASE          ((uintptr_t)ut_mcu_dmamux1_ptr)
+#else
 #define DMAMUX1_BASE          (AHB1PERIPH_BASE + 0x0800UL)
+#endif
+
 #define CORDIC_BASE           (AHB1PERIPH_BASE + 0x0C00UL)
 #if defined(_MSC_VER) /* #CUSTOM@NDRS */
 #define RCC_BASE              ((uintptr_t)ut_mcu_rcc_ptr)
@@ -1362,7 +1367,11 @@ typedef struct {
 
 #define PACKAGE_BASE          (0x1FFF7500UL)        /*!< Package data register base address     */
 #define UID_BASE              (0x1FFF7590UL)        /*!< Unique device ID register base address */
+#if defined(_MSC_VER) /* #CUSTOM@NDRS */
+#define FLASHSIZE_BASE        ((uintptr_t)ut_mcu_flashsize_ptr)
+#else
 #define FLASHSIZE_BASE        (0x1FFF75E0UL)        /*!< Flash size data register base address  */
+#endif
 /**
   * @}
   */
