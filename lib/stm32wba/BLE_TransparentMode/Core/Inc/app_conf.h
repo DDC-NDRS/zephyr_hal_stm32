@@ -370,7 +370,7 @@ typedef enum
  * System Clock Manager module configuration
  ******************************************************************************/
 
-#define CFG_SCM_SUPPORTED                   (1)
+#define CFG_SCM_SUPPORTED                   (0)
 
 /******************************************************************************
  * HW RADIO configuration
@@ -398,7 +398,7 @@ typedef enum
 
 #define CFG_EXTERNAL_PA_ENABLE              (0)
 
-#define CFG_BLE_AOA_AOD_ENABLE              (0)
+#define CFG_BLE_AOA_AOD_ENABLE              (1)
 #define CFG_RADIO_NUM_OF_ANTENNAS           (8)           /* Link Layer supported number of antennas */
 
 /* Radio sleep clock LSE accuracy configuration */
