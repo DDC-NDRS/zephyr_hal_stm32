@@ -13,10 +13,10 @@
  * without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
  * of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
  * following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all copies or substantial
  * portions of the Software.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING, BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL
@@ -129,19 +129,19 @@
 #ifndef SUPPORT_CHANNEL_SOUNDING
 #define SUPPORT_CHANNEL_SOUNDING                                        0 /* Enable\Disable Channel Sounding Feature.   Enable:1 - Disable:0 */
 #endif /* SUPPORT_CHANNEL_SOUNDING */
- 
+
 #ifndef SUPPORT_FRAME_SPACE_UPDATE
 #define SUPPORT_FRAME_SPACE_UPDATE                                      0 /* Enable\Disable Frame Space Update Feature. Enable:1 - Disable:0 */
 #endif /* SUPPORT_FRAME_SPACE_UPDATE */
- 
+
 #ifndef SUPPORT_EXT_FEATURE_SET
 #define SUPPORT_EXT_FEATURE_SET                                         0 /* Enable\Disable Extended Feature Set Exchange. Enable:1 - Disable:0 */
 #endif /* SUPPORT_EXT_FEATURE_SET */
- 
+
 #ifndef SUPPORT_ISO_UNSEG_MODE
 #define SUPPORT_ISO_UNSEG_MODE                                          0 /* Enable\Disable Unsegmented Mode for Framed ISO PDUs. Enable: 1 - Disable: 0*/
 #endif /* SUPPORT_ISO_UNSEG_MODE */
- 
+
 #ifndef SUPPORT_LE_ADVERTISERS_MONITORING
 #define SUPPORT_LE_ADVERTISERS_MONITORING                               0 /* Enable\Disable Advertisers Monitoring Feature. Enable:1 - Disable:0 */
 #endif /* SUPPORT_LE_ADVERTISERS_MONITORING */
@@ -201,11 +201,11 @@
 #endif /* MAX_NUMBER_OF_INDIRECT_DATA */
 
 #ifndef SUPPORT_OPENTHREAD_1_2
-#define SUPPORT_OPENTHREAD_1_2                      0 /* Enable / disable FW parts related to new features introduced in openthread 1.2*/
+#define SUPPORT_OPENTHREAD_1_2                      1 /* Enable / disable FW parts related to new features introduced in openthread 1.2*/
 #endif /* SUPPORT_OPENTHREAD_1_2 */
 
 #ifndef SUPPORT_SEC
-#define SUPPORT_SEC                                 0 /* The MAC Security Supported : 1 - Not Supported:0 */
+#define SUPPORT_SEC                                 1 /* The MAC Security Supported : 1 - Not Supported:0 */
 #endif /* SUPPORT_SEC */
 
 #ifndef RADIO_CSMA
@@ -219,6 +219,11 @@
 #ifndef SUPPORT_A_MAC
 #define SUPPORT_A_MAC                               1
 #endif /* SUPPORT_A_MAC */
+
+#ifndef SUPPORT_CONFIG_LIB
+#define SUPPORT_CONFIG_LIB                          1 /* Enable\Disable Configurable Library feature */
+#endif /* SUPPORT_CONFIG_LIB */
+
 #ifndef SMPL_PRTCL_TEST_ENABLE
 #define SMPL_PRTCL_TEST_ENABLE                      0
 #endif /* SMPL_PRTCL_TEST_ENABLE */
