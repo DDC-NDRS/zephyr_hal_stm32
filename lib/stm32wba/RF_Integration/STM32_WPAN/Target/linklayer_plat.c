@@ -18,7 +18,6 @@
   */
 /* USER CODE END Header */
 
-
 #include "stm32wbaxx_hal.h"
 #include "stm32wbaxx_hal_conf.h"
 #include "stm32wbaxx_ll_rcc.h"
@@ -26,30 +25,47 @@
 #include "app_common.h"
 #include "app_conf.h"
 #include "linklayer_plat.h"
-
 #include "log_module.h"
+
 #ifndef __ZEPHYR__
+#if (USE_TEMPERATURE_BASED_RADIO_CALIBRATION == 1)
+#include "adc_ctrl.h"
+#endif /* (USE_TEMPERATURE_BASED_RADIO_CALIBRATION == 1) */
 #if (CFG_LPM_LEVEL != 0)
 #include "stm32_lpm.h"
 #include "stm32_lpm_if.h"
 #endif /* (CFG_LPM_LEVEL != 0) */
 #endif
 
+/* USER CODE BEGIN Includes */
+
+/* USER CODE END Includes */
 
 #ifndef __ZEPHYR__
 #define max(a,b) ((a) > (b) ? a : b)
 
 /* 2.4GHz RADIO ISR callbacks */
-typedef void (*radio_isr_cb_t) (void);
+void (*radio_callback)(void) = NULL;
+void (*low_isr_callback)(void) = NULL;
+
+/* RNG handle */
+extern RNG_HandleTypeDef hrng;
 
 /* Radio critical sections */
 static uint32_t primask_bit = 0;
-volatile int32_t irq_counter;
+volatile int32_t prio_high_isr_counter = 0;
+volatile int32_t prio_low_isr_counter = 0;
+volatile int32_t prio_sys_isr_counter = 0;
+volatile int32_t irq_counter = 0;
+volatile uint32_t local_basepri_value = 0;
+
+/* Radio SW low ISR global variable */
+volatile uint8_t radio_sw_low_isr_is_running_high_prio = 0;
 #endif /* __ZEPHYR__ */
 
 /* Radio bus clock control variables */
-uint8_t AHB5_SwitchedOff;
-uint32_t radio_sleep_timer_val;
+uint8_t AHB5_SwitchedOff = 0;
+uint32_t radio_sleep_timer_val = 0;
 
 /**
   * @brief  Configure the necessary clock sources for the radio.
@@ -58,26 +74,27 @@ uint32_t radio_sleep_timer_val;
   */
 void LINKLAYER_PLAT_ClockInit(void)
 {
-	AHB5_SwitchedOff = 0;
-	radio_sleep_timer_val = 0;
+#ifndef __ZEPHYR__
+  uint32_t linklayer_slp_clk_src = LL_RCC_RADIOSLEEPSOURCE_NONE;
 
-#ifdef __ZEPHYR__
-	LINKLAYER_PLAT_EnableBackupDomainAccess();
+  /* Get the Link Layer sleep timer clock source */
+  linklayer_slp_clk_src = LL_RCC_RADIO_GetSleepTimerClockSource();
+  if(linklayer_slp_clk_src == LL_RCC_RADIOSLEEPSOURCE_NONE)
+  {
+    /* If there is no clock source defined, should be selected before */
+    assert_param(0);
+  }
 #else
-	LL_PWR_EnableBkUpAccess();
+  LINKLAYER_PLAT_EnableBackupDomainAccess();
+
+  /* Select LSE as Sleep CLK */
+  __HAL_RCC_RADIOSLPTIM_CONFIG(RCC_RADIOSTCLKSOURCE_LSE);
+
+  LINKLAYER_PLAT_DisableBackupDomainAccess();
 #endif
 
-	/* Select LSE as Sleep CLK */
-	__HAL_RCC_RADIOSLPTIM_CONFIG(RCC_RADIOSTCLKSOURCE_LSE);
-
-#ifdef __ZEPHYR__
-	LINKLAYER_PLAT_DisableBackupDomainAccess();
-#else
-	LL_PWR_DisableBkUpAccess();
-#endif
-
-	/* Enable AHB5ENR peripheral clock (bus CLK) */
-	__HAL_RCC_RADIO_CLK_ENABLE();
+  /* Enable AHB5ENR peripheral clock (bus CLK) */
+  __HAL_RCC_RADIO_CLK_ENABLE();
 }
 #ifndef __ZEPHYR__
 /**
@@ -87,12 +104,55 @@ void LINKLAYER_PLAT_ClockInit(void)
   */
 void LINKLAYER_PLAT_DelayUs(uint32_t delay)
 {
-  __IO register uint32_t Delay = delay * (SystemCoreClock / 1000000U);
-  do
+  static uint8_t lock = 0;
+  uint32_t t0;
+  uint32_t primask_bit;
+
+  /* Enter critical section */
+  primask_bit= __get_PRIMASK();
+  __disable_irq();
+
+  if (lock == 0U)
   {
-    __NOP();
+    /* Initialize counter */
+    /* Reset cycle counter to prevent overflow
+       As a us counter, it is assumed than even with re-entrancy,
+       overflow will never happen before re-initializing this counter */
+    DWT->CYCCNT = 0U;
+    /* Enable DWT by safety but should be useless (as already set) */
+    SET_BIT(DCB->DEMCR, DCB_DEMCR_TRCENA_Msk);
+    /* Enable counter */
+    SET_BIT(DWT->CTRL, DWT_CTRL_CYCCNTENA_Msk);
   }
-  while (Delay --);
+  /* Increment 're-entrance' counter */
+  lock++;
+  /* Get starting time stamp */
+  t0 = DWT->CYCCNT;
+  /* Exit critical section */
+ __set_PRIMASK(primask_bit);
+
+  /* Turn us into cycles */
+  delay = delay * (SystemCoreClock / 1000000U);
+  delay += t0;
+
+  /* Busy waiting loop */
+  while (DWT->CYCCNT < delay)
+  {
+  };
+
+  /* Enter critical section */
+  primask_bit= __get_PRIMASK();
+  __disable_irq();
+  if (lock == 1U)
+  {
+    /* Disable counter */
+    CLEAR_BIT(DWT->CTRL, DWT_CTRL_CYCCNTENA_Msk);
+  }
+  /* Decrement 're-entrance' counter */
+  lock--;
+  /* Exit critical section */
+ __set_PRIMASK(primask_bit);
+
 }
 
 /**
@@ -496,7 +556,9 @@ void LINKLAYER_PLAT_RCOStopClbr(void)
   */
 void LINKLAYER_PLAT_RequestTemperature(void)
 {
-
+#if (USE_TEMPERATURE_BASED_RADIO_CALIBRATION == 1)
+  ll_sys_bg_temperature_measurement();
+#endif /* USE_TEMPERATURE_BASED_RADIO_CALIBRATION */
 }
 
 /**
