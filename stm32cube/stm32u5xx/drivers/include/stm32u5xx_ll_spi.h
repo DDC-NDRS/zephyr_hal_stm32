@@ -2392,6 +2392,12 @@ __STATIC_INLINE void LL_SPI_EnableDMAReq_TX(SPI_TypeDef *SPIx)
   SET_BIT(SPIx->CFG1, SPI_CFG1_TXDMAEN);
 }
 
+/* #CUSTOM@NDRS */
+__STATIC_INLINE void LL_SPI_EnableDMAReq_TX_RX(SPI_TypeDef *SPIx)
+{
+  SET_BIT(SPIx->CFG1, (SPI_CFG1_TXDMAEN | SPI_CFG1_RXDMAEN));
+}
+
 /**
   * @brief  Disable DMA Tx
   * @rmtoll CFG1         TXDMAEN       LL_SPI_DisableDMAReq_TX
@@ -2401,6 +2407,12 @@ __STATIC_INLINE void LL_SPI_EnableDMAReq_TX(SPI_TypeDef *SPIx)
 __STATIC_INLINE void LL_SPI_DisableDMAReq_TX(SPI_TypeDef *SPIx)
 {
   CLEAR_BIT(SPIx->CFG1, SPI_CFG1_TXDMAEN);
+}
+
+/* #CUSTOM@NDRS */
+__STATIC_INLINE void LL_SPI_DisableDMAReq_TX_RX(SPI_TypeDef *SPIx)
+{
+  CLEAR_BIT(SPIx->CFG1, (SPI_CFG1_TXDMAEN | SPI_CFG1_RXDMAEN));
 }
 
 /**

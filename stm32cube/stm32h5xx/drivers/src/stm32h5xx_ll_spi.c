@@ -239,7 +239,7 @@
   */
 ErrorStatus LL_SPI_DeInit(const SPI_TypeDef *SPIx)
 {
-  ErrorStatus status = ERROR;
+  ErrorStatus status = ERRORx;
 
   /* Check the parameters */
   assert_param(IS_SPI_ALL_INSTANCE(SPIx));
@@ -337,7 +337,7 @@ ErrorStatus LL_SPI_DeInit(const SPI_TypeDef *SPIx)
   */
 ErrorStatus LL_SPI_Init(SPI_TypeDef *SPIx, LL_SPI_InitTypeDef *SPI_InitStruct)
 {
-  ErrorStatus status = ERROR;
+  ErrorStatus status = ERRORx;
   uint32_t tmp_nss;
   uint32_t tmp_mode;
   uint32_t tmp_nss_polarity;
@@ -575,7 +575,7 @@ ErrorStatus LL_I2S_Init(SPI_TypeDef *SPIx, const LL_I2S_InitTypeDef *I2S_InitStr
   uint32_t tmp;
   uint32_t sourceclock = 0UL;
 
-  ErrorStatus status = ERROR;
+  ErrorStatus status = ERRORx;
 
   /* Prevent unused argument(s) compilation warning */
   UNUSED(sourceclock);
