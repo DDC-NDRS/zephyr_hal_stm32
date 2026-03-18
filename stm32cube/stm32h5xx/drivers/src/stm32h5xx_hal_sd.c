@@ -453,7 +453,7 @@ HAL_StatusTypeDef HAL_SD_Init(SD_HandleTypeDef* hsd) {
   */
 HAL_StatusTypeDef HAL_SD_InitCard(SD_HandleTypeDef* hsd) {
     uint32_t errorstate;
-    SD_InitTypeDef Init;
+    SD_InitTypeDef Init = {0U};
     uint32_t sdmmc_clk = 0U;
 
     /* Default SDMMC peripheral configuration for SD card initialization */
@@ -2212,7 +2212,7 @@ HAL_StatusTypeDef HAL_SD_GetCardInfo(SD_HandleTypeDef const* hsd, HAL_SD_CardInf
  * @retval HAL status
  */
 HAL_StatusTypeDef HAL_SD_ConfigWideBusOperation(SD_HandleTypeDef* hsd, uint32_t WideMode) {
-    SDMMC_InitTypeDef Init;
+    SDMMC_InitTypeDef Init = {0U};
     uint32_t errorstate;
     uint32_t sdmmc_clk;
 
