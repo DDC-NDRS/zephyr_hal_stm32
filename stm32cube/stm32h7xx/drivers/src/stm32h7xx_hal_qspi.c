@@ -1787,7 +1787,7 @@ HAL_StatusTypeDef HAL_QSPI_MemoryMapped(QSPI_HandleTypeDef *hqspi, QSPI_CommandT
   * @param  hqspi QSPI handle
   * @retval None
   */
-#if (__GTEST == 0U) /* #CUSTOM@NDRS */
+#if (__GTEST == 0) /* #CUSTOM@NDRS */
 __weak void HAL_QSPI_ErrorCallback(QSPI_HandleTypeDef *hqspi)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1819,7 +1819,7 @@ __weak void HAL_QSPI_AbortCpltCallback(QSPI_HandleTypeDef *hqspi)
   * @param  hqspi QSPI handle
   * @retval None
   */
-#if (__GTEST == 0U) /* #CUSTOM@NDRS */
+#if (__GTEST == 0) /* #CUSTOM@NDRS */
 __weak void HAL_QSPI_CmdCpltCallback(QSPI_HandleTypeDef *hqspi)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1836,7 +1836,7 @@ __weak void HAL_QSPI_CmdCpltCallback(QSPI_HandleTypeDef *hqspi)
   * @param  hqspi QSPI handle
   * @retval None
   */
-#if (__GTEST == 0U) /* #CUSTOM@NDRS */
+#if (__GTEST == 0) /* #CUSTOM@NDRS */
 __weak void HAL_QSPI_RxCpltCallback(QSPI_HandleTypeDef *hqspi)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1853,7 +1853,7 @@ __weak void HAL_QSPI_RxCpltCallback(QSPI_HandleTypeDef *hqspi)
   * @param  hqspi QSPI handle
   * @retval None
   */
-#if (__GTEST == 0U) /* #CUSTOM@NDRS */
+#if (__GTEST == 0) /* #CUSTOM@NDRS */
 __weak void HAL_QSPI_TxCpltCallback(QSPI_HandleTypeDef *hqspi)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1885,7 +1885,7 @@ __weak void HAL_QSPI_FifoThresholdCallback(QSPI_HandleTypeDef *hqspi)
   * @param  hqspi QSPI handle
   * @retval None
   */
-#if (__GTEST == 0U) /* #CUSTOM@NDRS */
+#if (__GTEST == 0) /* #CUSTOM@NDRS */
 __weak void HAL_QSPI_StatusMatchCallback(QSPI_HandleTypeDef *hqspi)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1902,7 +1902,7 @@ __weak void HAL_QSPI_StatusMatchCallback(QSPI_HandleTypeDef *hqspi)
   * @param  hqspi QSPI handle
   * @retval None
   */
-#if (__GTEST == 0U) /* #CUSTOM@NDRS */
+#if (__GTEST == 0) /* #CUSTOM@NDRS */
 __weak void HAL_QSPI_TimeOutCallback(QSPI_HandleTypeDef *hqspi)
 {
   /* Prevent unused argument(s) compilation warning */

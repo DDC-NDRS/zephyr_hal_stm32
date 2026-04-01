@@ -156,7 +156,7 @@
                is no need to call the 2 first functions listed above, since SystemCoreClock
                variable is updated automatically.
   */
-#if (__GTEST == 0U) /* #CUSTOM@NDRS */
+#if (__GTEST == 0) /* #CUSTOM@NDRS */
 uint32_t SystemCoreClock = 16000000UL;
 #endif
 

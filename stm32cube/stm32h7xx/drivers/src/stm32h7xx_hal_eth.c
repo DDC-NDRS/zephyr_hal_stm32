@@ -1272,7 +1272,7 @@ HAL_StatusTypeDef HAL_ETH_UnRegisterRxAllocateCallback(ETH_HandleTypeDef *heth)
   * @param  buff: pointer to allocated buffer
   * @retval None
   */
-#if (__GTEST == 0U) /* #CUSTOM@NDRS */
+#if (__GTEST == 0) /* #CUSTOM@NDRS */
 __weak void HAL_ETH_RxAllocateCallback(uint8_t **buff)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1291,7 +1291,7 @@ __weak void HAL_ETH_RxAllocateCallback(uint8_t **buff)
   * @param  Length: received data length
   * @retval None
   */
-#if (__GTEST == 0U) /* #CUSTOM@NDRS */
+#if (__GTEST == 0) /* #CUSTOM@NDRS */
 __weak void HAL_ETH_RxLinkCallback(void **pStart, void **pEnd, uint8_t *buff, uint16_t Length)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -1395,7 +1395,7 @@ HAL_StatusTypeDef HAL_ETH_UnRegisterTxFreeCallback(ETH_HandleTypeDef *heth)
   * @param  buff: pointer to buffer to free
   * @retval None
   */
-#if (__GTEST == 0U) /* #CUSTOM@NDRS */
+#if (__GTEST == 0) /* #CUSTOM@NDRS */
 __weak void HAL_ETH_TxFreeCallback(uint32_t *buff)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -2065,7 +2065,7 @@ void HAL_ETH_IRQHandler(ETH_HandleTypeDef *heth)
   *         the configuration information for ETHERNET module
   * @retval None
   */
-#if (__GTEST == 0U) /* #CUSTOM@NDRS */
+#if (__GTEST == 0) /* #CUSTOM@NDRS */
 __weak void HAL_ETH_TxCpltCallback(ETH_HandleTypeDef *heth)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -2082,7 +2082,7 @@ __weak void HAL_ETH_TxCpltCallback(ETH_HandleTypeDef *heth)
   *         the configuration information for ETHERNET module
   * @retval None
   */
-#if (__GTEST == 0U) /* #CUSTOM@NDRS */
+#if (__GTEST == 0) /* #CUSTOM@NDRS */
 __weak void HAL_ETH_RxCpltCallback(ETH_HandleTypeDef *heth)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -2099,7 +2099,7 @@ __weak void HAL_ETH_RxCpltCallback(ETH_HandleTypeDef *heth)
   *         the configuration information for ETHERNET module
   * @retval None
   */
-#if (__GTEST == 0U) /* #CUSTOM@NDRS */
+#if (__GTEST == 0) /* #CUSTOM@NDRS */
 __weak void HAL_ETH_ErrorCallback(ETH_HandleTypeDef *heth)
 {
   /* Prevent unused argument(s) compilation warning */
